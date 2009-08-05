@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="STYLESHEET" href="../book.css" charset="ISO-8859-1"
+ type="text/css">
+  <title>Printing</title>
+  <meta content="ByteRefinery.com" name="author">
+</head>
+<body>
+<h1><span style="font-weight: bold;">Printing</span></h1>
+<p>Printing is an important feature for a modelling tool, as many users
+will want to produce paper copies of the diagrams. <span
+ style="font-weight: bold;">RMBench</span> supports this requirement in
+two ways:<br>
+</p>
+<ul>
+  <li>
+    <p>during design, you can switch on the display of a page outline
+for each diagram. The outline will show the extent of the printable
+page (depending on the selected printer). This serves as printing
+preview and&nbsp; allows the user to place figures within page
+boundaries for better printing results</p>
+  </li>
+  <li>
+    <p>we provide a specialised printer dialog that adds all the usual
+features expected in an industrial-strength application</p>
+  </li>
+</ul>
+<br>
+<hr style="width: 100%; height: 2px;">
+<p>Note that currently (as of version 3.1) the Eclipse print support is
+not implemented on all platforms. In particular, on Linux/GTK systems,
+you
+will find the <span style="font-style: italic;">print</span> item in
+the <span style="font-style: italic;">file</span> menu, and the
+print-related menu items in the <span style="font-style: italic;">Diagram</span>
+menu, disabled. As we depend on the Eclipse engine for the grunt work,
+we cannot get around this restriction. Linux/GTK users should instead
+consider the export facilities that will create file formats printable
+through other applications<br>
+</p>
+<hr style="width: 100%; height: 2px;">
+<h2>Page Outline<br>
+</h2>
+<p>You can switch on the page outline by checking the <span
+ style="font-style: italic;">Page Outline</span> item in the Diagram
+menu. When you do this for the first time, you will see the Printer
+Setup dialog<br>
+</p>
+<p><img alt="printer setup" src="../../images/PrinterSetup.png"
+ style="width: 222px; height: 165px;"><br>
+</p>
+<p>As the printable page size depends on the printer in use, you have
+to choose the printer and the margin settings for page outline
+computation. These settings will be saved with the current diagram for
+the duration of the user session, and can be changed at any time using
+the <span style="font-style: italic;">Printer Setup</span> item in the
+<span style="font-style: italic;">Diagram</span> menu.<br>
+</p>
+<hr style="width: 100%; height: 2px;">
+<p>Note that settings made in this dialog only serve the purpose of
+computing the page outline. When you later print the diagram, you will
+again be able to set these same properties, along with several other
+values not related to page outline. Needles to say that if you change
+these settings during printing, the results will not be the same as
+presented in the page outline.<br>
+</p>
+<hr style="width: 100%; height: 2px;">
+<h2>Printer Settings</h2>
+<p>When you choose the <span style="font-style: italic;">Print</span>
+item from the <span style="font-style: italic;">File</span> menu while
+a <em class="UILabel">RMBench</em> diagram is active, you will see the
+Printer Settings dialog<br>
+</p>
+<p><img alt="printer settings" src="../../images/PrinterSettings.png"
+ style="width: 278px; height: 346px;"><br>
+</p>
+<p>This dialog provides all the usual settings for a print dialog. You
+can revise your choice of the target printer and the margin. Note that
+if you use these facilities, the print results may deviate from the
+page outline displayed in the diagram.<br>
+</p>
+<p>The <span style="font-style: italic;">Print Settings</span> dialog
+also provides the following <span style="font-style: italic;">Mode</span>
+options<br>
+</p>
+<ul>
+  <li>Tile. Print the diagram pages without scaling according to the
+page outlines computed for the current printer, using the current margin<br>
+  </li>
+  <li>Fit Page. Before printing, scale the image such that it fits on
+one page.<br>
+  </li>
+  <li>Fit Width. Before printing, scale the image such that the
+horizontal extent is one page only<br>
+  </li>
+  <li>Fit Height. Before printing, scale the image such that the
+vertical extent is one page only</li>
+</ul>
+<p>
+</p>
+</body>
+</html>

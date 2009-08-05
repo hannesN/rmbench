@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--W3C Schema for RMBench model file -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:complexType name="diagramType">
+		<xs:sequence>
+			<xs:element name="tableref" type="tablerefType" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="schema" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="schemaType">
+		<xs:sequence>
+			<xs:element name="table" type="tableType" minOccurs="0" maxOccurs="unbounded">
+				<xs:key name="columnNameKey">
+					<xs:selector xpath="column"/>
+					<xs:field xpath="@name"/>
+				</xs:key>
+				<xs:keyref name="pkColumnRef" refer="columnNameKey">
+					<xs:selector xpath="primaryKey/columnref"/>
+					<xs:field xpath="@name"/>
+				</xs:keyref>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="tableType">
+        <xs:sequence>
+			<xs:element name="column" type="columnType" maxOccurs="unbounded" />
+			<xs:element name="primarykey" type="primarykeyType" minOccurs="0" maxOccurs="1" />
+			<xs:element name="foreignkey" type="foreignkeyType" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="index" type="indexType" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="unique" type="uniqueType" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="check" type="checkType" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="comment" minOccurs="0" maxOccurs="1" />
+			<xs:element name="description" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="columnType">
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="type" type="xs:string" use="required"/>
+		<xs:attribute name="nullable" type="xs:boolean" use="required"/>
+		<xs:attribute name="size" type="xs:integer"/>
+	</xs:complexType>
+	<xs:complexType name="foreignkeyType">
+		<xs:sequence>
+			<xs:element name="target">
+				<xs:complexType>
+					<xs:attribute name="schema" type="xs:string"/>
+					<xs:attribute name="table" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="columnref">
+				<xs:complexType>
+					<xs:attribute name="name" type="xs:string" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="onDelete" type="fkactionType" use="required"/>
+		<xs:attribute name="onUpdate" type="fkactionType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="primarykeyType">
+		<xs:sequence>
+			<xs:element name="columnref" type="columnrefType"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="indexType">
+		<xs:sequence>
+			<xs:element minOccurs="1" maxOccurs="unbounded" name="columnref" type="columnrefType"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="unique" type="xs:boolean" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="uniqueType">
+		<xs:sequence>
+			<xs:element name="columnref" type="columnrefType" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="checkType">
+		<xs:sequence>
+			<xs:element name="expression" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="columnrefType">
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="foreignkeyrefType">
+		<xs:sequence>
+			<xs:element name="source" type="slotType"/>
+			<xs:element name="target" type="slotType"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="tablerefType">
+		<xs:sequence>
+			<xs:element name="location">
+				<xs:complexType>
+					<xs:attribute name="x" type="xs:integer" use="required"/>
+					<xs:attribute name="y" type="xs:integer" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="foreignkeyref" type="foreignkeyrefType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="schema" type="xs:string" use="required"/>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="collpased" type="xs:boolean" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="fkactionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CASCADE"/>
+			<xs:enumeration value="RESTRICT"/>
+			<xs:enumeration value="SET NULL"/>
+			<xs:enumeration value="NO ACTION"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="slotType">
+		<xs:attribute name="edge" type="xs:integer" use="required"/>
+		<xs:attribute name="slotNumber" type="xs:integer" use="required"/>
+	</xs:complexType>
+	<xs:element name="model">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="schemas">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="schema" type="schemaType" maxOccurs="unbounded">
+								<xs:key name="tableNameKey">
+									<xs:selector xpath="table"/>
+									<xs:field xpath="@name"/>
+								</xs:key>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+					<xs:key name="schemaNameKey">
+						<xs:selector xpath="schema"/>
+						<xs:field xpath="@name"/>
+					</xs:key>
+				</xs:element>
+				<xs:element name="diagrams">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="diagram" type="diagramType" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+					<xs:key name="diagramNameKey">
+						<xs:selector xpath="diagram"/>
+						<xs:field xpath="@name"/>
+					</xs:key>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="version" type="xs:decimal" use="required"/>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="dbinfo" type="xs:string" use="required"/>
+			<xs:attribute name="generator" type="xs:string" use="required"/>
+		</xs:complexType>
+		<xs:key name="constraintNameKey">
+			<xs:selector xpath="schemas/schema/table/foreignkey"/>
+			<xs:field xpath="@name"/>
+		</xs:key>
+	</xs:element>
+</xs:schema>

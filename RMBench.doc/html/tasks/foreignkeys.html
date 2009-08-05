@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="STYLESHEET" href="../book.css" charset="ISO-8859-1"
+ type="text/css">
+  <title>Creating Foreign Keys</title>
+</head>
+<body>
+<h1>Creating Foreign Keys</h1>
+<p>Foreign keys can be created in three ways:</p>
+<p></p>
+<ol>
+  <li>Via drag-and-drop in the diagram editor</li>
+  <li>Through the table context menu in a diagram editor</li>
+  <li>From the <em class="UILabel">Foreign Keys</em> tab in the <em
+ class="UILabel">Table Details</em> view</li>
+</ol>
+<p></p>
+<h2>Drag and Drop</h2>
+<p>To create a foreign key relationship via drag-and-drop, click on the
+foreign key template (<img src="../../images/fk_out.gif">) in the
+diagram palette. Then, click on the source table and on the target
+table (in that order). This will automatically add new columns to the
+source table that correspond to the primary key columns of the target
+table. The new columns will be named according to
+the foreign-key naming algorithm of the currently configured name
+generator. The image below shows 2 tables after a new foreign key has
+been added. The "<span style="font-style: italic;">User_ID</span>"
+foreign key column was generated into the account table. Of course, you
+can rename the column later if you wish.<br>
+</p>
+<div><img alt="generated foreign key column"
+ src="../../images/GeneratedFKColumn.png"
+ style="width: 666px; height: 471px;"><br>
+</div>
+<h2>Context Menu</h2>
+<p>You can also create a foreign key from already existing columns,
+thus avoiding the automatic generation of new columns. First, select as
+many columns as appropriate in the source table by <em>Ctrl</em>-clicking
+on them. Then, invoke the context menu and select the <em
+ class="UILabel">Create Foreign Key</em> entry. If there are tables
+whose primary
+key matches the given columns (sequentially, by datatype), you will see
+a list dialog letting you choose
+the target table for the relationship. Otherwise, you will be notified
+with an appropriate message.</p>
+<p>If a target table is not already displayed in the current diagram, you
+can import the table by checking the <em>import into diagram</em> option.
+If you dont import the table, a table stub figure will appear representing it</p> 
+<h2>Foreign Keys Tab</h2>
+<p>This procedure also lets you create a foreign key from existing
+columns. In the <em class="UILabel">Foreign Keys</em> tab of the <em
+ class="UILabel">Table Details</em> view, click on
+the <em class="UILabel">Add</em> toolbar button (<img
+ src="../../images/add.gif">). You will see a dialog with a list of
+columns on the left side.</p>
+<div style="text-align: left;"><img
+ src="../../images/create_foreign.gif"></div>
+<p>You can select the columns that make up the foreign key by clicking
+the check boxes. Columns that are
+selected are always shown at the top of the list, so checking a column
+may result in its being moved away
+from under the cursor. The sequence of the key columns can be modified
+by use of the buttons to the left
+of the list.</p>
+<p>The list to the right shows the target tables from the current model
+whose primary key
+matches the selected columns (sequentially, by data type). After every
+change in the column list, the target tables list is recomputed. Choose
+a table and click <em class="UILabel">OK</em> to complete the foreign
+key creation process</p>
+</body>
+</html>

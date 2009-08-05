@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="Proguard Action Set"
+            visible="true"
+            id="org.byterefinery.proguard.actionSet">
+         <action
+               label="ProGuard"
+               icon="icons/ProGuard.gif"
+               class="org.byterefinery.proguard.actions.ProguardAction"
+               tooltip="ProGuard GUI"
+               toolbarPath="proguardGroup"
+               id="org.byterefinery.proguard.actions.ProguardAction">
+         </action>
+      </actionSet>
+   </extension>
+
+</plugin>

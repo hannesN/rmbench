@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="com.byterefinery.rmbench" default="scp.site" basedir=".">
+	
+	<property file="${user.home}/.rmbench.build.properties"/>
+	<property file="${rmbench.main}/version.no"/>
+	
+	<property name="update.zipfile" value="rmbench_update.zip"/>
+	
+	<target name="copy.user.properties" description="copy the properties template file to the user home directory">
+		<loadfile property="rmbench.build.template.properties" srcfile="rmbench.build.template.properties"/>
+		<echo>make sure the values in rmbench.build.template.properties are correct for your environment:</echo>
+		<echo/>
+		<echo>>> PROPERTY FILE CONTENTS:</echo>
+		<echo>${rmbench.build.template.properties}</echo>
+		<copy tofile="${user.dir}/.rmbench.build.properties" file="rmbench.build.template.properties"/>
+	</target>
+		
+	<target name="zip.site" depends="_copy.jars, _zip.site" description="create the update site zip"/>
+	
+	<target name="_copy.jars">
+		<move overwrite="true" todir="features">
+			<fileset dir="${rmbench.feature}" includes="com.byterefinery.*.jar"/>
+		</move>
+		<move overwrite="true" todir="plugins">
+			<fileset dir="${rmbench.main}" includes="com.byterefinery.*.jar"/>
+			<fileset dir="${rmbench.doc}" includes="com.byterefinery.*.jar"/>
+			<fileset dir="${rmbench.diagramexport}" includes="com.byterefinery.*.jar"/>
+			<fileset dir="${rmbench.dtp}" includes="com.byterefinery.*.jar"/>
+		</move>
+	</target>
+	
+	<target name="_zip.site">
+		<zip destfile="${update.zipfile}">
+			<fileset dir="." excludes="**/.svn" includes="features/**, plugins/**"/>
+			<fileset file="site.xml"/>
+		</zip>
+	</target>
+	
+	<target name="scp.site" description="create the update site and copy to the server">
+		
+		<antcall target="_copy.jars"/>
+		<tstamp>
+			<format property="TSTAMP" pattern="yyyy-M-d-Hm"/>
+		</tstamp>
+		<property name="tag" value="${version.no}-${TSTAMP}"/>
+		
+		<unzip src="plugins/com.byterefinery.rmbench_${version.no}.jar" dest=".">
+			<patternset includes="about.ini"/>
+		</unzip>
+		<waitfor maxwait="2" maxwaitunit="second">
+		    <istrue value="false"/>
+		</waitfor>
+		<replace file="about.ini" token="{build-id}" value="${tag}"/>
+		<zip destfile="plugins/com.byterefinery.rmbench_${version.no}.jar" update="true">
+			<fileset dir="." includes="about.ini"/>
+		</zip>
+		<delete file="about.ini"/>
+		
+		<antcall target="_zip.site"/>
+			
+		<echo>copying obfuscate mappings to version dir. Dont forget to checkin</echo>
+		<mkdir dir="${rmbench.proguard}/mappings/${version.no}"/>
+		<copy
+			file="${rmbench.main}/temp.obfuscate/obfuscatemapping.txt"
+			tofile="${rmbench.proguard}/mappings/${version.no}/mappings-${tag}.txt"/>
+		
+		<echo>copying update site zip to server.....</echo>
+		<exec executable="scp">
+			<arg value="${update.zipfile}"/>
+			<arg value="strato:temp"/>
+		</exec>
+		<echo>finished</echo>
+	</target>
+		
+	<target name="clean.site">
+		<delete>
+			<fileset dir="features" includes="*"/>
+			<fileset dir="plugins" includes="*"/>
+		</delete>
+	</target>
+</project>

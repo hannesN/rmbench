@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="STYLESHEET" href="../book.css" charset="ISO-8859-1"
+ type="text/css">
+  <title>Exporting</title>
+  <meta content="ByteRefinery.com" name="author">
+  <meta content="Model and Diagram export" name="description">
+</head>
+<body>
+<h1>Exporting Diagrams and Model Elements<br>
+</h1>
+<p><em class="UILabel">RMBench</em> provides several ways of exporting
+the information contained in a model to external formats and resources.
+These are:<br>
+</p>
+<ol>
+  <li>exporting diagrams or parts of a diagram to different graphics
+formats</li>
+  <li>exporting and transforming model data</li>
+  <li>combinations of the above</li>
+</ol>
+<p>All these mechanisms can be extended via the corresponding extension
+points. However, RMBench comes with a set of predefined exporters which
+will be described in separate subsections.<br>
+</p>
+<p>You can access the export facilities by chosing the <em
+ class="UILabel">Export...</em> item from the file menu. You will be
+presented with the workbench-wide list of exporters, among
+which you find the <em class="UILabel">RMBench Model Export</em> item.<br>
+</p>
+<p><img alt="export menu" src="../../images/WBExport.png"
+ style="width: 525px; height: 550px;"><br>
+</p>
+<p>After pressing <em class="UILabel">Next &gt;</em>, you will see the
+RMBench exporter page, which lets you choose the export type. You can
+either export the currently open diagram to an image format, or export
+the complete model.<br>
+</p>
+<hr style="width: 100%; height: 2px;">
+<p><em>Note: Version 1.0 of RMBench only supports Diagram
+exporters as part of the commercial editions, and the Linux community
+edition (because under Linux print support is not available)<br>
+Also note that all page items will be disabled if you dont have a
+suitable element
+(diagram or model) selected. Diagram export only works from an open
+Diagram editor</em>
+</p>
+<hr style="width: 100%; height: 2px;">
+<p><img alt="export type" src="../../images/ExportType.png"
+ style="width: 525px; height: 594px;"><br>
+</p>
+<h2>Diagram Export</h2>
+<p>When you click the <em>Diagram export</em> radio button on the <em>export
+type</em> page, you can choose the desired export format. Heres a
+matrix of the currently supported formats and their availability:<br>
+</p>
+<table style="text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">Professional Edition<br>
+      </td>
+      <td style="vertical-align: top;">Linux Community Edition<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Windows BMP<br>
+      </td>
+      <td style="vertical-align: top;">X<br>
+      </td>
+      <td style="vertical-align: top;">X<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JPEG<br>
+      </td>
+      <td style="vertical-align: top;">X<br>
+      </td>
+      <td style="vertical-align: top;">X<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">PDF<br>
+      </td>
+      <td style="vertical-align: top;">X<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">SVG<br>
+      </td>
+      <td style="vertical-align: top;">X<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>If you have a particular table selected in the current diagram, you
+can also choose to export that table figure only.</p>
+<p>After clicking <em class="UILabel">Next &gt;</em> you find yourself
+on the the <em>file page</em>, where you specify the file resource to
+export to.<br>
+</p>
+</body>
+</html>

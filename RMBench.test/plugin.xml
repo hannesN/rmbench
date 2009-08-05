@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         point="com.byterefinery.rmbench.DDLGenerator">
+      <generator
+            factory="com.byterefinery.rmbench.test.DDLGenerator$Factory"
+            databases="*"
+            formatter="com.byterefinery.rmbench.test.DDLFormatter$Factory"
+            id="RMBench.test.customGenerator"
+            name="RMBenchTest Generator"
+            wizardFactory="com.byterefinery.rmbench.test.DDLGeneratorWizardFactory"/>
+   </extension>
+   <extension
+         point="com.byterefinery.rmbench.databaseInfo">
+      <database
+            className="com.byterefinery.rmbench.test.TestDatabaseInfo"
+            id="testDatabase"
+            name="RMBenchTest Database"/>
+   </extension>
+   <extension
+         id="com.byterefinery.rmbench.test.modelExporter"
+         name="Test Model Exporter"
+         point="com.byterefinery.rmbench.modelExporter">
+      <exporter
+            factory="com.byterefinery.rmbench.test.TestModelExporter$FactoryImpl"
+            description="Export Extension Test"
+            id="com.byterefinery.rmbench.testmodelexporter"
+            name="Test Model Exporter"
+            wizardFactory="com.byterefinery.rmbench.test.TestModelExporterWizardFactory"/>
+   </extension>
+
+</plugin>

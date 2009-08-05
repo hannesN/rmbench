@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xsi:schemaLocation="http://byterefinery.com/xml/ns/rmbench http://www.byterefinery.com/xml/ns/rmbench/rmbench-1.0.xsd" version="1.0" name="htwk_kino_model" dbinfo="sql99" generator="default"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://byterefinery.com/xml/ns/rmbench">
+    <schemas>
+        <schema name="Kino">
+            <table name="films">
+                <column name="film_id" type="INTEGER" nullable="false" />
+                <column name="filmname" type="VARCHAR" nullable="true" size="100" />
+                <column name="filmgenre" type="VARCHAR" nullable="true" size="100" />
+                <column name="filmshortdesc" type="VARCHAR" nullable="true" size="255" />
+                <column name="filmdesc" type="CLOB" nullable="true" size="-1" />
+                <column name="filmyear" type="INTEGER" nullable="true" />
+                <column name="filmstart" type="DATE" nullable="true" />
+                <primarykey name="PK_films">
+                    <columnref name="film_id" />
+                </primarykey>
+            </table>
+            <table name="persons">
+                <column name="person_id" type="INTEGER" nullable="false" />
+                <column name="personname" type="VARCHAR" nullable="true" size="100" />
+                <column name="personbirth" type="DATE" nullable="true" />
+                <column name="person_properties" type="VARCHAR" nullable="true" size="100" />
+                <primarykey name="PK_persons">
+                    <columnref name="person_id" />
+                </primarykey>
+            </table>
+            <table name="films_has_persons">
+                <column name="person_id" type="TIME WITH TIME ZONE" nullable="true" size="-1" />
+                <column name="film_id" type="INTEGER" nullable="true" />
+                <foreignkey name="FK_fimls_has_persons01" onDelete="NO ACTION" onUpdate="NO ACTION">
+                    <target schema="Kino" table="persons" />
+                    <columnref name="person_id" />
+                </foreignkey>
+                <foreignkey name="FK_fimls_has_persons11" onDelete="NO ACTION" onUpdate="NO ACTION">
+                    <target schema="Kino" table="films" />
+                    <columnref name="film_id" />
+                </foreignkey>
+            </table>
+            <table name="Admins">
+                <column name="admin_id" type="INTEGER" nullable="false" />
+                <column name="username" type="VARCHAR" nullable="false" size="50" />
+                <column name="passwd" type="VARCHAR" nullable="false" size="32" />
+                <primarykey name="PK_Admins">
+                    <columnref name="admin_id" />
+                </primarykey>
+            </table>
+            <table name="users">
+                <column name="user_id" type="INTEGER" nullable="false" />
+                <column name="email" type="VARCHAR" nullable="true" size="50" />
+                <column name="passwd" type="VARCHAR" nullable="true" size="32" />
+                <column name="lastname" type="VARCHAR" nullable="true" size="50" />
+                <column name="firstname" type="VARCHAR" nullable="true" size="50" />
+                <column name="newsletter" type="CHAR" nullable="true" size="1" />
+                <primarykey name="PK_users">
+                    <columnref name="user_id" />
+                </primarykey>
+            </table>
+            <table name="program">
+                <column name="program_id" type="INTEGER" nullable="false" />
+                <column name="film_id" type="INTEGER" nullable="false" />
+                <column name="halls_hall_id" type="INTEGER" nullable="false" />
+                <column name="date" type="DATE" nullable="false" />
+                <column name="weekday" type="SMALLINT" nullable="false" />
+                <column name="time" type="TIME" nullable="false" size="-1" />
+                <column name="base_price" type="DECIMAL" nullable="false" size="3" scale="2" />
+                <primarykey name="PK_program">
+                    <columnref name="program_id" />
+                </primarykey>
+                <foreignkey name="FK_program01" onDelete="NO ACTION" onUpdate="NO ACTION">
+                    <target schema="Kino" table="films" />
+                    <columnref name="film_id" />
+                </foreignkey>
+                <foreignkey name="FK_program11" onDelete="NO ACTION" onUpdate="NO ACTION">
+                    <target schema="Kino" table="halls" />
+                    <columnref name="halls_hall_id" />
+                </foreignkey>
+            </table>
+            <table name="halls">
+                <column name="hall_id" type="INTEGER" nullable="false" />
+                <column name="hallname" type="VARCHAR" nullable="false" size="15" />
+                <column name="seats" type="INTEGER" nullable="false" />
+                <primarykey name="PK_halls">
+                    <columnref name="hall_id" />
+                </primarykey>
+            </table>
+            <table name="seats">
+                <column name="seat_it" type="INTEGER" nullable="false" />
+                <column name="hall_id" type="INTEGER" nullable="false" />
+                <column name="seat_row" type="SMALLINT" nullable="false" />
+                <column name="seat_number" type="SMALLINT" nullable="false" />
+                <column name="seat_category" type="SMALLINT" nullable="false" />
+                <column name="seat_properties" type="VARCHAR" nullable="true" size="50" />
+                <primarykey name="PK_seats">
+                    <columnref name="seat_it" />
+                </primarykey>
+                <foreignkey name="FK_seats01" onDelete="NO ACTION" onUpdate="NO ACTION">
+                    <target schema="Kino" table="halls" />
+                    <columnref name="hall_id" />
+                </foreignkey>
+            </table>
+            <table name="guestbook">
+                <column name="guestbook_id" type="INTEGER" nullable="false" />
+                <column name="date" type="DATE" nullable="false" />
+                <column name="name" type="VARCHAR" nullable="false" size="30" />
+                <column name="email" type="VARCHAR" nullable="true" size="40" />
+                <column name="message" type="CLOB" nullable="false" size="-1" />
+                <column name="ip" type="VARCHAR" nullable="true" size="15" />
+                <column name="url" type="VARCHAR" nullable="true" size="100" />
+                <column name="herkunft" type="VARCHAR" nullable="true" size="50" />
+            </table>
+            <table name="reservations">
+                <column name="reservation_id" type="INTEGER" nullable="false" />
+                <column name="program_id" type="INTEGER" nullable="false" />
+                <column name="user_id" type="INTEGER" nullable="false" />
+                <column name="res_date" type="DATE" nullable="false" />
+                <primarykey name="PK_reservations">
+                    <columnref name="reservation_id" />
+                </primarykey>
+                <foreignkey name="FK_reservations01" onDelete="NO ACTION" onUpdate="NO ACTION">
+                    <target schema="Kino" table="program" />
+                    <columnref name="program_id" />
+                </foreignkey>
+                <foreignkey name="FK_reservations11" onDelete="NO ACTION" onUpdate="NO ACTION">
+                    <target schema="Kino" table="users" />
+                    <columnref name="user_id" />
+                </foreignkey>
+            </table>
+            <table name="reservations_has_seats">
+                <column name="reservations_reservation_id" type="INTEGER" nullable="false" />
+                <column name="seats_seat_it" type="INTEGER" nullable="false" />
+                <primarykey name="PK_reservations_has_seats">
+                    <columnref name="reservations_reservation_id" />
+                    <columnref name="seats_seat_it" />
+                </primarykey>
+                <foreignkey name="FK_reservations_has_seats01" onDelete="NO ACTION" onUpdate="NO ACTION">
+                    <target schema="Kino" table="reservations" />
+                    <columnref name="reservations_reservation_id" />
+                </foreignkey>
+                <foreignkey name="FK_reservations_has_seats11" onDelete="NO ACTION" onUpdate="NO ACTION">
+                    <target schema="Kino" table="seats" />
+                    <columnref name="seats_seat_it" />
+                </foreignkey>
+            </table>
+        </schema>
+    </schemas>
+    <diagrams />
+</model>

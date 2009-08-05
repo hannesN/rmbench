@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//DE" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>$modelname</title>
+<script type="text/javascript" src="js/rmbench.js">
+</script>
+<link rel="stylesheet" type="text/css" title="lb" href="rmbench.css">
+</head>
+
+#set ($treeid = 0)
+
+<body id="body" onload="init();">
+<div id="modelview">
+	<h1>$modelname</h1>
+	<div id="menu">
+		<div class="n1_1" id="n_$treeid">
+			<img class="arrow" onclick="displayNodeChildren('n_$treeid', 'n1_2');" src="images/arrow_left.gif"/>
+			<img src="images/dbfolder.gif"/>
+			Schemas
+
+			#foreach ($schema in $schemas)
+			#set ($treeid = $treeid+1)
+			<div class="n1_2" id="n_$treeid">
+				<img class="arrow" onclick="displayNodeChildren('n_$treeid', 'n1_3');" src="images/arrow_left.gif"/>
+				<img src="images/diagram2.gif"/>
+				$schema.name
+
+				#set ($treeid = $treeid+1)
+				<div class="n1_3" id="n_$treeid">
+					<img class="arrow" onclick="displayNodeChildren('n_$treeid', 'n1_4');" src="images/arrow_left.gif"/>
+					<img src="images/dbfolder.gif"/>
+					Tables
+		
+					#foreach( $table in $schema.tables )
+					#set ($treeid = $treeid+1)
+					<div class="n1_4" id="n_$treeid">
+						<img src="images/table2.gif"/>
+						<a href="#" onclick="loadTable($table.id, '$table.name');">$table.name</a>
+					</div>
+					#end
+				</div>
+			</div>
+			#end
+		</div>
+		<!-- Diagram part of tree -->
+		#set ($treeid = $treeid+1)
+		<div class="n2_1" id="n_$treeid">
+			<img class="arrow" onclick="displayNodeChildren('n_$treeid', 'n2_2');" src="images/arrow_left.gif"/>
+			<img src="images/diagram2.gif"/>
+			Diagrams
+
+			#foreach ($diagram in $diagrams)
+			#set ($treeid = $treeid+1)
+			<div class="n2_2" id="n_$treeid">
+				<img class="arrow" onclick="displayNodeChildren('n_$treeid', 'n2_3');" src="images/arrow_left.gif"/>
+				<img src="images/diagram2.gif"/>
+				<a href="#" onclick="loadDiagram($diagram.id, '$diagram.name');">$diagram.name</a>
+				#foreach ($table in $diagram.tables)
+				#set ($treeid = $treeid+1)
+				<div class="n2_3" id="n_$treeid">
+					<img src="images/table2.gif"/>
+					<a href="#" onclick="loadTable($table.id, '$table.name');">$table.name</a>
+				</div>
+				#end
+			</div>
+			#end
+		</div>
+	</div>
+</div>
+
+<div id="verticalSlider" onmousedown="verticalMousePressed()" onmouseup="mouseReleased()"></div>
+
+<div id="detail">
+	<h1>Detailview</h1>
+	&nbsp;
+</div>
+
+</body>
+</html>

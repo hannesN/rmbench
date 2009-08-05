@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<project name="rmbench.exsd.doc" default="build.update.jar">
+    <description>
+    adapt generated extension point docs to use the right stylesheet
+    </description>
+	
+	<property file="${user.home}/.rmbench.build.properties"/>
+	<property file="${rmbench.main}/version.no"/>
+
+	<property name="exsd.doc" value="html/reference/exsd" description="location for extension point docs"/>
+	<property name="update.jar" value="com.byterefinery.rmbench.doc_${version.no}.jar"/>
+	
+	<property name="javacDebugInfo" value="on"/>
+	<property name="javacVerbose" value="false"/>
+	<property name="javacSource" value="1.4"/>
+	<property name="javacTarget" value="1.4"/>
+		
+	<target name="build.update.jar">
+		<antcall target="copy-exsd"/>
+		<ant target="build.update.jar"/>
+		<antcall target="fixup.updatejar"/>
+	</target>
+		
+    <target name="copy-exsd" description="copy and adapt the extension point schema docs">
+    	<mkdir dir="${exsd.doc}"/>
+        <copy todir="${exsd.doc}">
+        	<fileset dir="${rmbench.main}/exsd/doc" includes="*.html"/>
+    	</copy>
+    	<replaceregexp>
+    		<regexp pattern="&lt;style&gt;@import.*book\.css.*&lt;/style&gt;"/>
+    		<substitution expression="&lt;link rel='STYLESHEET' href='../../book.css' charset='ISO-8859-1' type='text/css'&gt;"/>
+    		<fileset dir="${exsd.doc}" includes="*.html"/>
+    	</replaceregexp>
+    	<replaceregexp>
+    		<regexp pattern="&lt;style&gt;@import.*schema\.css.*&lt;/style&gt;"/>
+    		<substitution expression="&lt;link rel='STYLESHEET' href='../../schema.css' charset='ISO-8859-1' type='text/css'&gt;"/>
+    		<fileset dir="${exsd.doc}" includes="*.html"/>
+    	</replaceregexp>
+    </target>
+
+	<target name="fixup.updatejar" description="fixup the version number">
+		<!-- wait a little so that timestamp diff is > 2 seconds -->
+		<waitfor maxwait="3" maxwaitunit="second">
+		    <istrue value="false"/>
+		</waitfor>
+		<copy file="META-INF/MANIFEST.MF" overwrite="true" todir="."/>
+		<replaceregexp 
+			file="MANIFEST.MF" 
+			match="Bundle-Version: [0-9]+(\.[0-9]+)*" 
+			replace="Bundle-Version: ${version.no}"/>
+		<zip destfile="${update.jar}" update="true">
+			<zipfileset file="MANIFEST.MF" prefix="META-INF"/>
+		</zip>
+		<delete file="MANIFEST.MF"/>
+	</target>
+
+	<target name="clean">
+		<ant target="clean"/>
+	</target>
+</project>
+

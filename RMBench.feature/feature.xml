@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.byterefinery.rmbench"
+      label="%featureName"
+      version="1.0.6"
+      provider-name="ByteRefinery">
+
+   <description url="http://www.rmbench.com">
+      %featureDesc
+   </description>
+
+   <copyright url="http://www.rmbench.com/copyright">
+      %featureCopyright
+   </copyright>
+
+   <license url="license.html">
+      %featureLicense
+   </license>
+
+   <url>
+      <update label="RMBench Update Site" url="http://rmbench.de/update"/>
+      <discovery label="RMBench Update Site" url="http://rmbench.de/update"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime" version="3.3.0" match="compatible"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.ui.views"/>
+      <import plugin="org.eclipse.ui.editors"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.gef"/>
+      <import plugin="org.eclipse.ui.forms"/>
+      <import plugin="org.eclipse.ui.console"/>
+      <import plugin="org.eclipse.compare"/>
+      <import plugin="org.eclipse.ui.workbench.texteditor"/>
+   </requires>
+
+   <plugin
+         id="com.byterefinery.rmbench"
+         download-size="757"
+         install-size="1000"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.byterefinery.rmbench.doc"
+         download-size="523"
+         install-size="1000"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.byterefinery.rmbench.export"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.byterefinery.rmbench.dtp"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+         
+</feature>

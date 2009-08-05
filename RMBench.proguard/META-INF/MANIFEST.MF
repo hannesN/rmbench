@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ProGuard Plug-in
+Bundle-SymbolicName: org.byterefinery.proguard; singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: org.byterefinery.proguard.ProguardPlugin
+Bundle-Vendor: ByteRefinery.org
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.console
+Eclipse-LazyStart: true
+Bundle-ClassPath: proguard-util.jar,
+ lib/retrace.jar,
+ lib/proguard.jar,
+ lib/proguardgui.jar

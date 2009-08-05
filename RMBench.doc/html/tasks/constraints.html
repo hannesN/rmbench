@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="STYLESHEET" href="../book.css" charset="ISO-8859-1"
+ type="text/css">
+  <title>Constraints</title>
+  <meta content="ByteRefinery.com" name="author">
+</head>
+<body>
+<h1>Creating Constraints</h1>
+<h2>Introduction</h2>
+<p>The following table shows the constraint types defined by the SQL99
+standard, along with the levels at which they may be applied (SQL99
+also defines the domain level, which is
+beyond the current scope of <em class="UILabel">RMBench</em>):<br>
+</p>
+<table style="text-align: left;" border="1" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">Constraint Type<br>
+      </td>
+      <td style="vertical-align: top;">Column Level<br>
+      </td>
+      <td style="vertical-align: top;">Table Level<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Not Null<br>
+      </td>
+      <td style="vertical-align: top;">X<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Check<br>
+      </td>
+      <td style="vertical-align: top;">X<br>
+      </td>
+      <td style="vertical-align: top;">X<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Unique<br>
+      </td>
+      <td style="vertical-align: top;">X<br>
+      </td>
+      <td style="vertical-align: top;">X<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Primary Key<br>
+      </td>
+      <td style="vertical-align: top;">X<br>
+      </td>
+      <td style="vertical-align: top;">X<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Foreign Key<br>
+      </td>
+      <td style="vertical-align: top;">X<br>
+      </td>
+      <td style="vertical-align: top;">X<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>Currently, <em class="UILabel">RMBench</em> supports the following
+constraint types:<br>
+</p>
+<ul>
+  <li><span style="font-style: italic;">not null</span> constraint,
+defined as a column attribute in the <em class="UILabel">Table Details
+View</em></li>
+  <li><span style="font-style: italic;">foreign key</span> table
+constraint,
+defined by the specialized toos <a href="foreignkeys.html">described
+elsewhere</a></li>
+  <li><span style="font-style: italic;">primary key</span> table
+constraint,
+definable either in the <em class="UILabel">Table Details
+View</em> or through the Constraint Dialog</li>
+  <li><span style="font-style: italic;">unique</span> table constraint,
+definable through the <em class="UILabel">Constraint Dialog</em></li>
+  <li><span style="font-style: italic;">check</span> table constraint,
+definable through the <em class="UILabel">Constraint Dialog</em></li>
+</ul>
+In the following, we will focus on the definition of constraints as
+performed in the <em class="UILabel">Constraint Dialog</em>.
+<p><em class="UILabel"></em></p>
+<h2>Constraint Dialog<br>
+</h2>
+<p>As described above, the Constraint Dialog allows you to create <span
+ style="font-style: italic;">primary key</span>, <span
+ style="font-style: italic;">unique</span> or <span
+ style="font-style: italic;">check</span> constraints. The creation of
+a primary key constraint through the Constraint Dialog is only
+supported if a primary key does not already exist. The preferred way of
+creating a primary key is the <em class="UILabel">Table Details
+View</em>.<br>
+&nbsp;<br>
+Constraints can be created in 2 ways:<br>
+</p>
+<ul>
+  <li>by clicking on the constraint symbol (<img alt="constraint"
+ src="../../images/constraint.gif" style="width: 16px; height: 16px;">)
+in
+the diagram pallette, and subsequently clicking on a table figure in
+the diagram<br>
+  </li>
+  <li>by clicking on the add button (<img alt="add"
+ src="../../images/add.gif" style="width: 16px; height: 16px;">) in the
+    <em class="UILabel">Constraints</em> tab of the <em class="UILabel">Table
+Details</em> view</li>
+</ul>
+<p>In either case, you will be presented with the constraint definition
+dialog:</p>
+<img alt="constraint definition" src="../../images/Constraint.png"
+ style="width: 525px; height: 442px;"><br>
+<br>
+<p>The first page allows you to determine the constraint name and to
+choose the type of constraint to create (Note that the Primary Key
+option is only displayed if a primary key does not already exist).
+Depending on the choice on this page, the <em class="UILabel">Next</em>
+button will take you to one of the following pages:<br>
+</p>
+<h3>Primary Key and Unique Constraints</h3>
+<p>The constraint definition page for primary keys and unique keys
+looks similar, with the only exception being the dialog title<br>
+</p>
+<img alt="key constraint definition"
+ src="../../images/KeyConstraint.png"
+ style="width: 525px; height: 442px;"><br>
+<p>The list shows the available columns from the underlying table. You
+can choose the columns that make up the key, and determine the
+sequence. Already selected columns are always shown at the top of the
+list. Note that upon clicking a checkbox, the respective column is
+moved to the bottom of the list of selected columns. You can change the
+sequence of the selected columns by use of the buttons to the left of
+the list.<br>
+</p>
+<h3>Check Constraints</h3>
+<p>The constraint definition page for check constraints shows a simple
+multiline edit field for entering the constraint expression. There is
+currently no validation performed on the entered text.</p>
+<img alt="check constraint definition"
+ src="../../images/CheckConstraint.png"
+ style="width: 525px; height: 442px;"><br>
+<br>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="STYLESHEET" href="../book.css" charset="ISO-8859-1"
+ type="text/css">
+  <title>Forward Engineering</title>
+  <meta content="ByteRefinery.com" name="author">
+</head>
+<body>
+<h1>Forward Engineering</h1>
+<p>Forward engineering means generating SQL DDL (Data Definition
+Language) code from the current model and executing it against a
+database system. RMBench provides 2 paths to forward engineering:<br>
+</p>
+<ul>
+  <li>you can simply generate DDL from the complete model</li>
+  <li>you can compare the model against an existing database and
+generate the alter statements that will move the database to the state
+of the model</li>
+</ul>
+<p>You start the forward engineering process by pressing the export
+button (<img alt="database export" src="../../images/dbexport.gif"
+ style="width: 16px; height: 16px;">). This will open the export
+wizard, as shown below:</p>
+<p><img alt="database export" src="../../images/DBExport1.png"
+ style="width: 525px; height: 419px;"><br>
+</p>
+<p>On the first page of the export wizard, you choose whether you want
+to simply generate DDL, or perform a mode comparison. You can also
+determine the DDL generator that will be used. There is currently only
+one general purpose DDL generator available as part of the stock
+RMBench distribution. However, it is fairly easy to extend RMBench with
+new DDL generators.<br>
+</p>
+<p>The next wizard page shows you the configuration options for the DDL
+generator, if the generator provides a configuration page. The standard
+SQL DDL generator that comes as part of the stock RMBench distribution
+allows you to make choices regrding uppercasing and quoting of
+identifiers.<br>
+</p>
+<h2>Full DDL Generation</h2>
+<p>If you did not check the <span style="font-style: italic;">Diff</span>
+option on the first page of the wizard, pressing the <span
+ style="font-style: italic;">Finish</span> button takes you directly to
+the DDL editor:<br>
+</p>
+<p><img alt="DDL editor" src="../../images/DDLEditor.png"
+ style="width: 631px; height: 447px;"><br>
+</p>
+<p>The DDL editor shows the SQL DDL statements that will create the
+physical database that mirrors the design model. The syntax coloring
+for the editor can be configured using the <em class="UILabel">RMBench</em>
+preference pages.<br>
+</p>
+<p>The combo box in the left corner of the editor toolbar lets you
+choose the database to which the DDL will be executed. As you may
+recall, database connections are <a href="reverse.html">configured</a>
+in the <em class="UILabel">Import View</em>. You can execute the
+complete script by pressing the (<img alt="execute script"
+ src="../../images/run_exc.gif" style="width: 16px; height: 16px;">)
+button. Alternatively, you can position the cursor anywhere inside the
+DDL script and execute the current statement using the (<img
+ alt="execute current" src="../../images/run_caret.gif"
+ style="width: 16px; height: 16px;">) button. In either case, if the
+database connection is not already established, it will be opened
+implicitly. Depending on how you configured the database, this meay
+lead to the appearance of a login dialog. Once you are finished, you
+can use the (<img alt="disconnect" src="../../images/disconnect.gif"
+ style="width: 16px; height: 16px;">) button to close the connection.<br>
+</p>
+<p>Of course, you can edit the script before executing it, and you can
+save the results to disk at any time.<br>
+</p>
+<h2>Model Comparison</h2>
+the model comparison feature is described in a <a
+ href="modelcompare.html">separate subsection</a><br>
+<br>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="STYLESHEET" href="../book.css" charset="ISO-8859-1"
+ type="text/css">
+  <title>Reverse Engineering</title>
+  <meta content="ByteRefinery.com" name="author">
+</head>
+<body>
+<h1>Reverse Engineering</h1>
+<p>Reverse Engineering is the term used for importing metadata
+from an existing database. <em class="UILabel">RMBench</em> provides 2
+views for this purpose:<br>
+</p>
+<ul>
+  <li>the <em class="UILabel">Import View</em> initially shows a list
+of accessible external databases. After loading database metadata from
+a database, the root node can be expanded to show the details of the
+database schema.</li>
+  <li>the <em class="UILabel">Import Details View</em> shows the
+details for an imported schema element, e.g. a table<br>
+  </li>
+</ul>
+<p>By default, these views are opened within the RMBench perspective.
+If
+they are not already open, you can open them by selecting the <em
+ class="UILabel">Reverse Engineer</em> entry from the <em
+ class="UILabel">RMBench</em> menu, or by clicking the <img
+ alt="load metadata" src="../../images/loadmeta.gif"
+ style="width: 16px; height: 16px;"> button in the main workbench
+toolbar. Closing the <em class="UILabel">Import View</em> will also
+automatically close the <em class="UILabel">Import Details View.</em></p>
+<h2>Registering a Database</h2>
+<p>Before you can start the reverse engineering process, you need to
+register an external database. This is done by clicking the <em
+ class="UILabel">Add</em> toolbar button (<img
+ src="../../images/add.gif">).
+You will see a wizard dialog open that guides you through the steps of
+registering a new database
+connection. <em>RMBench</em> uses JDBC to access the database, so you
+will have to supply a JDBC driver
+library (usually available with your database product) as part of this
+procedure.<br>
+</p>
+<p><img alt="jdbc connection definition"
+ src="../../images/JDBCConnection.png"
+ style="width: 525px; height: 421px;"><br>
+</p>
+<hr style="width: 100%; height: 2px;">
+<p class="Note">Note that registering a database really means
+specifying connection data for accessing the database, including the
+schemas to be loaded through this connection. You could therefore
+register multiple connections to the same database, possibly with
+different schema contents.<br>
+</p>
+<p class="Note">Note also that the databases registered in this step
+are the same that are be used for <a href="forward.html">model export</a><br>
+</p>
+<hr style="width: 100%; height: 2px;">
+<h2>Load Metadata</h2>
+<p>Once the connection for your database has been defined, you can let <em
+ class="UILabel">RMBench</em> load the database meta
+data by pressing the <em class="UILabel">Load Metdata</em> button (<img
+ src="../../images/loadmeta.gif">)
+or choosing the corresponding item from the context menu. The
+connection icon will change to the "connected" state, and the metadata
+will be visible as tree nodes below the connection node. You can
+inspect the detailed import results for each selected table in the
+<em class="UILabel">Import Details</em> view:</p>
+<p><img alt="import view" src="../../images/ImportView.png"
+ style="width: 698px; height: 479px;"><br>
+</p>
+<hr style="width: 100%; height: 2px;">
+<p class="Note">Note that the loaded metadata represents a live view on
+the extenal database is therefore not stored within RMBench.<br>
+</p>
+<hr style="width: 100%; height: 2px;">
+<h2>Import Metadata into a Model<br>
+</h2>
+<p>The loaded metadata represents a live view to the database. Before
+you can use it as the base for further modelling in <em class="UILabel">RMBench</em>,
+you need to convert it into an design model. This process, which we
+call importing, can be performed through the following alternative
+means:</p>
+<ul>
+  <li>
+    <p>Choose the <em class="UILabel">Import to Model</em> item from
+the context menu of any selected
+metdata item in the <em class="UILabel">Import</em> view</p>
+  </li>
+  <li>
+    <p>Drag any metadata item over to an opened diagram using the
+mouse.
+The tables will be laid out
+automatically and added to the model.</p>
+  </li>
+</ul>
+<p>In both cases, the selected metdata item and all child items will be
+imported into the model. <br>
+</p>
+<hr style="width: 100%; height: 2px;">
+<p class="Note">Depending on the database configuration of the
+connection and the design model, import may entail a conversion. As
+conversion between disparate databases can cause loss of information,
+we suggest that before performing this step, you re-consider the target
+database setting of the design model. Obviously, the best results will
+be achievend the database setting of the design model is the same as
+the setting of the database connection.<br>
+</p>
+<hr style="width: 100%; height: 2px;">
+<p>Results
+of the import and errors or warnings encountered along the process are
+reported in the console.<br>
+</p>
+<hr style="width: 100%; height: 2px;">
+<p class="Note">Note that if you import only parts of a model, e.g. by
+dragging tables individually, foreign key references that point beyond
+the current design model may break. We therefore suggest that you
+always import inter-related schema elements as a whole.</p>
+<hr style="width: 100%; height: 2px;"><br>
+</body>
+</html>

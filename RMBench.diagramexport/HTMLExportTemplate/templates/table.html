@@ -1,0 +1,35 @@
+<table class="table">
+	<tr>
+		<th id="th_name">Name</th>
+		<th id="th_datatype">Datatype</th>
+		<th id="th_prec">Precision</th>
+		<th id="th_scale">Scale</th>
+		<th id="th_default">Default</th>
+		<th id="th_notnull">NOT NULL</th>
+		<th id="th_primarykey">PK</th>
+		<th id="th_comment">Comment</th>
+	</tr>
+	#foreach ($column in $columns )
+	<tr>
+		<th id="th_name">$column.name</th>
+		<th id="th_datatype">$column.datatype</th>
+		<th id="th_prec">$column.precision</th>
+		<th id="th_scale">$column.scale</th>
+		<th id="th_default">$column.default</th>
+		<th id="th_notnull">
+			#if($column.not_null == 1)
+			<img src="images/checkedBox.gif" alt="true"/>
+			#else
+			<img src="images/uncheckedBox.gif" alt="false"/>
+			#end
+		</th>
+		<th id="th_primarykey">
+		#if($column.pk == 1)
+			<img src="images/key.gif" alt="true"/>	
+		#end
+		</th>
+		<th id="th_comment">$column.comment</th>
+	</tr>
+	#end
+	
+	</table>

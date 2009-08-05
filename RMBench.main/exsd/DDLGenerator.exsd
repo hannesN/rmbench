@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.byterefinery.rmbench">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="com.byterefinery.rmbench" id="DDLGenerator" name="DDL Generator"/>
+      </appInfo>
+      <documentation>
+         This extension point allows for the specification of the DDL generation process during model export. It consists of a group of classes that cooperate by covering different aspects of DDL script generation. Specifically, these are:
+&lt;ul&gt;
+&lt;li&gt;the DDL generator: &lt;code&gt;com.byterefinery.rmbench.extension.IDDLGenerator&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;the configuration wizard: &lt;code&gt;com.byterefinery.rmbench.extension.IDDLGeneratorWizardFactory&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;the DDL code formatter: &lt;code&gt;com.byterefinery.rmbench.extension.IDDLFormatter&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;the DDL script: &lt;code&gt;com.byterefinery.rmbench.extension.IDDLScript&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+See the respective class documentation for a description of their responsibilities
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <complexType>
+         <sequence>
+            <element ref="generator" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="generator">
+      <annotation>
+         <documentation>
+            a DDL generator generates DDL statemes for a specific database during model export
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  unique ID of this extension
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  displayable name of this extension
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="factory" type="string" use="required">
+            <annotation>
+               <documentation>
+                  the name of a class that implements the &lt;code&gt;com.byterefinery.rmbench.extension.IDDLGenerator.Factory&lt;/code&gt; interface
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.byterefinery.rmbench.external.IDDLGenerator$Factory"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="databases" type="string" use="required">
+            <annotation>
+               <documentation>
+                  comma-separated list of ids of database products that are supported by this generator. The special token &quot;*&quot; can be used to represent all database products
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="excludeDatabases" type="string">
+            <annotation>
+               <documentation>
+                  Comma-separated list of ids of database products that are not supported by this generator. This is only used if you set &quot;*&quot; to the datases attribute.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="wizardFactory" type="string">
+            <annotation>
+               <documentation>
+                  a reference to a class that implements the &lt;code&gt;com.byterefinery.rmbench.extension.IDDLGeneratorWizardFactory&lt;/code&gt; interface, which can optionally be used to provide a configuration wizard page for the DDL generator
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.byterefinery.rmbench.external.IDDLGeneratorWizardFactory"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="formatter" type="string" use="default" value="com.byterefinery.rmbench.export.DefaultFormatter$Factory">
+            <annotation>
+               <documentation>
+                  a reference to a class that implements the &lt;code&gt;com.byterefinery.rmbench.extension.IDDLFormatter.Factory&lt;/code&gt; interface, which is used to create a DDL formatter associated with this DDL generator. If not specified, the default formatter will be used
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.byterefinery.rmbench.external.IDDLFormatter$Factory"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="script" type="string" use="default" value="com.byterefinery.rmbench.export.DDLScript$Factory">
+            <annotation>
+               <documentation>
+                  a reference to a class that implements the &lt;code&gt;com.byterefinery.rmbench.extension.IDDLScript.Factory&lt;/code&gt; interface, which is used to create IDDLScript instances during DDL generation
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.byterefinery.rmbench.external.IDDLScript$Factory"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         1.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         &lt;pre&gt;
+&lt;extension
+      point=&quot;com.mycorp.DDLGenerator&quot;&gt;
+   &lt;generator
+         factory=&quot;com.mycorp.DDLGeneratorFactory&quot;
+         databases=&quot;*&quot;
+         id=&quot;mycorp&quot;
+         name=&quot;MyCorp specialized DDL generator&quot;
+         wizard=&quot;com.mycorp.DDLGeneratorWizardFactory&quot;/&gt;
+&lt;/extension&gt;
+&lt;/pre&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         the class must implement the &lt;code&gt;com.byterefinery.rmbench.extension.IDDLGenerator&lt;/code&gt; interface
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         RMBEnch comes with DDL generator implementations for all supported database products
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         (c) 2005, DynaBEAN Consulting
+      </documentation>
+   </annotation>
+
+</schema>
