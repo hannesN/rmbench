@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="STYLESHEET" href="../book.css" charset="ISO-8859-1"
+ type="text/css">
+  <title>Working with a Diagram</title>
+</head>
+<body>
+<h1>Working with a Diagram</h1>
+<h2>Creating the Diagram</h2>
+<p>A Diagram is created by using the context menu in Model View. You
+will see the diagram
+creation wizard:<br>
+</p>
+<div style="text-align: left;"><img alt="diagram creation wizard"
+ src="../../images/NewDiagram.png" style="width: 525px; height: 494px;"><br>
+</div>
+<p></p>
+<p>In this wizard, you need to specify the name of the new diagram, and
+the target schema for database elements that are created in the context
+of the diagram (you can always change the schema for the individual
+elements later). You can either choose an existing schema, or create
+one on-the-fly.<br>
+</p>
+<p>After you have created the new diagram, you will see the diagram
+editor automatically open.
+On the left, it shows the palette which contains templates of all the
+database elements that can be
+created. The image below shows the editor in maximized mode.<br>
+</p>
+<p><img alt="diagram editor" src="../../images/DiagramEditor.png"
+ style="width: 631px; height: 447px;"><br>
+</p>
+<h2>Creating a Table</h2>
+<p>To create a new table, click the left mouse button on the table
+template (<img src="../../images/table.gif">), place the mouse over the
+desired location in the diagram and click again. An empty table will
+appear, with a default table name already generated.</p>
+<p>The details of the table can be inspected and modified in the <em
+ class="UILabel">Table Details View</em>. If you are working in the
+default perspective
+configuration, the details view will already be open in the bottom
+right part of your workbench
+page. If it is not open, you can open it by double-clicking on the new
+table.</p>
+<h2>Creating a Foreign Key</h2>
+<p>To create a foreign key, click on the foreign key template (<img
+ src="../../images/fk_out.gif">) in the palette. As soon as you move
+the cursor over the diagram, the cursor will change to a connection
+symbol. Click on the table you want to designate as the source of the
+relationship, and subsequently on the target table (the target table
+must hold a primary key). When you release the button, the relationship
+is created, adding the columns that mirror the target key to the source
+table.</p>
+<p class="Note">There are other ways to create a foreign key based on
+existing columns. Please refer to the <a
+ href="../tasks/foreignkeys.html">tasks section</a> for details.</p>
+<h2>Creating an Index</h2>
+<p>To create an index, click the index template (<img
+ src="../../images/index.gif">) in the palette and place the mouse
+above a table for which you want to create the index and which contains
+at least
+one column. As soon as you click the mouse, the index editor dialog
+will be opened to let you specify the relevant information for
+finishing the index creation.<br>
+</p>
+<p>See the <a href="../tasks/indexes.html">tasks section</a> for
+additional details on creating indices.<br>
+</p>
+<h2>Creating a Constraint</h2>
+<p>You can add a constraint in the same manner by clicking on the
+constraint symbol (<img alt="constraint"
+ src="../../images/constraint.gif" style="width: 16px; height: 16px;">)
+and subsequently on the table to which the constraint will apply. The
+constraint wizard will let you choose the type of constraint, and the
+constraint details. Note that foreign key constraints are handled
+separately, s described above, and therefore do not appear in this
+dialog.<br>
+</p>
+<p>See the <a href="../tasks/constraints.html">tasks section</a> for
+additional details on creating constraints.</p>
+</body>
+</html>

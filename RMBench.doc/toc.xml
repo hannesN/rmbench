@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="RMBench User Guide">
+	<topic label="Getting Started" href="html/gettingstarted/introduction.html">
+		<topic label="User Interface" href="html/gettingstarted/ui.html"/>
+		<topic label="Creating a New Model" href="html/gettingstarted/newmodel.html" />
+		<topic label="Adding Model Elements" href="html/gettingstarted/newmodel.html#adding" />
+		<topic label="Working with a Diagram" href="html/gettingstarted/diagram.html" />
+		<topic label="Working With Large Models" href="html/gettingstarted/largemodel.html"/>
+		<topic label="Printing" href="html/gettingstarted/printing.html" />
+	</topic>
+	<topic label="Tasks"> 
+		<topic label="Creating Foreign Keys" href="html/tasks/foreignkeys.html"/>
+		<topic label="Creating Indexes" href="html/tasks/indexes.html"/>
+		<topic label="Creating Constraints" href="html/tasks/constraints.html"/>
+		<topic label="Reverse Engineering" href="html/tasks/reverse.html"/> 
+		<topic label="Forward Engineering" href="html/tasks/forward.html"/> 
+		<topic label="Model Comparison" href="html/tasks/modelcompare.html"/> 
+		<topic label="Exporting" href="html/tasks/export.html"/> 
+	</topic>
+	<topic label="Reference">
+		<topic label="Extension points" href="html/reference/extensionpoints.html"> 
+			<topic
+				label="com.byterefinery.rmbench.databaseInfo" 
+				href="html/reference/exsd/com_byterefinery_rmbench_databaseInfo.html" /> 
+			<topic
+				label="com.byterefinery.rmbench.jdbcDriverInfo" 
+				href="html/reference/exsd/com_byterefinery_rmbench_jdbcDriverInfo.html" /> 
+			<topic
+				label="com.byterefinery.rmbench.nameGenerator" 
+				href="html/reference/exsd/com_byterefinery_rmbench_nameGenerator.html" /> 
+			<topic
+				label="com.byterefinery.rmbench.DDLGenerator" 
+				href="html/reference/exsd/com_byterefinery_rmbench_DDLGenerator.html" /> 
+			<topic
+				label="com.byterefinery.rmbench.tableThemes" 
+				href="html/reference/exsd/com_byterefinery_rmbench_tableThemes.html" /> 
+			<topic
+				label="com.byterefinery.rmbench.typeTypes" 
+				href="html/reference/exsd/com_byterefinery_rmbench_tableTypes.html" /> 
+			<topic
+				label="com.byterefinery.rmbench.imageExporter" 
+				href="html/reference/exsd/com_byterefinery_rmbench_imageExporter.html" /> 
+		</topic>
+	</topic>
+</toc>

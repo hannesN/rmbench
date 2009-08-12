@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="STYLESHEET" href="../book.css" charset="ISO-8859-1"
+ type="text/css">
+  <title>User Interface Elements</title>
+</head>
+<body>
+<h1>User Interface Elements</h1>
+<p>The user interface of RMBench Modeler consists of one eclipse
+perspective which can be opened using the <em class="UILabel">Open
+Perspective</em> menu. Of course you can adapt the perspective
+according to your own taste, or open RMBench views in other
+perspectives. The default RMBench
+perspective initially shows the modeling views.</p>
+<p>The RMBench perspective also adds a <em class="UILabel">RMBench</em>
+menu to the main workbench menu bar, from where you can quickly invoke
+different RMBench features. If you choose the <em class="UILabel">Reverse
+Engineer</em> option, the reverse engineering
+views will be opened in the current perspective.</p>
+<h2>Modeling Views</h2>
+<p>The modeling views are used to perform the standard modeling tasks,
+like creating new
+diagrams, tables, relationships etc.</p>
+<p>
+</p>
+<ul>
+  <li><b>Model View</b>. The Model view (top left) shows the contents
+of the current model in a tree display. <span
+ style="font-style: italic;">Note that currently, RMBench can only
+display one model at a time</span>. On the top level, there are nodes
+that serve as grouping for schemas (<img src="../../images/dbfolder.gif">)
+and diagrams (<img src="../../images/diagram2.gif">).</li>
+  <li><b>Table Details View</b>. The Table Details (bottom right) shows
+the details of the currently selected table, if any. A table can be
+selected in the Model view, in a Diagram, or in the Diagram Overview</li>
+  <li><b>Diagram Overview</b>. The Diagram Overview (bottom left)
+consists of two tabs that show an overview of the current diagram. One
+tab shows a list of the tables, while the other provides a graphical
+thumbnail overview. The thumbnail overview allows you to navigate large
+diagrams by dragging the display area.</li>
+</ul>
+<p></p>
+<p>
+Editing model properties is mostly done in the <em class="UILabel">Table
+Details</em> view. If it is
+not already open, it can be opened by double-clicking on a table in the
+diagram editor or in the model
+view. Changes performed here are immediately reflected in the other
+views.<br>
+<br>
+</p>
+<hr style="width: 100%; height: 2px;">
+<p>Note that Changes are always applied on the model level, and not on
+the level of individual editors. Therefore,
+whenever you perform a change to the current model, all views or
+editors that show content from that model will show dirty markers.
+Likewise, the <span style="font-style: italic;">save</span> operation
+affects the current model and will remove the dirty markers from all
+currently open views and diagram
+editors. The <b>RMBench</b> undo/redo support operates on the model
+level as well.</p>
+<span style="font-style: italic;"></span>
+<hr style="width: 100%; height: 2px;"><span style="font-style: italic;"></span>
+<h2>Reverse Engineering Views</h2>
+<p>When you choose the <em class="UILabel">Reverse Engineer</em>
+option from the <em class="UILabel">RMBench</em> menu, you will see 2
+additional views open that are used during reverse eingineering (also
+called importing) database metadata from an existing database:</p>
+<p>
+</p>
+<ul>
+  <li><b>Import View</b>. The Import view by default appears along the
+model view in the left upper part of the page. On the top level it
+shows a list of available database connections.
+Each connection can be used to import database metadata (information
+about schemas, tables, etc.) which is shown as a tree below the
+respective connection node.</li>
+  <li><b>Import Details</b>. The Import Details view appears along the
+Table Details view in the lower right part of the page. It is
+synchronized with the <em class="UILabel">Import</em> view to show the
+details of the currently selected table.</li>
+</ul>
+<p></p>
+<p>When you close the <em class="UILabel">Import</em> view, the <em
+ class="UILabel">Import Details</em>
+view is also closed automatically<br>
+</p>
+<h2>Editors</h2>
+<p>In the upper right area of the workbench, eclipse shows the editor
+area. RMBench makes use of this area in the following ways,
+depending on the context:<br>
+</p>
+<ul>
+  <li><span style="font-style: italic;">Diagram Editors</span> are used
+for the purpose of graphical modelling, which is undoubtedly the core
+function of <span style="font-weight: bold;">RMBench</span>. You can
+open a diagram editor by creating a new diagram from the Model View, or
+by double clicking on an existing diagram. You will see a possibly
+empty canvas, with the palette along one side, from wher you can pick
+model element templates which you can place on the canvas using the
+mouse.</li>
+  <li>During model export, 2 types of editors are used:</li>
+  <ul>
+    <li>a <span style="font-style: italic;">DDL editor</span> shows
+the results of forward engineering of a database model, in the form of
+generated DDL code colorized accoring to the current preference
+settings. At the top of the editor, you can see a combo box listing
+available database connections (as configured in the Import View), and
+buttons to execute the whole script (<img alt="execute script"
+ src="../../images/run_exc.gif" style="width: 16px; height: 16px;">) or
+the statement under the cursor (<img alt="execute statement"
+ src="../../images/run_caret.gif" style="width: 16px; height: 16px;">).
+When you click on either one, a database connection will be
+established, and the script or the statement will be executed.</li>
+  </ul>
+  <ul>
+    <li>a <span style="font-style: italic;">Model Comparison Editor</span>
+is used to compare a model with an existing database. It is opened if,
+during model export, you select the option to compare (diff) the model
+against a preconfigured database connection. The upper pane of this
+editor gives you a structural view of the differences, while the loser
+pane shows the DDL code for bringing the database to the state of the
+model. You will also find the buttons described above for directly
+executing statements, either selectively or as a whole.</li>
+  </ul>
+</ul>
+<h2>Keyboard</h2>
+<p>In the <em class="UILabel">Table Details View</em>, you can move
+about between table cells using the Tab (Ctr-Tab) key. Additionally,
+the <span style="font-style: italic;">Data Types</span> combo box
+offers auto-completion - just type the beginning of the data type name,
+and use the <span style="font-style: italic;">cursor right</span> key
+to let the system select the first matching entry.<br>
+</p>
+</body>
+</html>

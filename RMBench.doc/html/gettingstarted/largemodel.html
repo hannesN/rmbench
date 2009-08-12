@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="STYLESHEET" href="../book.css" charset="ISO-8859-1"
+ type="text/css">
+  <title>Working With Large Models</title>
+</head>
+<body>
+<h1>Working with large models</h1>
+<p>As database models in a professional environment often tend to
+become quite big (sometimes consisting of hundreds of tables), <em
+ class="UILabel">RMBench</em> is designed to be practical also under
+these circumstances. One means by which this is achieved is the
+separation between diagram and database model. In contrast to simple
+tools, which enforce a one-to-one correspondence, RMBench
+maintains a <strong><em>design model</em></strong>, which consists of
+an arbitrary number of schemas and diagrams. <br>
+</p>
+<p>Each diagram can display an arbitrary number of tables from the
+database schemas, and every table can be displayed in as many diagrams
+as desired. That way, it becomes possible to use diagrams to explore
+and document certain aspects of the database model. Together with
+Eclipse's editor management features, this makes for a convenient
+environment for handling and understanding large database models.<br>
+</p>
+<p>One special requirement that arises with the multiple-diagram setup
+supported by RMBench is the handling of foreign key references that
+cross-diagram boundaries. RMBench uses special graphical symbols
+(called <strong><em>table stubs</em></strong>) to signify the fact
+that a table references, or is referenced by, other tables that are not
+part of the diagram. <br>
+</p>
+<p><img alt="Diagram editor with table stubs"
+ src="../../images/TableStubs.png" style="width: 800px; height: 667px;"><br>
+</p>
+<p>When the mouse pointer is held over the table stub, a list is popped
+up showing the referenced tables. Outgoing references bear blue arrows,
+incoming ones are green. Using the <em>Table References..</em> item
+from the context menu over the table stub, you can also pop up a dialog
+that will allow you to import the referenced tables into the current
+diagram.<br>
+</p>
+</body>
+</html>

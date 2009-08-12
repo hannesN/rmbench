@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="STYLESHEET" href="../book.css" charset="ISO-8859-1"
+ type="text/css">
+  <title>Model Comparison</title>
+  <meta content="ByteRefinery.com" name="author">
+</head>
+<body>
+<h1>Model Comparison</h1>
+<p>Model comparison is a new and unique feature in <em class="UILabel">RMBench</em>
+that fills a need that we have heard expressed many times by database
+programmers and administrators. It allows you to compare the current
+design model against an existing database, to view the differences in a
+structured manner, and to review and execute DDL statements that will
+modify the existing database such that it mirrors the design model.</p>
+<p>One idea behind this is to allow incremental development of the
+database model, according to the following procedure:<br>
+</p>
+<ol>
+  <li>create the first version of the design model</li>
+  <li>generate DLL and create the database</li>
+  <li>code and test the application that uses the database</li>
+  <li>enhance the design model</li>
+  <li>compare the design model with the database and generate DDL to
+bring the database to the state of the model</li>
+  <li>and so on..</li>
+</ol>
+<p>You start the model comparison by checking the <span
+ style="font-style: italic;">Diff</span> option on the first page of
+the <em class="UILabel"><span style="font-style: italic;">Database
+Export</span> Wizard</em> as described <a href="forward.html">here</a>.
+You then select the target database from the
+list below the checkbox. After optionally configuring the DDL generator
+on the following page, and pressing the <span
+ style="font-style: italic;">Finish</span> button, you will see the <em
+ class="UILabel">Model Comparison Editor</em>.<br>
+</p>
+<p><img alt="model compare" src="../../images/ModelCompare.png"
+ style="width: 671px; height: 515px;"><br>
+</p>
+<p>The Model Comparison Editor consists of 2 panes. You can
+double-click into the toolbar-area of each pane to maximize it within
+the editor.</p>
+<p>The upper pane
+shows a hierarchical summary of the changes. Items that were deleted
+from the physical database are marked with a "-" sign, items that were
+added bear a "+" sign. Items that were changed just bear their normal
+icon. You can double-click on a changed item to see a dialog that shows
+the change details. for example, double-clicking on the VARBIT_TEST
+node in the view shown above will open ths following dialog:<br>
+</p>
+<p><img alt="comparison detail" src="../../images/ComparisonDetail.png"
+ style="width: 484px; height: 354px;"><br>
+</p>
+<p>the dialog shows that the VARBIT_TEST column was changed in the
+design model by adding a size of 12.<br>
+</p>
+<p>Additionally, if you single-click on a leaf node in the hierarchy
+pane, the corresponding DDL code will be highlighted in the lower pane.
+note that for some changes, there will be more than one statement, as
+there may be no way to perform the respective change in a single DDL
+statement.<br>
+</p>
+<p>As in the other DDL editor, you can choose the database connection
+and execute the script or the current statement using the <img
+ alt="execute script" src="../../images/run_exc.gif"
+ style="width: 16px; height: 16px;"> and <img alt="execute current"
+ src="../../images/run_caret.gif" style="width: 16px; height: 16px;">
+buttons. </p>
+</body>
+</html>

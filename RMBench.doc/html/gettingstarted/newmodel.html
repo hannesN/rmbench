@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <link rel="STYLESHEET" href="../book.css" charset="ISO-8859-1"
+ type="text/css">
+  <title>Creating a New Model</title>
+</head>
+<body>
+<h1>Creating a New Model</h1>
+<p>When you first start the RMBench modeler by opening the RMBench
+perspective, the model view
+will show a new empty model. You can start directly from there by
+creating diagrams, tables, etc.</p>
+Alterantively, you can create a new database model in two ways:
+<p></p>
+<ol>
+  <li>Use the (<img src="../../images/newmodel.gif">) button in the
+model view toolbar. If the current model has unsaved changes, you will
+be prompted to save them. Afterwards, you will be presented
+with an empty, unnamed model.</li>
+  <li>Create a new model file through the (<img
+ src="../../images/rmbench.gif">) <em>RMBench Model File wizard</em>,
+which can be invoked from the File&gt;&gt;New menu or from the context
+menu of any resource view.</li>
+</ol>
+<p class="Note">Currently, RMBench supports displaying only one model
+at a time. For this reson, opening a new model
+will automatically close the current model, if any.</p>
+<p>If there are unsaved changes in the current model, you will be given
+the opportunity to save them.
+You will also be prompted to save a model if you leave the workbench
+with unsaved model changes. When you save a model which has no file
+assigned yet, you will be prompted for the file location and name.</p>
+<h1 id="adding">Adding Model Elements</h1>
+<p>A model can hold 2 types of top-level elements, namely database
+schemas and diagrams. You can add these
+elements under the respective group nodes in the model view by use of
+the context menu. If you add a diagram, it will be automatically opened
+in the diagram editor. Adding elements to the diagram by dragging them
+from the palette onto the diagram canvas will also create these
+elements in the model.<br>
+</p>
+<p>Each schema can hold database elements (tables, foreign keys, etc.),
+which can be added in several ways:</p>
+<ol>
+  <li>in the model view, you can create tables by use of the context
+menu. To do this, select any node
+below the schemas node (<img src="../../images/dbfolder.gif">).</li>
+  <li>after you have created and/or opened a diagram, you can use the
+diagram editor palette to drag new
+database elements onto the diagram.</li>
+</ol>
+<p>Tables that you create in the model view are not initially added to
+any diagram. However, you can use the mouse to drag database elements
+over to a diagram at any time. Note that this will not create database
+elements in any way, but just cause them to be displayed in the
+diagram. A database element can be displayed in as many diagram as
+desired.<br>
+<br>
+</p>
+<hr style="width: 100%; height: 2px;">
+<p>Each diagram is associated with a target schema. Elements that you
+create by dragging from the palette are implicitly added to the diagram
+target schema. You can change the diagram target schema by selecting
+the diagram in
+the model view, and choosing the new target schema from the submenu <em
+ class="UILabel">target schema</em> in the context menu. Of course,
+after creating a table, you can at any time change its schema in the
+table details view<br>
+</p>
+<hr style="width: 100%; height: 2px;">
+<p><br>
+</p>
+</body>
+</html>
