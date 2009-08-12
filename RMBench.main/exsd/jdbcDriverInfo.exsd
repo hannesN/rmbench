@@ -1,0 +1,360 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.byterefinery.rmbench">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="com.byterefinery.rmbench" id="jdbcDriverInfo" name="Jdbc Driver Info"/>
+      </appInfo>
+      <documentation>
+         this extension point allows the integration of JDBC drivers for use during the reverse and forward engineering processes. A JDBC driver is associated with a database product and must provide data about its required configuration
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <complexType>
+         <sequence>
+            <element ref="driver" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="driver">
+      <annotation>
+         <documentation>
+            description of a JDBC driver for a specific database product
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <choice>
+               <element ref="setupWidget"/>
+               <element ref="genericURL"/>
+               <element ref="jdbcURL"/>
+            </choice>
+            <element ref="databaseMetaData" minOccurs="0" maxOccurs="1"/>
+            <element ref="connectAdapter" minOccurs="0" maxOccurs="1"/>
+         </sequence>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  a unique ID for this element
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  the user-visible name of this driver
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="className" type="string" use="required">
+            <annotation>
+               <documentation>
+                  the name of the class that implements the JDBC driver
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="database" type="string" use="required">
+            <annotation>
+               <documentation>
+                  the ID of a database extension which describes the native database this driver connects to. The name must resolve to a &lt;em class=&quot;Code&quot;&gt;com.byterefinery.rmbench.databaseInfo&lt;/em&gt; extension declared elsewhere
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="queryUserId" type="boolean" use="default" value="true">
+            <annotation>
+               <documentation>
+                  a flag whether a login id is needed for the connection or not
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="queryPassword" type="boolean" use="default" value="true">
+            <annotation>
+               <documentation>
+                  a flag whether a password is needed for the connection or not
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="setupWidget">
+      <annotation>
+         <documentation>
+            this element allows full control over the creation of widgets used in the wizard dialog during the setup of a database connection. Either this element or a &lt;em class=&quot;Code&quot;&gt;xxxURL&lt;/em&gt; element must be present
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="factory" type="string" use="required">
+            <annotation>
+               <documentation>
+                  class name of a factory class that is used to create the setup control. Must extend the &lt;em class=&quot;Code&quot;&gt;com.byterefinery.rmbench.extension.URLSetupGroup.Factory&lt;/em&gt; class
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.byterefinery.rmbench.external.IURLSetupGroup$Factory"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="genericURL">
+      <annotation>
+         <documentation>
+            this element allows to describe the connection URL with all variables expected by the driver. Appropriate widgets will be created dynamically at runtime to configure the database connection
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="variable" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="pattern" type="string">
+            <annotation>
+               <documentation>
+                  a pattern describing the URL. The pattern can contain variable references designated by the ${name} syntax. Each variable that appears in the URL pattern must be further described in a &lt;em class=&quot;Code&quot;&gt;variable&lt;/em&gt; subelement.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="variable">
+      <annotation>
+         <documentation>
+            Description of a variable that appears in the URL pattern
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  the name of the variable - exactly as it appears between the ${} delimiters in the pattern
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="resourceName" type="string">
+            <annotation>
+               <documentation>
+                  the name under which the field label is looked up from the resource. If this attribute is used, the name given should correspond to an entry in the resource bundle of the declaring plugin. The value resulting from the lookup will be used as field label at runtime. If absent, the the variable name will be used as label.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="type">
+            <annotation>
+               <documentation>
+                  the data type of the variable, used for field validation. One of &lt;em class=&quot;Code&quot;&gt;int, java-name, string or boolean&lt;/em&gt;
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="int">
+                  </enumeration>
+                  <enumeration value="java-name">
+                  </enumeration>
+                  <enumeration value="string">
+                  </enumeration>
+                  <enumeration value="boolean">
+                  </enumeration>
+               </restriction>
+            </simpleType>
+         </attribute>
+         <attribute name="use">
+            <annotation>
+               <documentation>
+                  determines whether this is an optional or required variable
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="optional">
+                  </enumeration>
+                  <enumeration value="required">
+                  </enumeration>
+               </restriction>
+            </simpleType>
+         </attribute>
+         <attribute name="default" type="string">
+            <annotation>
+               <documentation>
+                  a default value for the variable. Must be compatible with the type
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="databaseMetaData">
+      <annotation>
+         <documentation>
+            allows specifying a database metadata adapter for this driver
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="factory" type="string">
+            <annotation>
+               <documentation>
+                  name of the factory class for creating the database metadata adapter. It must implement the interface com.byterefinery.rmbench.extension.IMetaDataAccess.Factory
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.byterefinery.rmbench.external.IMetaDataAccess$Factory"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="jdbcURL">
+      <annotation>
+         <documentation>
+            This element describes a standard jdbc url in the form: jdbc:protocol:[//host[:port]/]database.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="defaulthost" type="string">
+            <annotation>
+               <documentation>
+                  The default host used by the jdbc url.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="protocol" type="string">
+            <annotation>
+               <documentation>
+                  The protocol used by the url, usually it&apos;t the name of the database, e.g. mysql
+its the string between &lt;i&gt;jdbc:&lt;/i&gt; and the following &lt;i&gt;:&lt;/i&gt;
+This would result in an url like jdbc:mysql: ...
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="defaultport" type="string">
+            <annotation>
+               <documentation>
+                  The default port used by the jdbc url.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="defaultdb" type="string">
+            <annotation>
+               <documentation>
+                  The default database used by the jdbc url.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="connectAdapter">
+      <annotation>
+         <documentation>
+            allows specification of a connect adapter
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="factory" type="string">
+            <annotation>
+               <documentation>
+                  this attribute specifies a factory for connect adapters. It must implement the &lt;code&gt;com.byterefinery.rmbench.external.database.jdbc.IJdbcConnectAdapter.Factory&lt;/code&gt; interface. A connect adapter is used to intercept connect and close invocations.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.byterefinery.rmbench.external.database.jdbc.IJdbcConnectAdapter$Factory"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         1.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         &lt;pre&gt;&lt;extension point=&quot;com.byterefinery.rmbench.jdbcDriverInfo&quot;&gt;
+ &lt;driver className=&quot;org.superdb.Driver&quot; database=&quot;SuperDB&quot; name=&quot;SuperDBJdbc&quot;&gt;
+  &lt;setupURL pattern=&quot;jdbc:superdb://${host}:${port}/${database}&quot;&gt;
+   &lt;variable name=&quot;host&quot; 
+    default=&quot;localhost&quot; 
+    resourceName=&quot;jdbc_host&quot;
+    type=&quot;string&quot;
+    use=&quot;required&quot;/&gt;
+   &lt;variable
+    name=&quot;port&quot;
+    default=&quot;5432&quot;
+    resourceName=&quot;jdbc_port&quot;
+    type=&quot;int&quot;
+    use=&quot;optional&quot;/&gt;
+   &lt;variable
+    name=&quot;database&quot;
+    resourceName=&quot;jdbc_database&quot;
+    type=&quot;string&quot;
+    use=&quot;required&quot;/&gt;
+  &lt;/setupURL&gt;
+ &lt;/driver&gt;
+&lt;/extension&gt;&lt;/pre&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         RMBench comes with driver configurations for different database products, like Oracle and PostgreSQL
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         &amp;copy; 2005, DynaBEAN Consulting
+      </documentation>
+   </annotation>
+
+</schema>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xsi:schemaLocation="http://rmbench.com/xml/ns/rmbench http://rmbench.com/xml/ns/rmbench/rmb-1.0.xsd" version="1.0" name="New Model" dbinfo="mysql" generator="default"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://rmbench.com/xml/ns/rmbench">
+    <schemas>
+        <schema name="rmtest">
+            <table name="tableA">
+                <column name="id" type="INT" nullable="false" size="11" />
+                <column name="col01" type="VARCHAR" nullable="true" size="20" />
+                <column name="COLUMN_2" type="INT" nullable="true" size="0" />
+                <primarykey name="PRIMARY">
+                    <columnref name="id" />
+                </primarykey>
+                <index name="indexname1" unique="false">
+                    <columnref name="col01" />
+                </index>
+            </table>
+            <table name="tableB">
+                <column name="id" type="INT" nullable="false" size="11" />
+                <column name="col01" type="VARCHAR" nullable="true" size="20" />
+                <column name="ref" type="INT" nullable="true" size="11" />
+                <primarykey name="PRIMARY">
+                    <columnref name="id" />
+                </primarykey>
+                <foreignkey name="tableB_ibfk_1" onDelete="NO ACTION" onUpdate="NO ACTION">
+                    <target schema="rmtest" table="tableA" />
+                    <columnref name="ref" />
+                </foreignkey>
+                <index name="indexname2" unique="true">
+                    <columnref name="col01" />
+                </index>
+            </table>
+            <table name="tableC">
+                <column name="id" type="INT" nullable="false" size="11" />
+                <column name="ref1" type="INT" nullable="true" size="11" />
+                <column name="ref2" type="INT" nullable="true" size="11" />
+                <primarykey name="PRIMARY">
+                    <columnref name="id" />
+                </primarykey>
+                <foreignkey name="tableC_ibfk_1" onDelete="NO ACTION" onUpdate="NO ACTION">
+                    <target schema="rmtest" table="tableA" />
+                    <columnref name="ref1" />
+                </foreignkey>
+                <foreignkey name="tableC_ibfk_2" onDelete="NO ACTION" onUpdate="NO ACTION">
+                    <target schema="rmtest" table="tableB" />
+                    <columnref name="ref2" />
+                </foreignkey>
+            </table>
+            <table name="all_types_rmbenchstyle">
+                <column name="COLUMN_0" type="BIGINT" nullable="false" size="20" />
+                <column name="COLUMN_1" type="BINARY" nullable="true" size="1" />
+                <column name="COLUMN_2" type="BIT" nullable="true" size="1" />
+                <column name="COLUMN_3" type="BLOB" nullable="true" />
+                <column name="COLUMN_4" type="BIT" nullable="true" size="1" />
+                <column name="COLUMN_5" type="CHAR" nullable="true" size="1" />
+                <column name="COLUMN_6" type="DATE" nullable="true" />
+                <column name="COLUMN_8" type="DOUBLE" nullable="true" size="20" scale="15" />
+                <column name="COLUMN_9" type="DOUBLE" nullable="true" size="22" scale="0" />
+                <column name="COLUMN_10" type="FLOAT" nullable="true" size="55" scale="5" />
+                <column name="COLUMN_11" type="INT" nullable="true" size="11" />
+                <column name="COLUMN_12" type="LONGBLOB" nullable="true" />
+                <column name="COLUMN_13" type="LONGTEXT" nullable="true" />
+                <column name="COLUMN_14" type="MEDIUMBLOB" nullable="true" />
+                <column name="COLUMN_15" type="MEDIUMINT" nullable="true" size="9" />
+                <column name="COLUMN_16" type="MEDIUMTEXT" nullable="true" />
+                <column name="COLUMN_17" type="CHAR" nullable="true" size="1" />
+                <column name="COLUMN_18" type="SMALLINT" nullable="true" size="6" />
+                <column name="COLUMN_19" type="TEXT" nullable="true" />
+                <column name="COLUMN_20" type="TIME" nullable="true" />
+                <column name="COLUMN_21" type="TIMESTAMP" nullable="true">
+                    <default><![CDATA[CURRENT_TIMESTAMP]]></default>
+                </column>
+                <column name="COLUMN_22" type="TINYBLOB" nullable="true" />
+                <column name="COLUMN_23" type="TINYINT" nullable="true" size="4" />
+                <column name="COLUMN_24" type="TINYTEXT" nullable="true" />
+                <column name="COLUMN_25" type="VARBINARY" nullable="true" size="20" />
+                <column name="COLUMN_26" type="VARCHAR" nullable="true" size="65" />
+                <primarykey name="PRIMARY">
+                    <columnref name="COLUMN_0" />
+                </primarykey>
+            </table>
+            <table name="TABLE_6">
+                <column name="all_types_rmbenchstyle_COLUMN_0" type="BIGINT" nullable="true" size="20" />
+                <column name="COLUMN_1" type="INT" nullable="false" size="11" />
+                <column name="COLUMN_2" type="VARCHAR" nullable="true" size="1" />
+                <primarykey name="PRIMARY">
+                    <columnref name="COLUMN_1" />
+                </primarykey>
+                <foreignkey name="FK_TABLE_601" onDelete="CASCADE" onUpdate="CASCADE">
+                    <target schema="rmtest" table="all_types_rmbenchstyle" />
+                    <columnref name="all_types_rmbenchstyle_COLUMN_0" />
+                </foreignkey>
+            </table>
+        </schema>
+    </schemas>
+    <diagrams>
+        <diagram name="Diagram1" schema="rmtest">
+            <tableref schema="rmtest" name="tableC" collpased="false">
+                <location x="130" y="17" />
+                <foreignkeyref name="tableC_ibfk_1">
+                    <source edge="2" slotNumber="3" />
+                    <target edge="1" slotNumber="5" />
+                </foreignkeyref>
+                <foreignkeyref name="tableC_ibfk_2">
+                    <source edge="8" slotNumber="7" />
+                    <target edge="4" slotNumber="1" />
+                </foreignkeyref>
+            </tableref>
+            <tableref schema="rmtest" name="tableB" collpased="false">
+                <location x="276" y="143" />
+                <foreignkeyref name="tableB_ibfk_1">
+                    <source edge="4" slotNumber="7" />
+                    <target edge="8" slotNumber="1" />
+                </foreignkeyref>
+            </tableref>
+            <tableref schema="rmtest" name="tableA" collpased="false">
+                <location x="93" y="285" />
+            </tableref>
+        </diagram>
+    </diagrams>
+</model>

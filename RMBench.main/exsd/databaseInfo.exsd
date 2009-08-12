@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.byterefinery.rmbench">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="com.byterefinery.rmbench" id="databaseInfo" name="Native Database info"/>
+      </appInfo>
+      <documentation>
+         This extension point is used to add support for specific database products
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <complexType>
+         <sequence>
+            <element ref="database" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="database">
+      <annotation>
+         <documentation>
+            description of a native database
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="extraTypeEditor" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  a unique identifier for this element
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  the displayable and translatable name for this element
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="className" type="string" use="required">
+            <annotation>
+               <documentation>
+                  the name of a class that implements &lt;em class=&quot;Code&quot;&gt;com.byterefinery.rmbench.extension.IDatabaseInfo&lt;/em&gt; interface
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.byterefinery.rmbench.external.IDatabaseInfo"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="messageProvider" type="string" use="default" value="com.byterefinery.rmbench.external.database.DBMessageProvider">
+            <annotation>
+               <documentation>
+                  name of a class that implements the &lt;em class=&quot;code&quot;&gt;com.byterefinery.rmbench.external.IMessageProvider&lt;/em&gt; interface. By default, this will be set to &lt;em class=&quot;code&quot;&gt;com.byterefinery.rmbench.external.database.DBMessageProvider&lt;/em&gt;
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.byterefinery.rmbench.external.IMessageProvider"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="extraTypeEditor">
+      <annotation>
+         <documentation>
+            an association between a data type identifier and a custom type editor which is used to configure the type in a database-specific manner
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="type" type="string" use="required">
+            <annotation>
+               <documentation>
+                  the identifier of a data type registered with this database
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="factory" type="string" use="required">
+            <annotation>
+               <documentation>
+                  name of a class that implements the &lt;em&gt;com.byterefinery.rmbench.external.IDataTypeEditorFactory&lt;/em&gt; interface. Only one instance of this class will be created. It is responsible for creating editors as required
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.byterefinery.rmbench.external.IDataTypeEditorFactory"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         1.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         &lt;pre&gt;
+&lt;extension point=&quot;com.byterefinery.rmbench.databaseInfo&quot;&gt;
+ &lt;database className=&quot;com.mycorp.rmbench.SuperDatabase&quot; name=&quot;SuperDB&quot;/&gt;
+&lt;/extension&gt;
+&lt;/pre&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         The class named in the className attribute must implement the &lt;em class=&quot;Code&quot;&gt;com.byterefinery.rmbench.external.IDatabaseInfo&lt;/em&gt; interface.&lt;p&gt;
+The class named in the optional messageProvider attribute must implement the &lt;em class=&quot;code&quot;&gt;com.byterefinery.rmbench.external.IMessageProvider&lt;/em&gt; interface.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         The RMBench base product comes with implementations for a number of common database products, such as Oracle and PostgreSQL. There is also a generic implementation that mirrors the SQL:99 standard.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         &amp;copy; 2005, DynaBEAN Consulting
+      </documentation>
+   </annotation>
+
+</schema>

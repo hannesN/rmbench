@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.byterefinery.rmbench">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="com.byterefinery.rmbench" id="tableThemes" name="Table Themes"/>
+      </appInfo>
+      <documentation>
+         This extension point allows the definition of table color schemes (aka themes). A theme can redefine the background and foreground colors for the title and the body area of a table figure. It can then be associated with a table type to cause the thus typed tables to be shown with the given color scheme.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <complexType>
+         <sequence>
+            <element ref="theme" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="theme">
+      <annotation>
+         <documentation>
+            a theme represents a group of color definitions that can be associated with a table type and thus be applied to a table
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="titleBackground" type="string">
+            <annotation>
+               <documentation>
+                  the title background color as a comma-separated RGB value
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="titleForeground" type="string">
+            <annotation>
+               <documentation>
+                  the title foreground color as a comma-separated RGB value
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="bodyBackground" type="string">
+            <annotation>
+               <documentation>
+                  the table body background color as a comma-separated RGB value
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="bodyForeground" type="string">
+            <annotation>
+               <documentation>
+                  the table body foreground color as a comma-separated RGB value
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  a unique ID for this element
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="label" type="string">
+            <annotation>
+               <documentation>
+                  a displayable, translatable label. If absent, the ID will be used for presentation purposes
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         1.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         &lt;pre&gt;
+   &lt;extension
+         point=&quot;com.byterefinery.rmbench.tableThemes&quot;&gt;
+      &lt;theme
+            bodyBackground=&quot;229,229,229&quot;
+            id=&quot;theme1&quot;
+            label=&quot;Theme 1&quot;
+            titleBackground=&quot;50,195,50&quot;/&gt;
+      &lt;theme
+            bodyBackground=&quot;255,255,0&quot;
+            id=&quot;theme2&quot;
+            label=&quot;Theme 2&quot;
+            titleBackground=&quot;255,165,0&quot;/&gt;
+   &lt;/extension&gt;
+&lt;/pre&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         RMBench comes with a set of table themes and table types which can be used to distinguish tables in a model
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         &amp;copy; 2005, DynaBEAN Consulting
+      </documentation>
+   </annotation>
+
+</schema>

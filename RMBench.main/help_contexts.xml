@@ -1,0 +1,8 @@
+<contexts>
+	<context id="TableStubSelectionDialog">
+		<description>Use this dialog to import referenced tables into the diagram. Blue arrows signify outgoing references, yellow arrows signify incoming ones</description>
+	</context>
+	<context id="TargetTableChooser">
+		<description>Use this dialog to choose the target table for a new foreign key. If the target table is not already displayed in the current diagram, you can import the table by checking the "import into diagram" option.</description>
+	</context>
+</contexts>

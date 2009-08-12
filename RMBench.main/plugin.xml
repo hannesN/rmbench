@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension-point id="jdbcDriverInfo" name="Jdbc Driver Info" schema="exsd/jdbcDriverInfo.exsd"/>
+   <extension-point id="databaseInfo" name="Native Database info" schema="exsd/databaseInfo.exsd"/>
+   <extension-point id="nameGenerator" name="Name Generator" schema="exsd/nameGenerator.exsd"/>
+   <extension-point id="tableThemes" name="Table Themes" schema="exsd/tableThemes.exsd"/>
+   <extension-point id="tableTypes" name="Table Types" schema="exsd/tableTypes.exsd"/>
+   <extension-point id="DDLGenerator" name="DDL Generator" schema="exsd/DDLGenerator.exsd"/>
+   <extension-point id="imageExporter" name="Image Exporter" schema="exsd/imageExporter.exsd"/>
+   <extension-point id="modelExporter" name="Model Exporter" schema="exsd/modelExporter.exsd"/>
+   <extension-point id="externalJdbcProvider" name="External JDBC Provider" schema="exsd/externalJdbcProvider.exsd"/>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="Diagram"
+            icon="icons/diagram.gif"
+            contributorClass="com.byterefinery.rmbench.editors.DiagramActionBarContributor"
+            class="com.byterefinery.rmbench.editors.DiagramEditor"
+            id="com.byterefinery.rmbench.editors.diagramEditor">
+      </editor>
+	  <editor
+	        id="com.byterefinery.rmbench.RMBenchLauncher"
+	        name="Model View"
+	        extensions="rmb"
+	        default="true"
+	        launcher="com.byterefinery.rmbench.RMBenchLauncher"
+	        icon="icons/rmbench.gif">
+	  </editor>
+	  <editor
+	        class="com.byterefinery.rmbench.export.ModelCompareEditor"
+	        default="false"
+	        icon="icons/dbexport.gif"
+	        id="com.byterefinery.rmbench.editors.modelCompareEditor"
+	        name="Model Comparison"/>
+	  <editor
+         class="com.byterefinery.rmbench.export.DDLEditor"
+         default="true"
+         extensions="ddl, sql"
+         icon="icons/dbexport.gif"
+         id="com.byterefinery.rmbench.editors.ddlEditor"
+         name="DDL Executor">
+      <contentTypeBinding contentTypeId="RMBenchDDL"/>
+   </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="false"
+            category="rmbenchcategory"
+            class="com.byterefinery.rmbench.views.table.TableDetailsView"
+            icon="icons/table_details.gif"
+            id="com.byterefinery.rmbench.tabledetailsview"
+            name="Table Details"/>
+      <view
+            allowMultiple="false"
+            category="rmbenchcategory"
+            class="com.byterefinery.rmbench.views.db.ImportView"
+            icon="icons/dbexplorer.gif"
+            id="com.byterefinery.rmbench.views.ImportView"
+            name="Import"/>
+      <view
+            allowMultiple="false"
+            category="rmbenchcategory"
+            class="com.byterefinery.rmbench.views.model.ModelView"
+            icon="icons/modelview.gif"
+            id="com.byterefinery.rmbench.views.ModelView"
+            name="Model"/>
+      <view
+            allowMultiple="false"
+            category="rmbenchcategory"
+            class="com.byterefinery.rmbench.views.dbtable.DBTableView"
+            icon="icons/dbexplorer.gif"
+            id="com.byterefinery.rmbench.dbtableview"
+            name="Import Details"/>
+      <category
+            id="rmbenchcategory"
+            name="RMBench"/>
+   </extension>
+   <extension
+         id="com.byterefinery.rmbench.ormperspective"
+         name="RMBench Perspective"
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="com.byterefinery.rmbench.RMBenchPerspective"
+            fixed="false"
+            icon="icons/rmbench.gif"
+            id="com.byterefinery.rmbench.perspective"
+            name="RMBench"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
+         <perspectiveShortcut id="com.byterefinery.rmbench.perspective"/>
+         <newWizardShortcut id="com.byterefinery.rmbench.wizards.NewModelWizard"/>
+      </perspectiveExtension>
+      <perspectiveExtension targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <perspectiveShortcut id="com.byterefinery.rmbench.perspective"/>
+         <newWizardShortcut id="com.byterefinery.rmbench.wizards.NewModelWizard"/>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            description="Main menu actions for RMBench"
+            id="com.byterefinery.rmbench.actionSet"
+            label="RMBench ActionSet"
+            visible="false">
+         <menu
+               id="com.byterefinery.rmbench.mainmenu"
+               label="RMBench"
+               path="additions">
+            <groupMarker name="group1"/>
+            <separator name="separator"/>
+            <groupMarker name="group2"/>
+         </menu>
+         <action
+               class="com.byterefinery.rmbench.actions.OpenConnectionManagerActionDelegate"
+               icon="icons/connections.gif"
+               id="com.byterefinery.rmbench.actions.openConnectionManager"
+               label="JDBC Connection Manager"
+               menubarPath="com.byterefinery.rmbench.mainmenu/group2"
+               style="push"
+               tooltip="opens jdbc connection manager"/>
+         <action
+               class="com.byterefinery.rmbench.actions.ModelExportActionDelegate"
+               icon="icons/model_export.gif"
+               id="com.byterefinery.rmbench.actions.modelExport"
+               label="Model Export"
+               menubarPath="com.byterefinery.rmbench.mainmenu/group1"
+               style="push"
+               tooltip="open the model export wizard"/>
+         <action
+               class="com.byterefinery.rmbench.actions.ReverseEngineerActionDelegate"
+               icon="icons/loadmeta.gif"
+               id="com.byterefinery.rmbench.actions.reverseEngineer"
+               label="Reverse Engineer"
+               menubarPath="com.byterefinery.rmbench.mainmenu/group1"
+               style="push"
+               toolbarPath="Normal/RMBench"
+               tooltip="open the reverse engineering view"/>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="com.byterefinery.rmbench"
+            name="RMBench"/>
+      <wizard
+            category="com.byterefinery.rmbench"
+            class="com.byterefinery.rmbench.dialogs.NewModelWizard"
+            icon="icons/rmbench.gif"
+            id="com.byterefinery.rmbench.wizards.NewModelWizard"
+            name="RMBench Model File"/>
+   </extension>
+   <extension
+         point="com.byterefinery.rmbench.databaseInfo">
+      <database
+            className="com.byterefinery.rmbench.database.pgsql.PostgreSQL"
+            id="postgresql"
+            messageProvider="com.byterefinery.rmbench.database.pgsql.PostgresMessageProvider"
+            name="PostgreSQL"/>
+      <database
+            className="com.byterefinery.rmbench.database.oracle.Oracle"
+            id="oracle"
+            name="Oracle"/>
+      <database
+            className="com.byterefinery.rmbench.external.database.sql99.SQL99"
+            id="sql99"
+            name="SQL99"/>
+      <database
+            className="com.byterefinery.rmbench.database.db2.DB2"
+            id="db2"
+            messageProvider="com.byterefinery.rmbench.database.db2.DB2MessageProvider"
+            name="DB2"/>
+      <database
+            className="com.byterefinery.rmbench.database.mysql.MySQL"
+            id="mysql"
+            name="MySQL">
+         <extraTypeEditor
+               factory="com.byterefinery.rmbench.database.mysql.MySQLListTypeEditorFactory"
+               type="SET"/>
+         <extraTypeEditor
+               factory="com.byterefinery.rmbench.database.mysql.MySQLListTypeEditorFactory"
+               type="ENUM"/>
+         <extraTypeEditor
+               factory="com.byterefinery.rmbench.database.mysql.MySQLIntegerTypeEditorFactory"
+               type="INT"/>
+         <extraTypeEditor
+               factory="com.byterefinery.rmbench.database.mysql.MySQLIntegerTypeEditorFactory"
+               type="TINYINT"/>
+         <extraTypeEditor
+               factory="com.byterefinery.rmbench.database.mysql.MySQLIntegerTypeEditorFactory"
+               type="BIGINT"/>
+         <extraTypeEditor
+               factory="com.byterefinery.rmbench.database.mysql.MySQLIntegerTypeEditorFactory"
+               type="SMALLINT"/>
+         <extraTypeEditor
+               factory="com.byterefinery.rmbench.database.mysql.MySQLIntegerTypeEditorFactory"
+               type="MEDIUMINT"/>
+      </database>
+      <database
+            className="com.byterefinery.rmbench.database.derby.Derby"
+            id="derby"
+            name="Apache Derby"/>
+   </extension>
+   <extension
+         point="com.byterefinery.rmbench.jdbcDriverInfo">
+      <driver
+            className="org.postgresql.Driver"
+            database="postgresql"
+            id="postgresql"
+            name="PostgreSQL"
+            queryPassword="true"
+            queryUserId="true">
+         <databaseMetaData factory="com.byterefinery.rmbench.database.pgsql.PgSQLJdbcMetaData$Factory"/>
+         <jdbcURL
+               defaulthost="localhost"
+               defaultport="5432"
+               protocol="postgresql"/>
+      </driver>
+      <driver
+            className="oracle.jdbc.OracleDriver"
+            database="oracle"
+            id="oracle"
+            name="Oracle (thin)"
+            queryPassword="true"
+            queryUserId="true">
+            <databaseMetaData factory="com.byterefinery.rmbench.database.oracle.OracleJdbcMetaData$Factory"/>
+            <genericURL pattern="jdbc:oracle:thin:@${host}:${port}:${database}">
+               <variable
+                     name="host"
+                     default="localhost"
+                     resourceName="jdbc_host"
+                     type="string"
+                     use="required"/>
+               <variable
+                     name="port"
+                     default="1521"
+                     resourceName="jdbc_port"
+                     type="int"
+                     use="optional"/>
+               <variable
+                     name="database"
+                     resourceName="jdbc_database"
+                     type="string"
+                     use="required"/>
+            </genericURL>
+      </driver>
+      <driver
+            className="com.ibm.db2.jcc.DB2Driver"
+            database="db2"
+            id="db2"
+            name="IBM DB2 JDBC Universal Driver"
+            queryPassword="true"
+            queryUserId="true">
+            <jdbcURL
+                  defaulthost="localhost"
+                  defaultport="50001"
+                  protocol="db2"/>
+      </driver>
+      <driver
+            className="com.mysql.jdbc.Driver"
+            database="mysql"
+            id="mysql"
+            name="MySQL"
+            queryPassword="true"
+            queryUserId="true">
+         <databaseMetaData factory="com.byterefinery.rmbench.database.mysql.MySQLJdbcMetaData$Factory"/>
+         <jdbcURL
+               defaulthost="localhost"
+               defaultport="3306"
+               protocol="mysql"/>
+      </driver>
+      <driver
+            className="org.apache.derby.jdbc.ClientDriver"
+            database="derby"
+            id="derby_network"
+            name="Derby Network"
+            queryPassword="true"
+            queryUserId="true">
+         <jdbcURL
+               defaulthost="localhost"
+               defaultport="1527"
+               protocol="derby"/>
+         <databaseMetaData factory="com.byterefinery.rmbench.database.derby.DerbyJdbcMetaData$Factory"/>
+      </driver>
+      <driver
+            className="org.apache.derby.jdbc.EmbeddedDriver"
+            database="derby"
+            id="derby_embedded"
+            name="Derbey Embedded"
+            queryPassword="false"
+            queryUserId="false">
+         <setupWidget factory="com.byterefinery.rmbench.database.derby.EmbeddedURLSetupGroup$Factory"/>
+         <databaseMetaData factory="com.byterefinery.rmbench.database.derby.DerbyJdbcMetaData$Factory"/>
+         <connectAdapter factory="com.byterefinery.rmbench.database.derby.DerbyEmbeddedConnectAdapter$Factory"/>
+      </driver>
+   </extension>
+   <extension
+         point="com.byterefinery.rmbench.nameGenerator">
+      <generator
+            className="com.byterefinery.rmbench.util.DefaultNameGenerator"
+            id="default"
+            name="RMBench Default"/>
+   </extension>
+   <extension
+         id="com.byterefinery.rmbench.preferences"
+         point="org.eclipse.core.runtime.preferences">
+      <initializer class="com.byterefinery.rmbench.preferences.PreferenceHandler"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="com.byterefinery.rmbench.preferences.ui"
+            class="com.byterefinery.rmbench.preferences.DiagramPreferencePage"
+            id="com.byterefinery.rmbench.preferences.ui.diagram"
+            name="Diagram"/>
+      <page
+            category="com.byterefinery.rmbench.preferences.ui.diagram"
+            class="com.byterefinery.rmbench.preferences.ColorsFontsPreferencePage"
+            id="com.byterefinery.rmbench.preferences.ui.colors"
+            name="Colors and Fonts"/>
+      <page
+            category="com.byterefinery.rmbench.preferences.ui.diagram"
+            class="com.byterefinery.rmbench.preferences.TableThemesPreferencePage"
+            id="com.byterefinery.rmbench.preferences.ui.themes"
+            name="Table Themes"/>
+      <page
+            category="com.byterefinery.rmbench.preferences.ui"
+            class="com.byterefinery.rmbench.preferences.DDLSourcePreferencePage"
+            id="com.byterefinery.rmbench.preferences.ui.ddlsource"
+            name="DDL Source"/>
+      <page
+            class="com.byterefinery.rmbench.preferences.RMBenchPreferencePage"
+            id="com.byterefinery.rmbench.preferences.ui"
+            name="RMBench"/>
+      <page
+            category="com.byterefinery.rmbench.preferences.ui"
+            class="com.byterefinery.rmbench.preferences.DialogConfirmationPreferences"
+            id="com.byterefinery.rmbench.preferences.DialogConfirmationPreferences"
+            name="Dialog Confirmation"/>
+   </extension>
+   <extension
+         point="com.byterefinery.rmbench.tableThemes">
+      <theme
+            bodyBackground="229,229,229"
+            id="theme1"
+            label="Theme 1"
+            titleBackground="50,195,50"/>
+      <theme
+            bodyBackground="255,255,0"
+            id="theme2"
+            label="Theme 2"
+            titleBackground="255,165,0"/>
+   </extension>
+   <extension
+         point="com.byterefinery.rmbench.tableTypes">
+      <type
+            id="lookup"
+            label="Lookup"
+            theme="theme1"/>
+      <type
+            id="associative"
+            label="Associative"
+            theme="theme2"/>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.contentTypes">
+      <content-type
+            base-type="org.eclipse.core.runtime.xml"
+            file-extensions="rmb"
+            id="RMBenchModel"
+            name="RMBench Model"
+            priority="normal"/>
+      <content-type
+            base-type="org.eclipse.core.runtime.text"
+            file-extensions="ddl, sql"
+            id="RMBenchDDL"
+            name="RMBench DDL"
+            priority="normal"/>
+   </extension>
+   <extension
+         point="com.byterefinery.rmbench.DDLGenerator">
+      <generator
+            databases="*"
+            excludeDatabases="mysql, derby, postgresql "
+            factory="com.byterefinery.rmbench.external.database.sql99.DefaultDDLGenerator$Factory"
+            id="basic"
+            name="Default DDL Generator"
+            wizardFactory="com.byterefinery.rmbench.database.sql99.DefaultDDLGeneratorWizardFactory"/>
+      <generator
+            databases="mysql"
+            factory="com.byterefinery.rmbench.database.mysql.MySQLDDLGenerator$Factory"
+            formatter="com.byterefinery.rmbench.database.mysql.MySQLDDLFormatter$Factory"
+            id="mysql"
+            name="MySQL DDL Generator"
+            script="com.byterefinery.rmbench.database.mysql.MySQLDDLScript$Factory"
+            wizardFactory="com.byterefinery.rmbench.database.mysql.MySQLDDLGeneratorWizardFactory"/>
+      <generator
+            databases="derby"
+            factory="com.byterefinery.rmbench.database.pgsql.PostgresSQLDDLGenerator$Factory"
+            formatter="com.byterefinery.rmbench.database.derby.DerbyDDLFormatter$Factory"
+            id="derby"
+            name="Derby DDL Generator"
+            wizardFactory="com.byterefinery.rmbench.database.sql99.DefaultDDLGeneratorWizardFactory"
+            script="com.byterefinery.rmbench.database.derby.DerbyDDLScript$Factory"/>
+      <generator
+            databases="postgresql"
+            factory="com.byterefinery.rmbench.database.pgsql.PostgresSQLDDLGenerator$Factory"
+            id="postgresql"
+            name="PostgreSQL DDL Generator"
+            wizardFactory="com.byterefinery.rmbench.database.sql99.DefaultDDLGeneratorWizardFactory"/>
+      <generator
+            databases="oracle"
+            factory="com.byterefinery.rmbench.database.oracle.Oracle10DDLGenerator$Factory"
+            id="oracle10"
+            name="Oracle 10 DDL Generator"
+            wizardFactory="com.byterefinery.rmbench.database.sql99.DefaultDDLGeneratorWizardFactory"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors.documentProviders">
+      <provider
+            class="com.byterefinery.rmbench.export.text.GeneratedDDLDocumentProvider"
+            id="com.byterefinery.rmbench.generatedDDLProvider"
+            inputTypes="com.byterefinery.rmbench.export.DDLEditorInput"/>
+      <provider
+            class="com.byterefinery.rmbench.export.text.DDLDocumentProvider"
+            extensions="ddl, sql"
+            id="com.byterefinery.rmbench.DDLDocumentProvider"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.elementFactories">
+      <factory
+            class="com.byterefinery.rmbench.editors.DiagramEditor$InputFactory"
+            id="com.byterefinery.rmbench.diagramInputFactory"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.exportWizards">
+      <wizard
+            class="com.byterefinery.rmbench.dialogs.export.ExportWizard"
+            icon="icons/diagram.gif"
+            id="com.byterefinery.rmbench.exportWizard"
+            name="RMBench Export">
+         <selection
+               class="com.byterefinery.rmbench.external.IExportable"/>
+      </wizard>
+   </extension>
+   <extension
+         point="com.byterefinery.rmbench.imageExporter">
+      <exporter
+            className="com.byterefinery.rmbench.export.image.SWTImageExporter$JPEG"
+            description="JPEG image"
+            id="com.byterefinery.rmbench.image.jpeg"
+            name="JPEG"/>
+      <exporter
+            className="com.byterefinery.rmbench.export.image.SWTImageExporter$BMP"
+            description="Windows BMP image"
+            id="com.byterefinery.rmbench.image.bmp"
+            name="BMP"/>
+   </extension>
+   <extension
+         id="com.byterefinery.help.contexts"
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="help_contexts.xml">
+      </contexts>
+   </extension>
+
+</plugin>

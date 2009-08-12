@@ -1,0 +1,10 @@
+<list>
+	<element1 att1="test">
+		<element2 att2="test">
+			<element3 att3="test3"/>
+			<element3 att3="test3"/>
+			<element3 att3="test3"/>
+		</element2>
+		<element4 att4="test4"/>
+	</element1>
+</list>
