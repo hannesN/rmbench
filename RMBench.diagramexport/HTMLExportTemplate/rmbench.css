@@ -1,0 +1,161 @@
+html,body {
+    height: 100%;
+}
+    
+body {
+	color: black; background-color: white;
+  	font-family: Helvetica,Arial,sans-serif;
+  	margin: 0px; padding: 0px;
+}
+
+h1 {
+	margin-top:0px;
+	padding-left: 15px;
+	background-color: #aaaaaa;
+	font-size:14px;
+}
+
+
+.table {
+	border: 1px solid;
+	font-size: 12px;
+	border-collapse:collapse;
+	text-align: center;
+	margin-top: 5px;
+	margin-left: 10px;
+}
+
+.table th {
+	border: 1px solid;	
+	padding: 0px;
+	margin: 0px;
+	font-size: 12px;
+}
+
+ul {
+	font-size: 10px;
+}
+
+#modelview {
+	overflow: auto;
+  	float: left; 
+  	margin: 0px; 
+	padding: 0px;
+  	border: 1px dashed silver;
+}
+
+#modelview a {
+	text-decoration: none;
+	color: black;	
+}
+
+#tableview {
+	overflow: auto;
+	clear:both;
+	display:block;
+  	border: 1px dashed silver;
+	padding:1px;
+}
+	
+
+#diagramview {
+	overflow: auto;
+	float:left;
+  	margin: 0px; 
+	padding: 0px;
+  	border: 1px dashed silver;
+}
+
+#verticalSlider {
+	float: left;
+	width: 10px;
+	background-color: gray;
+	background-image: url("images/vslider.gif");
+	background-repeat: repeat-y;
+	cursor: e-resize;
+}
+
+#horizontalSlider {
+	clear: both;
+	background-color: gray;
+	height: 10px;
+	cursor: n-resize;
+	background-image: url("images/hslider.gif");
+	background-repeat: repeat-x;
+}
+
+#menu {
+	font-size: 12px;
+	margin-left: 20px;
+}
+
+.arrow {
+	cursor: pointer;
+}
+
+/* Spalten der Tableübersicht*/
+#th_name {
+	width: 20%;
+}
+
+#th_datatype {
+	width: 10%;
+}
+
+#th_prec {
+	width: 5%;
+}
+
+#th_scale {
+	width: 5%;
+}
+
+#th_default {
+	width: 10%;
+}
+
+#th_notnull {
+	width: 5%;
+}
+
+#th_primarykey {
+	width: 5%;
+}
+
+#th_comment {
+	width: 39%;
+}
+
+/* Klassen der Baumstruktur */
+.n1_1 {
+}
+
+.n1_2 {
+	margin-left: 20px;
+	display: none;
+}
+
+.n1_3 {
+	margin-left: 20px;
+	display: none;
+}
+
+.n1_4 {
+	margin-left: 30px;
+	list-style-type: none;
+	display: none;
+}
+
+.n2_1 {
+	margin-top: 10px;
+}
+
+.n2_2 {
+	margin-left: 20px;
+	display: none;
+}
+
+.n2_3 {
+	margin-left: 30px;
+	display: none;
+}

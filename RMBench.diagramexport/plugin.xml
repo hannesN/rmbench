@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         point="com.byterefinery.rmbench.imageExporter">
+      <exporter
+            className="com.byterefinery.rmbench.export.diagram.PDFDiagramExporter"
+            description="PDF Diagram"
+            id="com.byterefinery.rmbench.export.diagram.pdf"
+            name="PDF"/>
+      <exporter
+            className="com.byterefinery.rmbench.export.diagram.SVGDiagramExporter"
+            description="SVG Diagram"
+            id="com.byterefinery.rmbench.export.diagram.svg"
+            name="SVG"/>
+   </extension>
+   <extension
+         point="com.byterefinery.rmbench.modelExporter">
+      <exporter
+            factory="com.byterefinery.rmbench.export.model.html.HTMLModelExporter$FactoryImpl"
+            description="HTML Site Export"
+            id="com.byterefinery.rmbench.export.model.html"
+            name="HTML"
+            wizardFactory="com.byterefinery.rmbench.export.model.html.HTMLModelExporterWizardFactory"/>
+   </extension>
+
+</plugin>
