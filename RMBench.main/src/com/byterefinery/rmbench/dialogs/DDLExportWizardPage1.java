@@ -27,7 +27,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 
 import com.byterefinery.rmbench.RMBenchMessages;
-import com.byterefinery.rmbench.RMBenchPlugin;
 import com.byterefinery.rmbench.extension.DDLGeneratorExtension;
 import com.byterefinery.rmbench.external.IDDLFormatter;
 import com.byterefinery.rmbench.external.IDDLGenerator;
@@ -94,14 +93,6 @@ public class DDLExportWizardPage1 extends WizardPage {
                                 getShell(), 
                                 RMBenchMessages.ModelView_ExportDialog_Title,
                                 Messages.DDLExportWizard1_NoConnection);
-                        diffCheck.setSelection(false);
-                        return;
-                    }
-                    else if(RMBenchPlugin.getLicenseManager().isUnlicensed()) {
-                        MessageDialog.openInformation(
-                                getShell(), 
-                                RMBenchMessages.License_Title,
-                                RMBenchMessages.License_FeatureNotAvailable);
                         diffCheck.setSelection(false);
                         return;
                     }

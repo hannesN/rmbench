@@ -54,7 +54,6 @@ import com.byterefinery.rmbench.model.Model;
 import com.byterefinery.rmbench.model.dbimport.DBModel;
 import com.byterefinery.rmbench.util.ColorRegistry;
 import com.byterefinery.rmbench.util.ImageConstants;
-import com.byterefinery.rmbench.util.LicenseManager;
 import com.byterefinery.rmbench.util.ModelManager;
 import com.byterefinery.rmbench.util.PrintState;
 import com.byterefinery.rmbench.views.model.ModelView;
@@ -88,7 +87,6 @@ public class RMBenchPlugin extends AbstractUIPlugin {
     private static String eclipseUIVersion;
     
     private final PrintState printState = new PrintState();
-    private final LicenseManager licenseManager;
     private final ModelManager modelManager;
     private final ExtensionManager extensionManager;
     private final EventManager eventManager;
@@ -116,7 +114,6 @@ public class RMBenchPlugin extends AbstractUIPlugin {
 	public RMBenchPlugin() {
 		super();
 		plugin = this;
-        licenseManager = new LicenseManager();
         extensionManager = new ExtensionManager();
         eventManager = new EventManager();
         modelManager = new ModelManager();
@@ -139,7 +136,6 @@ public class RMBenchPlugin extends AbstractUIPlugin {
             File stateFile = getStateLocation().append(location).toFile();
             saveParticipant.readPluginState(stateFile, this);
         }
-        licenseManager.activate();
         modelManager.activate();
     }
 
@@ -166,7 +162,6 @@ public class RMBenchPlugin extends AbstractUIPlugin {
 	 * This method is called when the plug-in is stopped
 	 */
 	public void stop(BundleContext context) throws Exception {
-        licenseManager.deactivate();
         modelManager.deactivate();
         for (IExternalJdbcProvider provider : extensionManager.externalJdbcProviders()) {
             provider.deactivate(externalJdbcProviderListener);
@@ -489,14 +484,6 @@ public class RMBenchPlugin extends AbstractUIPlugin {
         return plugin.modelManager;
     }
     
-    /**
-     * @return the license manager singleton
-     */
-    public static LicenseManager getLicenseManager() {
-        return plugin.licenseManager;
-    }
-    
-
     /**
      * @return the PrintState object maintained by the plugin instance
      */

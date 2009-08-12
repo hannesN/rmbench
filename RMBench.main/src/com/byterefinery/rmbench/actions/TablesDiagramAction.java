@@ -53,9 +53,7 @@ public class TablesDiagramAction extends SelectionAction {
     }
 
     public void run() {
-        if(RMBenchPlugin.getLicenseManager().checkMaxDiagrams(model.getDiagrams().size()))
-            return;
-        
+    	
         List<?> selected = getSelectedObjects();
         Table[] tables = new Table[selected.size()];
         Point[] locations = new Point[selected.size()];

@@ -13,21 +13,12 @@ import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.print.PrintGraphicalViewerOperation;
-import org.eclipse.swt.graphics.FontData;
-import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.printing.Printer;
 import org.eclipse.swt.printing.PrinterData;
 import org.eclipse.swt.widgets.Display;
 
-import com.byterefinery.rmbench.RMBenchPlugin;
-import com.byterefinery.rmbench.util.StringEncrypter;
-import com.byterefinery.rmbench.util.StringEncrypter.EncryptionException;
-
 public class RMBenchPrintOperation extends PrintGraphicalViewerOperation {
 
-    private static final String PrintedUsingTheFreeEdition = 
-		"0NTmuFqpfXUSu/P8v/b3iA/zLkc/OkPXPYs6L13wYusGPmwlWTgMSDl0skwu7NdXTsZ6OH6nvtGsLMWM7Pa6AX9fRjjGVW5HwiU8knT5CFcHW82J3WNiLw==";
-	
 	private int margin;
     private Printer printer;
     private final int[] pages;
@@ -188,26 +179,6 @@ public class RMBenchPrintOperation extends PrintGraphicalViewerOperation {
         graphics.setBackgroundColor(figure.getBackgroundColor());
         graphics.setFont(figure.getFont());
         
-        // we will assume that there is at least on FontData object assigned to this font.
-        FontData fdata =  graphics.getFont().getFontData()[0];
-        if(!RMBenchPlugin.getLicenseManager().isUserLicense()){
-            this.bannerMargin = (int)fdata.height+8;
-            try{
-                StringEncrypter encrypter = new StringEncrypter(StringEncrypter.DES_ENCRYPTION_SCHEME);
-                bannerText = encrypter.decrypt(PrintedUsingTheFreeEdition);
-                
-                // We will abuse a GC object configured with the current display resolution to calculate 
-                //the width of the printed banner string
-                GC gc = new GC(Display.getCurrent());
-                gc.setFont(graphics.getFont());
-                char[] characters = new char[bannerText.length()];
-                bannerText.getChars(0, bannerText.length(),characters, 0);
-                for(int i = 0; i < characters.length; i++)
-                    bannerTextWidth += gc.getAdvanceWidth(characters[i]);
-            }catch(EncryptionException ee){
-                RMBenchPlugin.logError(ee);
-            }
-        }
         initScaleFactors();
     }
     

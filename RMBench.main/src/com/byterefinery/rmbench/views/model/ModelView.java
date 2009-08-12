@@ -939,9 +939,6 @@ public class ModelView extends ViewPart implements ISaveablePart {
         }
         
         public void run() {
-            if(RMBenchPlugin.getLicenseManager().checkMaxDiagrams(getModel().getDiagrams().size()))
-                return;
-            
             //create the wizard
             NewDiagramWizard wizard = new NewDiagramWizard(getModel());
             IWorkbench workbench = RMBenchPlugin.getDefault().getWorkbench();
@@ -1091,9 +1088,6 @@ public class ModelView extends ViewPart implements ISaveablePart {
         }
         
         public void run() {
-            if(RMBenchPlugin.getLicenseManager().checkMaxTables(getModel().getTableCount()))
-                return;
-            
             Schema schema = 
                 selectedNode.element instanceof Schema ? 
                         (Schema)selectedNode.element : (Schema)selectedNode.parent.element;

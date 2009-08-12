@@ -219,7 +219,7 @@ public class ExtensionManager
                     throw makeException(
                             Messages.ExtensionManager_invalidDatabase,
                             namespace,
-                            new Object[]{dbExt.getId()}, null);
+                            new Object[]{dbId}, null);
                 }
                 //determine the connect adapter
                 IConfigurationElement[] connectAdapterElem = elements[i2].getChildren(ELEM_CONNECTADAPTER);
