@@ -1,0 +1,12 @@
+what to do after re-generating the build files:
+
+- make feature/build.xml call the custom plugin builders 
+- adapt all generated builders to use version.no parameter
+
+what to do for a new product version:
+
+- change version identifier in feature.xml
+- change version identifier in feature/build.xml
+- add feature version line to site.xml
+- build feature
+- build site
