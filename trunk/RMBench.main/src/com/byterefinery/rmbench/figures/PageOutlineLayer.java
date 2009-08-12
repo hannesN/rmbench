@@ -12,13 +12,10 @@ import org.eclipse.draw2d.PrintFigureOperation;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.gef.LayerConstants;
 import org.eclipse.gef.editparts.LayerManager;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.printing.Printer;
 import org.eclipse.swt.widgets.Display;
-
-import com.byterefinery.rmbench.RMBenchPlugin;
 
 
 /**
@@ -73,11 +70,6 @@ public class PageOutlineLayer extends FreeformLayer {
         printMargin = margin;
         int bannerMargin = 0;
         
-        if(!RMBenchPlugin.getLicenseManager().isUserLicense()){
-            if(lm != null)
-                bannerMargin = (int)lm.getLayer(LayerConstants.PRINTABLE_LAYERS).getFont().getFontData()[0].height+8;
-        }
-       
         //need to do this, because the GEF people wanted their own rectangle class...
 		org.eclipse.swt.graphics.Rectangle rec = printer.getClientArea();
         page = new Rectangle();

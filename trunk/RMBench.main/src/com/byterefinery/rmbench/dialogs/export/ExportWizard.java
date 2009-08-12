@@ -19,8 +19,6 @@ import org.eclipse.jface.wizard.IWizardContainer;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.RGB;
-import org.eclipse.swt.printing.Printer;
-import org.eclipse.swt.printing.PrinterData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IExportWizard;
@@ -97,39 +95,22 @@ public class ExportWizard implements IExportWizard {
 	}
 	
     public void addPages() {
-        //if there is printing available, this feature is only allowed for licensed users
-        PrinterData[] printers = Printer.getPrinterList();
-        if(RMBenchPlugin.getLicenseManager().isUnlicensed()) {
-            if(diagramExport != null && (printers == null || printers.length == 0)) {
-                exportSelectionPage = new ExportSelectionPage(diagramExport, null);
+    	if(diagramExport == null && modelExport == null) {
+            noExportPage = NoExportPage.noExport();
+            noExportPage.setWizard(this);
+    	}
+    	else {
+            exportSelectionPage = new ExportSelectionPage(diagramExport, modelExport);
+            exportSelectionPage.setWizard(this);
+            if(diagramExport != null) {
                 imageExportPage = new ExportFilePage();
-                
-                exportSelectionPage.setWizard(this);
                 imageExportPage.setWizard(this);
             }
-            else {
-                noExportPage = NoExportPage.noLicense();
-                noExportPage.setWizard(this);
+            if(modelExport != null) {
+                modelExportPage = new ExportDirectoryPage();
+                modelExportPage.setWizard(this);
             }
-        }
-        else {
-        	if(diagramExport == null && modelExport == null) {
-                noExportPage = NoExportPage.noExport();
-                noExportPage.setWizard(this);
-        	}
-        	else {
-	            exportSelectionPage = new ExportSelectionPage(diagramExport, modelExport);
-	            exportSelectionPage.setWizard(this);
-	            if(diagramExport != null) {
-	                imageExportPage = new ExportFilePage();
-	                imageExportPage.setWizard(this);
-	            }
-	            if(modelExport != null) {
-	                modelExportPage = new ExportDirectoryPage();
-	                modelExportPage.setWizard(this);
-	            }
-        	}
-        }
+    	}
     }
 
     public boolean performFinish() {

@@ -37,13 +37,7 @@ public class DiagramContainerEditPolicy extends ContainerEditPolicy {
         diagramPart.getFigure().translateToRelative(location);
         
         if(ComponentFactory.TABLE == request.getNewObjectType()) {
-	        return new CommandAdapter(new AddTableOperation(diagramPart.getDiagram(), location)) {
-                public void execute() {
-                    int numTables = diagramPart.getDiagram().getModel().getTableCount();
-                    if(!RMBenchPlugin.getLicenseManager().checkMaxTables(numTables))
-                        super.execute();
-                }
-            };
+	        return new CommandAdapter(new AddTableOperation(diagramPart.getDiagram(), location));
         }
         else if(ImportTransfer.TYPE_NAME == request.getNewObjectType()) {
 	        return new CommandAdapter(

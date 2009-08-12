@@ -5,8 +5,7 @@ Bundle-SymbolicName: com.byterefinery.rmbench; singleton:=true
 Bundle-Version: 1.0.6
 Bundle-ClassPath: RMBench.jar,
  lib/xpp3-1.1.3.4.N.jar,
- lib/commons-codec-1.3.jar,
- lib/truelic.jar
+ lib/commons-codec-1.3.jar
 Bundle-Activator: com.byterefinery.rmbench.RMBenchPlugin
 Bundle-Localization: plugin
 Export-Package: .,
@@ -30,5 +29,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.compare,
  org.eclipse.ui.workbench.texteditor,
  org.eclipse.help
-Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy
 Bundle-Vendor: ByteRefinery
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
