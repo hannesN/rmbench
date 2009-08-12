@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: RMBench Test Plug-in
+Bundle-SymbolicName: com.byterefinery.rmbench.test; singleton:=true
+Bundle-Version: 1.0.0
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.byterefinery.rmbench
+Eclipse-LazyStart: false
