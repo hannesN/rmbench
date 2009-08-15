@@ -1,7 +1,12 @@
 /*
  * created 15.09.2005 by cse
  *
- * Copyright 2006, DynaBEAN Consulting
+ * Copyright 2009, ByteRefinery
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  * 
  * $Id: ColorsFontsPreferencePage.java 165 2006-02-10 13:40:34Z cse $
  */

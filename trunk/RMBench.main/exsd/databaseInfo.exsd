@@ -165,7 +165,7 @@ The class named in the optional messageProvider attribute must implement the &lt
          <meta.section type="copyright"/>
       </appInfo>
       <documentation>
-         &amp;copy; 2005, DynaBEAN Consulting
+         &amp;copy; 2009, ByteRefinery
       </documentation>
    </annotation>
 

@@ -67,17 +67,22 @@ public class RMBenchPlugin extends AbstractUIPlugin {
 	public static final String VERSION = "1.0";
 
     public static final String RMBENCH_HOME = "http://www.rmbench.com";
+	public static final String EPL_HOME = "http://www.eclipse.org/legal/epl-v10.html";
     public static final String RMBENCH_HOME_HREF = "<a href=\"http://www.rmbench.com\">www.rmbench.com</a>";
     
     private static final URL RMBENCH_URL;
+	private static final URL EPL_URL;
+	
     static {
-        URL url = null;
+        URL url1 = null, url2 = null;
         try {
-            url = new URL(RMBENCH_HOME);
+        	url1 = new URL(RMBENCH_HOME);
+            url2 = new URL(EPL_HOME);
         }
         catch (MalformedURLException e) {
         }
-        RMBENCH_URL = url;
+        RMBENCH_URL = url1;
+        EPL_URL = url2;
     }
     
     //the singleton instance
@@ -532,6 +537,22 @@ public class RMBenchPlugin extends AbstractUIPlugin {
         try {
             IWebBrowser browser = PlatformUI.getWorkbench().getBrowserSupport().getExternalBrowser();
             browser.openURL(RMBENCH_URL);
+        }
+        catch (PartInitException x) {
+            RMBenchPlugin.logError("error opening web browser", x);
+            MessageDialog.openError(shell, "error opening the web browser", x.getMessage());
+        }
+    }
+
+    /**
+     * open the external web browser on the EPL
+     * 
+     * @param shell the parent shell in case of error dialogs
+     */
+    public static void externalBrowseEPL(final Shell shell) {
+        try {
+            IWebBrowser browser = PlatformUI.getWorkbench().getBrowserSupport().getExternalBrowser();
+            browser.openURL(EPL_URL);
         }
         catch (PartInitException x) {
             RMBenchPlugin.logError("error opening web browser", x);

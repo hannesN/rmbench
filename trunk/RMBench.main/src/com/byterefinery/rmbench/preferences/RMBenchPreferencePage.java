@@ -1,7 +1,12 @@
 /*
  * created 10.02.2006
  *
- * Copyright 2006, DynaBEAN Consulting
+ * Copyright 2009, ByteRefinery
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  * 
  * $Id: RMBenchPreferencePage.java 530 2006-08-30 15:11:04Z cse $
  */
@@ -20,6 +25,9 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
+import org.eclipse.ui.forms.events.HyperlinkAdapter;
+import org.eclipse.ui.forms.events.HyperlinkEvent;
+import org.eclipse.ui.forms.widgets.Hyperlink;
 
 import com.byterefinery.rmbench.RMBenchPlugin;
 import com.byterefinery.rmbench.util.ImageConstants;
@@ -60,11 +68,19 @@ public class RMBenchPreferencePage extends PreferencePage implements IWorkbenchP
         licenseGroup.setLayoutData(new GridData(SWT.FILL, SWT.BEGINNING, true, false));
         licenseGroup.setLayout(new GridLayout());
         
-        Label statusLabel = new Label(licenseGroup, SWT.LEFT | SWT.WRAP);
+        Hyperlink statusLink = new Hyperlink(licenseGroup, SWT.LEFT | SWT.WRAP);
 		GridData gd = new GridData(SWT.FILL, SWT.BEGINNING, true, false);
 		gd.widthHint = 300; // Windows: force initial width
-        statusLabel.setLayoutData(gd);
-        statusLabel.setText("RMBench Open Source Edition");
+		statusLink.setUnderlined(true);
+        statusLink.setLayoutData(gd);
+        statusLink.setText("Eclipse Public License V1.0");
+        statusLink.setToolTipText(RMBenchPlugin.EPL_HOME);
+        statusLink.addHyperlinkListener(new HyperlinkAdapter() {
+
+			public void linkActivated(HyperlinkEvent e) {
+                RMBenchPlugin.externalBrowseEPL(getShell());
+			}
+        });
         
         return composite;
     }
