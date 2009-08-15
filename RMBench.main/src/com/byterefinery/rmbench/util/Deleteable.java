@@ -1,7 +1,12 @@
 /*
  * created 30.07.2005
  *
- * Copyright 2005, DynaBEAN Consulting
+ * Copyright 2009, ByteRefinery
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  * 
  * $Id: Deleteable.java 3 2005-11-02 03:04:20Z csell $
  */

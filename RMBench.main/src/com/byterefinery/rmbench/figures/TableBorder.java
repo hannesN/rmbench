@@ -1,7 +1,12 @@
 /*
  * created 10.10.2005
  *
- * Copyright 2005, DynaBEAN Consulting
+ * Copyright 2009, ByteRefinery
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  * 
  * $Id: TableBorder.java 41 2005-11-19 16:01:01Z hannesn $
  */

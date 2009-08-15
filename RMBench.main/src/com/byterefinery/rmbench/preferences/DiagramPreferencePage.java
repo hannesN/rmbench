@@ -1,7 +1,12 @@
 /*
  * created 15.09.2005 by sell
  *
- * Copyright 2006, DynaBEAN Consulting
+ * Copyright 2009, ByteRefinery
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  * 
  * $Id: DiagramPreferencePage.java 360 2006-05-14 16:25:40Z hannesn $
  */

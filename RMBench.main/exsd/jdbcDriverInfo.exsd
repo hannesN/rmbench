@@ -353,7 +353,7 @@ This would result in an url like jdbc:mysql: ...
          <meta.section type="copyright"/>
       </appInfo>
       <documentation>
-         &amp;copy; 2005, DynaBEAN Consulting
+         &amp;copy; 2009, ByteRefinery
       </documentation>
    </annotation>
 

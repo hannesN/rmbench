@@ -1,7 +1,12 @@
 /*
   * created 21-Feb-2006
   *
-  * Copyright 2006, DynaBEAN Consulting
+ * Copyright 2009, ByteRefinery
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
   *
   * $Id: ColumnDependencyDialog.java 656 2007-08-31 00:11:31Z cse $
   */

@@ -1,7 +1,12 @@
 /*
   * created 28-Feb-2006
   *
-  * Copyright 2006, DynaBEAN Consulting
+ * Copyright 2009, ByteRefinery
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
   *
   * $Id: TableViewerKeyBoardSupporter.java 279 2006-03-03 14:01:59Z hannesn $
   */
