@@ -1,4 +1,4 @@
-#build instructions
+#summary build instructions
 
 = Building RMBench from source =
 
