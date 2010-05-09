@@ -1,3 +1,0 @@
-#this should be the same as in META-INF/MANIFEST.MF, feature.xml and LicenseManager.java
-#see RMBench.lic/build/build.xml#fix-minor-versions
-version.no=1.0.6
