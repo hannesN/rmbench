@@ -3,7 +3,7 @@
    <description name="RMBench" url="http://www.rmbench.com">
       RMBench Plugin Update Site
    </description>
-   <feature url="features/com.byterefinery.rmbench_1.0.6.jar" id="com.byterefinery.rmbench" version="1.0.6">
+   <feature url="features/com.byterefinery.rmbench_1.0.6.jar" id="com.byterefinery.rmbench.feature" version="1.0.6">
       <category name="RMBench"/>
    </feature>
    <category-def name="RMBench" label="RMBench">
