@@ -3,19 +3,20 @@ Bundle-ManifestVersion: 2
 Bundle-Name: RMBench Database Modeller
 Bundle-SymbolicName: com.byterefinery.rmbench; singleton:=true
 Bundle-Version: 1.0.6
-Bundle-ClassPath: RMBench.jar,
- lib/xpp3-1.1.3.4.N.jar,
+Bundle-ClassPath: lib/xpp3-1.1.3.4.N.jar,
  lib/commons-codec-1.3.jar
 Bundle-Activator: com.byterefinery.rmbench.RMBenchPlugin
 Bundle-Localization: plugin
-Export-Package: .,
+Export-Package: com.byterefinery.rmbench.extension,
  com.byterefinery.rmbench.external,
+ com.byterefinery.rmbench.external.database,
+ com.byterefinery.rmbench.external.database.jdbc,
+ com.byterefinery.rmbench.external.database.sql99,
+ com.byterefinery.rmbench.external.export,
  com.byterefinery.rmbench.external.model,
  com.byterefinery.rmbench.external.model.type,
- com.byterefinery.rmbench.external.database,
- com.byterefinery.rmbench.external.database.sql99,
- com.byterefinery.rmbench.external.database.jdbc,
- com.byterefinery.rmbench.external.export
+ com.byterefinery.rmbench.util,
+ com.byterefinery.rmbench.util.xml
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.jface.text,
@@ -31,4 +32,4 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.help
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: ByteRefinery
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

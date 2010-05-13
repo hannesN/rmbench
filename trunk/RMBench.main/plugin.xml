@@ -42,8 +42,25 @@
          icon="icons/dbexport.gif"
          id="com.byterefinery.rmbench.editors.ddlEditor"
          name="DDL Executor">
-      <contentTypeBinding contentTypeId="RMBenchDDL"/>
+      <contentTypeBinding contentTypeId="org.byterefinery.rmbench.ddl"/>
    </editor>
+   </extension>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.core.runtime.text"
+            file-extensions="ddl, sql"
+            id="org.byterefinery.rmbench.ddl"
+            name="RMBench DDL"
+            priority="normal">
+      </content-type>
+      <content-type
+            base-type="org.eclipse.core.runtime.xml"
+            file-extensions="rmb"
+            id="org.byterefinery.rmbench.model"
+            name="RMBench Model"
+            priority="normal">
+      </content-type>
    </extension>
    <extension
          point="org.eclipse.ui.views">
@@ -366,21 +383,6 @@
             id="associative"
             label="Associative"
             theme="theme2"/>
-   </extension>
-   <extension
-         point="org.eclipse.core.runtime.contentTypes">
-      <content-type
-            base-type="org.eclipse.core.runtime.xml"
-            file-extensions="rmb"
-            id="RMBenchModel"
-            name="RMBench Model"
-            priority="normal"/>
-      <content-type
-            base-type="org.eclipse.core.runtime.text"
-            file-extensions="ddl, sql"
-            id="RMBenchDDL"
-            name="RMBench DDL"
-            priority="normal"/>
    </extension>
    <extension
          point="com.byterefinery.rmbench.DDLGenerator">

@@ -5,5 +5,6 @@ Bundle-SymbolicName: com.byterefinery.rmbench.test; singleton:=true
 Bundle-Version: 1.0.0
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- com.byterefinery.rmbench
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+ com.byterefinery.rmbench,
+ org.junit4;bundle-version="4.5.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
