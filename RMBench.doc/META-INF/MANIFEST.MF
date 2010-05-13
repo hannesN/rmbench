@@ -4,3 +4,4 @@ Bundle-Name: RMBench Modeller Documentation
 Bundle-SymbolicName: com.byterefinery.rmbench.doc; singleton:=true
 Bundle-Version: 1.0.6
 Bundle-Vendor: ByteRefinery
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
