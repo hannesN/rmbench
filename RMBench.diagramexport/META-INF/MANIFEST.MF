@@ -11,7 +11,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.jface,
  org.eclipse.gef
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: lib/itext-1.3.jar,
+Bundle-ClassPath: .,
+ lib/itext-1.3.jar,
  lib/org.eclipse.gmf.runtime.draw2d.ui.render_1.0.0.jar,
  lib/batik-1.6/batik-awt-util.jar,
  lib/batik-1.6/batik-bridge.jar,
