@@ -8,12 +8,12 @@ package com.byterefinery.rmbench.editpolicies;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.draw2d.Cursors;
 import org.eclipse.gef.SharedCursors;
 import org.eclipse.gef.editpolicies.ConnectionEndpointEditPolicy;
 import org.eclipse.gef.handles.AbstractHandle;
-import org.eclipse.gef.handles.ConnectionEndHandle;
-import org.eclipse.gef.handles.ConnectionStartHandle;
+import org.eclipse.gef.handles.ConnectionEndpointHandle;
 import org.eclipse.gef.requests.ReconnectRequest;
 
 import com.byterefinery.rmbench.editparts.ForeignKeyEditPart;
@@ -56,14 +56,14 @@ public class ForeignKeyEndpointEditPolicy extends ConnectionEndpointEditPolicy {
     }
 
     private AbstractHandle createStartHandle(ForeignKeyEditPart host) {
-        AbstractHandle handle = new ConnectionStartHandle(host);
+        AbstractHandle handle = new ConnectionEndpointHandle(host, ConnectionLocator.TARGET);
         handle.setCursor(SharedCursors.SIZEALL);
         handle.setDragTracker(new RMBConnectionEndpointTracker(host, REQ_RECONNECT_SOURCE));
         return handle;
     }
 
     private AbstractHandle createEndHandle(ForeignKeyEditPart host) {
-        AbstractHandle handle = new ConnectionEndHandle(host);
+        AbstractHandle handle = new ConnectionEndpointHandle(host, ConnectionLocator.SOURCE);
         handle.setCursor(Cursors.SIZEALL);
         handle.setDragTracker(new RMBConnectionEndpointTracker(host, REQ_RECONNECT_TARGET));
         return handle;

@@ -65,10 +65,6 @@ public class ModelReader implements XMLConstants {
             RMBenchPlugin.logWarning(message);
         }
 
-        void logWarning(String message, Object[] args) {
-            RMBenchPlugin.logWarning(message, args);
-        }
-
         IDatabaseInfo getDatabaseInfo(String infoName) {
             DatabaseExtension dbext = RMBenchPlugin.getExtensionManager().getDatabaseExtension(infoName);
             return dbext != null ? dbext.getDatabaseInfo() : null;

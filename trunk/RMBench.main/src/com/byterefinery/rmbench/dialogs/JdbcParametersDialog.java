@@ -75,11 +75,6 @@ public class JdbcParametersDialog extends Dialog {
     	String key;
     	String value;
     	
-    	Option() {
-    		this.key = "";
-    		this.value = "";
-    	}
-    	
     	Option(String key, String value) {
     		this.key = key;
     		this.value = value;
