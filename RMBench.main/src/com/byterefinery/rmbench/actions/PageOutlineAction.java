@@ -41,7 +41,6 @@ public class PageOutlineAction extends Action {
 		super(Messages.PageOutlineAction_Title, AS_CHECK_BOX);
         
 		this.layer = (PageOutlineLayer)layerManager.getLayer(PageOutlineLayer.LAYER_ID);
-        this.layer.setLayerManager(layerManager);
         this.printers = Printer.getPrinterList();
         this.dialogParent = dialogParent;
         

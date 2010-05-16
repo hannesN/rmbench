@@ -167,7 +167,7 @@ public class DriverUtil {
 		    URL urls[] = new URL[files.length];
 		    for (int i = 0, length = urls.length; i < length; i++) {
 			    try {
-                    urls[i] = files[i].toURL();
+                    urls[i] = files[i].toURI().toURL();
                 }
                 catch (MalformedURLException e) {
                     throw new SystemException(e);

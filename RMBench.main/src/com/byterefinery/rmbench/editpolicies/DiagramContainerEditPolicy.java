@@ -12,7 +12,6 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.ContainerEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
 
-import com.byterefinery.rmbench.RMBenchPlugin;
 import com.byterefinery.rmbench.dnd.ImportTransfer;
 import com.byterefinery.rmbench.dnd.ModelTransfer;
 import com.byterefinery.rmbench.editparts.DiagramEditPart;

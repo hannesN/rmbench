@@ -45,9 +45,9 @@ public class RMBenchLauncher implements IEditorLauncher {
             if(!RMBenchPlugin.getModelManager().canSwitchModel(window.getShell()))
                 return;
             
-            IFile[] files = ResourcesPlugin.getWorkspace().getRoot().findFilesForLocation(path);
-            if(files.length > 0) {
-                FileResourceModelStorage modelStorage = new FileResourceModelStorage(files[0]);
+            IFile file = ResourcesPlugin.getWorkspace().getRoot().getFileForLocation(path);
+            if(file != null) {
+                FileResourceModelStorage modelStorage = new FileResourceModelStorage(file);
                 
                 IModelStorage.DefaultLoadListener loadListener = new IModelStorage.DefaultLoadListener();
                 modelStorage.load(loadListener);

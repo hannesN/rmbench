@@ -12,7 +12,6 @@ import org.eclipse.draw2d.PrintFigureOperation;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.gef.editparts.LayerManager;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.printing.Printer;
 import org.eclipse.swt.widgets.Display;
@@ -29,7 +28,6 @@ public class PageOutlineLayer extends FreeformLayer {
 	
     private Rectangle page;
 	private Insets printMargin = new Insets(0, 0, 0, 0);
-    private LayerManager lm;
     
     public PageOutlineLayer(boolean enabled) {
         super();
@@ -95,10 +93,6 @@ public class PageOutlineLayer extends FreeformLayer {
 		repaint();
 	}
 	
-    public void setLayerManager(LayerManager lm){
-        this.lm = lm;
-    }
-    
     protected void paintFigure(Graphics graphics) {
         super.paintFigure(graphics);
 

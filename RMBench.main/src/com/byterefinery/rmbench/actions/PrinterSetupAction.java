@@ -34,7 +34,6 @@ public class PrinterSetupAction extends Action {
         
         setEnabled(Printer.getPrinterList().length > 0);
 		this.layer = (PageOutlineLayer)layerManager.getLayer(PageOutlineLayer.LAYER_ID);
-        this.layer.setLayerManager(layerManager);
         this.dialogParent = dialogParent;
         
         setId(ID);

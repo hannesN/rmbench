@@ -39,7 +39,7 @@ public class RMBenchPerspective implements IPerspectiveFactory {
         IFolderLayout topLeft = layout.createFolder(
                 "topLeft", IPageLayout.LEFT, 0.25f, editorArea);
         topLeft.addView(ModelView.VIEW_ID);
-        topLeft.addView(IPageLayout.ID_RES_NAV);
+        topLeft.addView(IPageLayout.ID_PROJECT_EXPLORER);
         topLeft.addPlaceholder(ImportView.VIEW_ID);
         
         //Bottom left: Outline View
@@ -72,7 +72,7 @@ public class RMBenchPerspective implements IPerspectiveFactory {
         
         layout.addShowViewShortcut(IPageLayout.ID_OUTLINE);
         layout.addShowViewShortcut(IPageLayout.ID_PROP_SHEET);
-        layout.addShowViewShortcut(IPageLayout.ID_RES_NAV);
+        layout.addShowViewShortcut(IPageLayout.ID_PROJECT_EXPLORER);
         layout.addShowViewShortcut(IPageLayout.ID_BOOKMARKS);
         layout.addShowViewShortcut(IPageLayout.ID_TASK_LIST);
         //error view of pde runtime

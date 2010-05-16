@@ -55,10 +55,6 @@ public class DeleteColumnOperation extends RMBenchOperation {
 			this.column = column;
 		}
         
-		public Column getColumn() {
-            return column;
-        }
-
         public void revert() {
 			key.addColumn(column, index);
 		}
