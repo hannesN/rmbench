@@ -8,6 +8,7 @@ package com.byterefinery.rmbench;
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.console.IConsoleConstants;
 
 import com.byterefinery.rmbench.dialogs.NewModelWizard;
@@ -23,7 +24,8 @@ import com.byterefinery.rmbench.views.table.TableDetailsView;
  */
 public class RMBenchPerspective implements IPerspectiveFactory {
 
-    public static final String PERSPECTIVE_ID = "com.byterefinery.rmbench.perspective";
+    public static final String ID_PDE_RUNTIME_LOG = "org.eclipse.pde.runtime.LogView";
+	public static final String PERSPECTIVE_ID = "com.byterefinery.rmbench.perspective";
     
     //@see org.eclipse.ui.IPerspectiveFactory#createInitialLayout(org.eclipse.ui.IPageLayout)
     public void createInitialLayout(IPageLayout layout) {
@@ -55,8 +57,11 @@ public class RMBenchPerspective implements IPerspectiveFactory {
         bottomRight.addPlaceholder(IConsoleConstants.ID_CONSOLE_VIEW);
         bottomRight.addView(IPageLayout.ID_PROP_SHEET);
         bottomRight.addPlaceholder(IPageLayout.ID_PROBLEM_VIEW);
-        //error view of pde runtime
-        bottomRight.addView("org.eclipse.pde.runtime.LogView");
+        
+        if(PlatformUI.getWorkbench().getViewRegistry().find(ID_PDE_RUNTIME_LOG) != null) {
+            //error view of pde runtime, if available
+        	bottomRight.addView(ID_PDE_RUNTIME_LOG);
+        }
 	}
 	
     private void setupShortcuts(IPageLayout layout) {
@@ -76,7 +81,7 @@ public class RMBenchPerspective implements IPerspectiveFactory {
         layout.addShowViewShortcut(IPageLayout.ID_BOOKMARKS);
         layout.addShowViewShortcut(IPageLayout.ID_TASK_LIST);
         //error view of pde runtime
-        layout.addShowViewShortcut("org.eclipse.pde.runtime.LogView");
+        layout.addShowViewShortcut(ID_PDE_RUNTIME_LOG);
 
         layout.addActionSet(IPageLayout.ID_NAVIGATE_ACTION_SET);
         layout.addActionSet("com.byterefinery.rmbench.actionSet");
