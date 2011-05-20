@@ -6,6 +6,6 @@ Bundle-Version: 1.0.0
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  com.byterefinery.rmbench,
- org.junit4;bundle-version="4.5.0"
+ org.junit;bundle-version="4.8.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .
