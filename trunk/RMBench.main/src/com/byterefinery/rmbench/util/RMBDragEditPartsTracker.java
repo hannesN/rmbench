@@ -33,8 +33,14 @@ public class RMBDragEditPartsTracker extends DragEditPartsTracker {
     }
 
     protected void executeCommand(Command command) {
-        CompoundCommand compound = (CompoundCommand)command;
-        CompoundOperation operation = new CompoundOperation(Messages.Operation_Move, compound);
+    	CompoundCommand cmd = null;
+    	if (command instanceof CompoundCommand) {
+    		cmd = (CompoundCommand) command;
+    	} else {
+    		cmd = new CompoundCommand();
+    		cmd.add(command);
+    	}
+        CompoundOperation operation = new CompoundOperation(Messages.Operation_Move, cmd);
         operation.execute(null);
     }
 }
