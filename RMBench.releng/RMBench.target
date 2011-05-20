@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.6"?>
+
+<target>
+<locations>
+<location includeAllPlatforms="true" includeMode="slicer" type="InstallableUnit">
+<unit id="org.eclipse.datatools.connectivity.feature.feature.group" version="1.8.2.v201010181125-7C7b8mEt1Zwkn9kfkUHHsoP_3to"/>
+<unit id="org.eclipse.platform.ide" version="3.6.2.M20110210-1200"/>
+<unit id="org.eclipse.rcp.feature.group" version="3.6.2.r362_v20101104-9SAxFMKFkSAqi8axkv1ZjegmiBLY"/>
+<unit id="org.eclipse.rcp.source.feature.group" version="3.6.2.r362_v20101104-9SAxFMKFkSAqi8axkv1ZjegmiBLY"/>
+<unit id="org.eclipse.gef.sdk.feature.group" version="3.6.2.v20110128-0100-7G7R77A5WNcHQDbhX8JWOYLOSeRJ"/>
+<unit id="org.eclipse.gmf.runtime.thirdparty.feature.group" version="1.4.0.v20100521-1113-7P8W5FHV2CNOiy0niXURaw311A16"/>
+<repository location="http://download.eclipse.org/releases/helios"/>
+</location>
+<location includeAllPlatforms="true" includeMode="slicer" type="InstallableUnit">
+<unit id="org.eclipse.pde.junit.runtime.standalone.feature.group" version="1.0.0.v20100831"/>
+<repository location="http://download.eclipse.org/releases/helios"/>
+</location>
+<location includeAllPlatforms="true" includeMode="slicer" type="InstallableUnit">
+<unit id="org.eclipse.gmf.feature.group" version="1.4.2.v20110201-1000-7d9A7FFYnmMD7_nYQqNhbc2tsgXc"/>
+<repository location="http://download.eclipse.org/releases/helios"/>
+</location>
+</locations>
+</target>

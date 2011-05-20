@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.byterefinery</groupId>
+	<artifactId>releng</artifactId>
+	<version>1.0.7-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<tycho-version>0.12.0</tycho-version>
+		<p2.repo>http://download.eclipse.org/releases/helios</p2.repo>
+	</properties>
+  
+  <repositories>
+    <repository>
+      <id>p2</id>
+      <layout>p2</layout>
+      <url>${p2.repo}</url>
+    </repository>
+  </repositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<resolver>p2</resolver>
+					<!-- 
+					<target>
+						<artifact>
+							<groupId>com.byterefinery</groupId>
+							<artifactId>releng</artifactId>
+							<version>${project.version}</version>
+							<classifier>RMBench</classifier>
+						</artifact>
+					</target>
+					 -->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<modules>
+		<module>../RMBench.diagramexport</module>
+		<module>../RMBench.doc</module>
+		<module>../RMBench.dtp</module>
+		<module>../RMBench.feature</module>
+		<module>../RMBench.main</module>
+		<module>../RMBench.update</module>
+	</modules>
+</project>
