@@ -3,22 +3,6 @@
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="lib" path="lib/itext-1.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.gmf.runtime.draw2d.ui.render_1.0.0.jar" sourcepath="/org.eclipse.gmf.runtime.draw2d.ui"/>
-	<classpathentry exported="true" kind="lib" path="lib/batik-1.6/batik-awt-util.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/batik-1.6/batik-bridge.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/batik-1.6/batik-css.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/batik-1.6/batik-dom.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/batik-1.6/batik-ext.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/batik-1.6/batik-extension.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/batik-1.6/batik-gui-util.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/batik-1.6/batik-gvt.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/batik-1.6/batik-parser.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/batik-1.6/batik-svg-dom.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/batik-1.6/batik-svggen.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/batik-1.6/batik-swing.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/batik-1.6/batik-transcoder.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/batik-1.6/batik-util.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/batik-1.6/batik-xml.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/velocity-1.4.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/velocity-dep-1.4.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>

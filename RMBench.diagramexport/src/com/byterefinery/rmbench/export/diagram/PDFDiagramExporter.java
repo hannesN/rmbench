@@ -17,7 +17,7 @@ import java.io.OutputStream;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.gmf.runtime.draw2d.ui.render.internal.graphics.GraphicsToGraphics2DAdaptor;
+import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.graphics.GraphicsToGraphics2DAdaptor;
 
 import com.byterefinery.rmbench.export.ExportPlugin;
 import com.byterefinery.rmbench.external.export.AbstractDiagramExporter;

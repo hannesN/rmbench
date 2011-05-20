@@ -18,7 +18,7 @@ import java.io.OutputStreamWriter;
 import org.apache.batik.svggen.SVGGraphics2DIOException;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.gmf.runtime.draw2d.ui.render.internal.svg.export.GraphicsSVG;
+import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.export.GraphicsSVG;
 
 import com.byterefinery.rmbench.export.ExportPlugin;
 import com.byterefinery.rmbench.external.export.AbstractDiagramExporter;
