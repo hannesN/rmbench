@@ -8,11 +8,12 @@ package com.byterefinery.rmbench.jdbc;
 import com.byterefinery.rmbench.RMBenchMessages;
 import com.byterefinery.rmbench.extension.DatabaseExtension;
 import com.byterefinery.rmbench.external.IDatabaseInfo;
-import com.byterefinery.rmbench.external.IURLSetupGroup;
 import com.byterefinery.rmbench.external.IMetaDataAccess.Factory;
+import com.byterefinery.rmbench.external.IURLSetupGroup;
 import com.byterefinery.rmbench.external.database.jdbc.IJdbcConnectAdapter;
 import com.byterefinery.rmbench.external.database.jdbc.JdbcConnectAdapter;
 import com.byterefinery.rmbench.external.database.jdbc.JdbcMetaDataAdapter;
+import com.byterefinery.rmbench.external.database.sql99.SQL99;
 import com.byterefinery.rmbench.util.database.SimpleURLSetupGroup;
 
 /**
@@ -23,13 +24,14 @@ import com.byterefinery.rmbench.util.database.SimpleURLSetupGroup;
  */
 public class MutableDriverInfo implements IDriverInfo {
 
-    private String className;
+    private final String className;
     private DatabaseExtension databaseExtension;
     
     private final boolean userIdNeeded;
     private final boolean passwordNeeded;
     
-    public MutableDriverInfo() {
+    public MutableDriverInfo(String className) {
+    	this.className = className;
         userIdNeeded = true;
         passwordNeeded = true;
     }
@@ -63,11 +65,7 @@ public class MutableDriverInfo implements IDriverInfo {
     }
 
     public IDatabaseInfo getDatabaseInfo() {
-        return databaseExtension.getDatabaseInfo();
-    }
-
-    public void setClassName(String className) {
-        this.className = className;
+        return databaseExtension != null ? databaseExtension.getDatabaseInfo() : SQL99.instance;
     }
 
     public void setDatabaseExtension(DatabaseExtension database) {

@@ -276,8 +276,7 @@ public class JdbcConnectionWizard extends Wizard implements IURLSetupGroup.Conte
             }
         }
         if(driverInfo == null) {
-            driverInfo = new MutableDriverInfo();
-            ((MutableDriverInfo)driverInfo).setClassName(className);
+            driverInfo = new MutableDriverInfo(className);
         }
     }
 
