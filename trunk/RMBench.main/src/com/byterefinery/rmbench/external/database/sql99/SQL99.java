@@ -37,9 +37,9 @@ public final class SQL99 extends DatabaseInfo {
     public static final IDataType INTEGER = new IntegralDataType(new String[]{"INTEGER", "INT"}); 
     public static final IDataType SMALLINT = new IntegralDataType("SMALLINT"); 
     public static final IDataType NUMERIC = 
-        new SizeScaleDataType(new String[]{"NUMERIC"}, 15, false, 10, 15, false, 2); 
+        new SizeScaleDataType(new String[]{"NUMERIC"}, 38, false, 18, 15, false, 2); 
     public static final IDataType DECIMAL = 
-        new SizeScaleDataType(new String[]{"DECIMAL", "DEC"}, 15, false, 10, 15, false, 2); 
+        new SizeScaleDataType(new String[]{"DECIMAL", "DEC"}, 38, false, 18, 15, false, 2); 
     public static final IDataType FLOAT = new IntegralDataType("FLOAT"); 
     public static final IDataType REAL = new IntegralDataType("REAL");
     public static final IDataType DOUBLE_PRECISION = 
@@ -63,7 +63,7 @@ public final class SQL99 extends DatabaseInfo {
                 IDataType.UNLIMITED_SIZE, false, 10);
     public static final IDataType NVARCHAR = 
         new SizeDataType(
-                new String[]{"NCHAR VARYING", "NATIONAL CHAR VARYING", "NATIONAL CHARACTER VARYING"}, 
+                new String[]{"NVARCHAR", "NCHAR VARYING", "NATIONAL CHAR VARYING", "NATIONAL CHARACTER VARYING"}, 
                 IDataType.UNLIMITED_SIZE, false, 100); 
     public static final IDataType CLOB = 
         new SizeDataType(
@@ -86,7 +86,7 @@ public final class SQL99 extends DatabaseInfo {
     public static final IDataType BOOLEAN = new IntegralDataType("BOOLEAN"); 
     
     public static final IDataType UNKNOWN = 
-        new SizeScaleDataType(new String[]{"UNKNOWN"}, IDataType.UNSPECIFIED_SIZE, false, 0, IDataType.UNSPECIFIED_SCALE, false, 0); 
+        new SizeScaleDataType(new String[]{"UNKNOWN"}, IDataType.UNLIMITED_SIZE, false, IDataType.UNSPECIFIED_SIZE, IDataType.UNLIMITED_SCALE, false, IDataType.UNSPECIFIED_SCALE); 
     
     public static SQL99 instance;
     
@@ -238,6 +238,9 @@ public final class SQL99 extends DatabaseInfo {
    	    case Types.BOOLEAN:
    	    	type = BOOLEAN;
     		break;
+   	    case Types.NVARCHAR:
+   	    	type = NVARCHAR;
+   	    	break;
     	default:
     		type = UNKNOWN;
     	}
