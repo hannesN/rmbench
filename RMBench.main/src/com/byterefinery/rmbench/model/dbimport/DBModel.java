@@ -118,7 +118,11 @@ public class DBModel {
         }
         
         public boolean accepts(String catalogName, String schemaName) {
-            return names != null && names.contains(schemaName);
+        	if(names == null) {
+        		return false;
+        	}
+        	String name = (catalogName != null && catalogName.length() > 0) ? catalogName + "." + schemaName : schemaName;
+            return names.contains(name);
         }
     }
     
