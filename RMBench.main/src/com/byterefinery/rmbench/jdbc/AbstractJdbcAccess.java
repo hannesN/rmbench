@@ -420,9 +420,11 @@ public abstract class AbstractJdbcAccess implements IDBAccess {
                     indexes.put(name, dbindex);
                 }
                 String colName = resultSet.getString(9);
-                String ascDesc = resultSet.getString(10);
-                
-                dbindex.addColumn(colName, !("D".equals(ascDesc)));
+                if(colName != null) {
+                	//SQLServer: colName is null on "Primary XML" indexes
+	                String ascDesc = resultSet.getString(10);
+	                dbindex.addColumn(colName, !("D".equals(ascDesc)));
+                }
             }
         }
         resultSet.close();
@@ -438,7 +440,7 @@ public abstract class AbstractJdbcAccess implements IDBAccess {
                     }
                 }
             }
-            if(doImport)
+            if(doImport && index.getColumnNames().length > 0)
                 table.addIndex(index);
         }
     }
