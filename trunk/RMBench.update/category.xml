@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/com.byterefinery.rmbench.feature_1.0.7.qualifier.jar" id="com.byterefinery.rmbench.feature" version="1.0.7.qualifier">
+      <category name="RMBench"/>
+   </feature>
+   <category-def name="RMBench" label="RMBench"/>
+</site>
