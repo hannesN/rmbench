@@ -99,9 +99,9 @@ public abstract class DatabaseInfo implements IDatabaseInfo {
      * @param standardName
      *            a name from the SQL99 database which is used for type conversion if no specific
      *            conversion is available
-     * @param the
-     *            priority of the database, it's used for conversion from the SQLStandard to the
-     *            Database The smaller the priority the higher the priority.
+     * @param priority
+     * 			  the priority of the database, used for conversion from the SQLStandard to the
+     *            Database. The smaller the value the higher the priority.
      * @return the registered type, which is the same as the <code>type</code> parameter
      */
     protected IDataType registerDataType(IDataType type, String standardName, int priority) {
@@ -122,9 +122,9 @@ public abstract class DatabaseInfo implements IDatabaseInfo {
      * @param standardName
      *            a name from the SQL99 database which is used for type conversion if no specific
      *            conversion is available
-     * @param the
-     *            priority of the database, it's used for conversion from the SQLStandard to the
-     *            Database The smaller the priority the higher the priority.
+     * @param priority
+     *            the priority of the database, used for conversion from the SQLStandard to the
+     *            Database. The smaller the value the higher the priority.
      * @return the registered data type
      */
     protected IDataType registerDataType(String name, String standardName, int priority) {
@@ -145,9 +145,9 @@ public abstract class DatabaseInfo implements IDatabaseInfo {
      * @param standardName
      *            a name from the SQL99 database which is used for type conversion if no specific
      *            conversion is available
-     * @param the
-     *            priority of the database, it's used for conversion from the SQLStandard to the
-     *            Database The smaller the priority the higher the priority.
+     * @param priority
+     *            the priority of the database, used for conversion from the SQLStandard to the
+     *            Database. The smaller the value the higher the priority.
      * @return the registered data type
      */
     protected IDataType registerDataType(String name, long maxSize, boolean sizeRequired,
@@ -163,9 +163,9 @@ public abstract class DatabaseInfo implements IDatabaseInfo {
      * @param standardName
      *            a name from the SQL99 database which is used for type conversion if no specific
      *            conversion is available
-     * @param the
-     *            priority of the database, it's used for conversion from the SQLStandard to the
-     *            Database The smaller the priority the higher the priority.
+     * @param priority
+     *            the priority of the database, used for conversion from the SQLStandard to the
+     *            Database. The smaller the value the higher the priority.
      * @return the registered data type
      */
     protected IDataType registerDataType(String[] names, String standardName, int priority) {
@@ -186,9 +186,9 @@ public abstract class DatabaseInfo implements IDatabaseInfo {
      * @param standardName
      *            a name from the SQL99 database which is used for type conversion if no specific
      *            conversion is available
-     * @param the
-     *            priority of the database, it's used for conversion from the SQLStandard to the
-     *            Database The smaller the priority the higher the priority.
+     * @param priority
+     *            the priority of the database, used for conversion from the SQLStandard to the
+     *            Database. The smaller the value the higher the priority.
      * @return the registered data type
      */
     protected IDataType registerDataType(String[] names, long maxSize, boolean sizeRequired,
@@ -219,9 +219,9 @@ public abstract class DatabaseInfo implements IDatabaseInfo {
      * @param standardName
      *            a name from the SQL99 database which is used for type conversion if no specific
      *            conversion is available
-     * @param the
-     *            priority of the database, it's used for conversion from the SQLStandard to the
-     *            Database The smaller the priority the higher the priority.
+     * @param priority
+     *            the priority of the database, used for conversion from the SQLStandard to the
+     *            Database. The smaller the value the higher the priority.
      * @return the registered data type
      */
     protected IDataType registerDataType(String[] names, long maxSize, boolean sizeRequired,
