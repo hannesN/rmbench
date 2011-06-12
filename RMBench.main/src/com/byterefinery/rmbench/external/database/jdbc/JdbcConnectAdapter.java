@@ -51,7 +51,8 @@ public class JdbcConnectAdapter implements IJdbcConnectAdapter {
     }
 
     public void release() throws SQLException {
-        connection.close();
+    	if(connection != null)
+    		connection.close();
         connection = null;
     }
 }

@@ -167,10 +167,28 @@ public final class SQL99 extends DatabaseInfo {
      * this implementation will match the datatype to the JDBC constant passed as the 
      * first parameter. If this is not possible, a special UNKNOWN type is returned
      */
-    public IDataType getDataType(int jdbcType, String typeName, long size, int scale) {
+    public IDataType getDataType(int jdbcType, String typeName, long size, int scale) 
+    {
+    	IDataType type = jdbcToType(jdbcType);
     	
-    	IDataType type;
+    	type = type.concreteInstance();
+    	if(type.acceptsSize())
+    		type.setSize(size);
+    	if(type.acceptsScale())
+    		type.setScale(scale);
     	
+    	return type;
+    }
+
+	/**
+	 * @param jdbcType a JDBC type ID as declared in {@link Types}
+	 * @return a corresponding SQL99 type object. Note that this may be the {@link #UNKNOWN} type. 
+	 * Also note that the type object should only be used to retrieve values or possibly to create 
+	 * a concrete instance (see {@link IDataType#concreteInstance()}
+	 */
+	public IDataType jdbcToType(int jdbcType) 
+	{
+		IDataType type;
     	switch(jdbcType) {
     	case Types.BIT:
     		type = BIT;
@@ -244,12 +262,6 @@ public final class SQL99 extends DatabaseInfo {
     	default:
     		type = UNKNOWN;
     	}
-    	type = type.concreteInstance();
-    	if(type.acceptsSize())
-    		type.setSize(size);
-    	if(type.acceptsScale())
-    		type.setScale(scale);
-    	
     	return type;
-    }
+	}
 }
