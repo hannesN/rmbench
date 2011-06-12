@@ -222,6 +222,11 @@
             className="com.byterefinery.rmbench.database.derby.Derby"
             id="derby"
             name="Apache Derby"/>
+      <database
+            className="com.byterefinery.rmbench.database.mssql.SQLServer2008"
+            id="sqlserver2008"
+            name="SQL Server 2008">
+      </database>
    </extension>
    <extension
          point="com.byterefinery.rmbench.jdbcDriverInfo">
@@ -308,12 +313,43 @@
             className="org.apache.derby.jdbc.EmbeddedDriver"
             database="derby"
             id="derby_embedded"
-            name="Derbey Embedded"
+            name="Derby Embedded"
             queryPassword="false"
             queryUserId="false">
          <setupWidget factory="com.byterefinery.rmbench.database.derby.EmbeddedURLSetupGroup$Factory"/>
          <databaseMetaData factory="com.byterefinery.rmbench.database.derby.DerbyJdbcMetaData$Factory"/>
          <connectAdapter factory="com.byterefinery.rmbench.database.derby.DerbyEmbeddedConnectAdapter$Factory"/>
+      </driver>
+      <driver
+            className="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+            database="sqlserver2008"
+            id="sqlserver2008"
+            name="SQL Server 2008"
+            queryPassword="true"
+            queryUserId="true">
+         <genericURL
+               pattern="jdbc:sqlserver://${host}:${port};databaseName=${database}">
+            <variable
+                  default="localhost"
+                  name="host"
+                  resourceName="jdbc_host"
+                  type="string"
+                  use="required">
+            </variable>
+            <variable
+                  default="1433"
+                  name="port"
+                  resourceName="jdbc_port"
+                  type="int"
+                  use="optional">
+            </variable>
+            <variable
+                  name="databaseName"
+                  resourceName="jdbc_database"
+                  type="string"
+                  use="required">
+            </variable>
+         </genericURL>
       </driver>
    </extension>
    <extension

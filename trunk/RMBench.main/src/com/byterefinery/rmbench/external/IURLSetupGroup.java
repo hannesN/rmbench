@@ -22,7 +22,7 @@ import com.byterefinery.rmbench.external.database.jdbc.IJdbcConnectAdapter;
 
 /**
  * A URLSetupGroup provides a widget implementation used by the wizard for creating a database
- * connection. The target of this widget ist to provide a user interface for editing the needed data
+ * connection. The purpose of this widget ist to provide a user interface for editing the needed data
  * to create a url for a jdbc connection.
  * @author Hannes Niederhausen
  */
