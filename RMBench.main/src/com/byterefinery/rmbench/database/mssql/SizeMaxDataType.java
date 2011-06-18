@@ -20,6 +20,8 @@ public class SizeMaxDataType extends SizeDataType
 {
 	public static final long MAX_VARSIZE = 2147483647;
 
+	private static final String MAX_POSTFIX = "(max)";
+	
 	private boolean isMax;
 	
 	public SizeMaxDataType(String[] names, long maxSize) {
@@ -37,16 +39,43 @@ public class SizeMaxDataType extends SizeDataType
 
 	public void setMax(boolean isMax) {
 		this.isMax = isMax;
+		this.size = isMax ? IDataType.UNSPECIFIED_SIZE : 1;
 	}
 
 	@Override
-	public void setSize(long size) {
-		if(size == MAX_VARSIZE) {
-			setMax(true);
-			super.setSize(maxSize); //for now
+	public String getDDLName() {
+		if(isMax) {
+            StringBuilder sb = new StringBuilder(getPrimaryName());
+            sb.append(MAX_POSTFIX);
+            return sb.toString();
 		}
 		else {
-			super.setSize(size);
+			return super.getDDLName();
 		}
+	}
+
+	@Override
+	public boolean acceptsSize() {
+		return !isMax;
+	}
+
+	@Override
+	public boolean requiresSize() {
+		return !isMax;
+	}
+
+	@Override
+	public boolean hasExtra() {
+		return true;
+	}
+
+	@Override
+	public String getExtra() {
+		return isMax ? MAX_POSTFIX : null;
+	}
+
+	@Override
+	public void setExtra(String extra) {
+		setMax(MAX_POSTFIX.equals(extra));
 	}
 }
