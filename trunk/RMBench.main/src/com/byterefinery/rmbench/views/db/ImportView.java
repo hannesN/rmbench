@@ -554,7 +554,7 @@ public class ImportView extends ViewPart {
         }
 
         public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-            monitor.beginTask(RMBenchMessages.ImportView_Loading_Message, 1);
+            monitor.beginTask(RMBenchMessages.ImportView_Loading_Message, IProgressMonitor.UNKNOWN);
             try {
                 dbmodel.load(shell);
             } 
