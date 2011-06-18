@@ -222,7 +222,7 @@ public class RMBenchPlugin extends AbstractUIPlugin {
      * @param message
      * @param params
      */
-    public static void logError(String message, Object[] arguments) {
+    public static void logError(String message, Object... arguments) {
 
         MessageFormat.format(message, arguments);
         plugin.getLog().log(new Status(
