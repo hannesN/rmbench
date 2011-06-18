@@ -230,6 +230,18 @@
                factory="com.byterefinery.rmbench.database.mssql.XMLTypeEditorFactory"
                type="XML">
          </extraTypeEditor>
+         <extraTypeEditor
+               factory="com.byterefinery.rmbench.database.mssql.SizeMaxTypeEditorFactory"
+               type="VARCHAR">
+         </extraTypeEditor>
+         <extraTypeEditor
+               factory="com.byterefinery.rmbench.database.mssql.SizeMaxTypeEditorFactory"
+               type="NVARCHAR">
+         </extraTypeEditor>
+         <extraTypeEditor
+               factory="com.byterefinery.rmbench.database.mssql.SizeMaxTypeEditorFactory"
+               type="VARBINARY">
+         </extraTypeEditor>
       </database>
    </extension>
    <extension

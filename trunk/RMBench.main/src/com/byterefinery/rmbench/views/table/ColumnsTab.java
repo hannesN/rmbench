@@ -563,9 +563,9 @@ public class ColumnsTab extends DetailsTabGroup.DetailTab {
                 case 5:
                     return column.getDefault();
                 case 6:
-                    return null;//column.getNullable() ? "Y" : "N"; //$NON-NLS-1$ //$NON-NLS-2$
+                    return null; //see image
                 case 7:
-                    return null;
+                    return null; //see image
                 case 8:
                     return column.getComment();
                 default:

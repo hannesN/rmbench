@@ -45,7 +45,7 @@ public class XMLDataTypeDialog extends Dialog
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		newShell.setText("XML Eigenschaften");
+		newShell.setText("XML Column Properties");
 		newShell.setMinimumSize(400, 150);
 	}
 	

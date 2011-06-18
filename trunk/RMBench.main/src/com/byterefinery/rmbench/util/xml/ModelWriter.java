@@ -184,7 +184,7 @@ public class ModelWriter implements XMLConstants {
             serializer.attribute(ATT_NAMESPACE,  Attributes.SIZE, String.valueOf(column.getSize()));
         if(dataType.acceptsScale())
             serializer.attribute(ATT_NAMESPACE,  Attributes.SCALE, String.valueOf(column.getScale()));
-        if(dataType.hasExtra())
+        if(dataType.hasExtra() && dataType.getExtra() != null)
             serializer.attribute(ATT_NAMESPACE,  Attributes.EXTRA, dataType.getExtra());
         if ((column.getDefault() != null) && (column.getDefault().length()>0)){
             serializer.startTag(NAMESPACE, Elements.DEFAULT);
