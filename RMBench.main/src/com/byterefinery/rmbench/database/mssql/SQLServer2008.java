@@ -19,6 +19,7 @@ public class SQLServer2008 extends DatabaseInfo {
 	private final IDataType VARCHAR = new SizeMaxDataType(new String[] {"VARCHAR", "CHARACTER VARYING"}, 8000);
 	private final IDataType NVARCHAR = new SizeMaxDataType(new String[] {"NVARCHAR", "NATIONAL CHARACTER.VARYING"}, 4000);
 	private final IDataType VARBINARY = new SizeMaxDataType(new String[] {"VARBINARY"}, 8000);
+	private final IDataType XML = new XMLDataType();
 	
 	public SQLServer2008() 
 	{
@@ -59,7 +60,7 @@ public class SQLServer2008 extends DatabaseInfo {
 		registerDataType("UNIQUEIDENTIFIER", SQL99.CHAR.getPrimaryName(), 1); 
 		registerDataType("SQL_VARIANT", SQL99.UNKNOWN.getPrimaryName(), 1);
 		
-		registerDataType("XML", SQL99.VARCHAR.getPrimaryName(), 1);
+		registerDataType(XML, SQL99.VARCHAR.getPrimaryName(), 1);
 	}
 
 	@Override
