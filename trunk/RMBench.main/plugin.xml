@@ -226,6 +226,10 @@
             className="com.byterefinery.rmbench.database.mssql.SQLServer2008"
             id="sqlserver2008"
             name="SQL Server 2008">
+         <extraTypeEditor
+               factory="com.byterefinery.rmbench.database.mssql.XMLTypeEditorFactory"
+               type="XML">
+         </extraTypeEditor>
       </database>
    </extension>
    <extension
