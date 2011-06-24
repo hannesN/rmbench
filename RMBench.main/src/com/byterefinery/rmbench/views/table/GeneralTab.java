@@ -85,24 +85,24 @@ public class GeneralTab extends DetailTab {
                             	nameText.setText(table.getName());
                         }
                         else if(event.info == COMMENT) {
-                            String cmt = table.getComment();
+                            String cmt = table.getComment() != null ? table.getComment() : "";
                             // check if new description is different from the text field text
                             // if so the changes come from anothre source than the text, and we change it
                             // if not the text field is the change source and we don't need to update it
                             // if we would do this anyway the caret of the text would jump to the start
                             // and after writing some letters you wrote a word in mirror writing
                             if (!cmt.equals(commentText.getText()))
-                            commentText.setText(cmt != null ? cmt : "");
+                               commentText.setText(cmt);
                         }
                         else if(event.info == DESCRITPION) {
-                            String dsc = table.getDescription();
+                            String dsc = table.getDescription() != null ? table.getDescription() : "";
                             //check if new description is different from the text field text
                             // if so the changes come from anothre source than the text, and we change it
                             // if not the text field is the change source and we don't need to update it
                             // if we would do this anyway the caret of the text would jump to the start
                             // and after writing some letters you wrote a word in mirror writing
                             if (!dsc.equals(descriptionText.getText()))
-                            	descriptionText.setText(dsc != null ? dsc : "");
+                               descriptionText.setText(dsc != null ? dsc : "");
                            
                         }
                         else if(event.info == SCHEMA) {
