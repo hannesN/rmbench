@@ -23,7 +23,7 @@ import org.eclipse.jface.viewers.ITableLabelProvider;
  * 
  * @author cse
  */
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class TableSorter implements Comparator {
     
     private int sortColumn;
@@ -41,7 +41,8 @@ public class TableSorter implements Comparator {
         return sortColumn;
     }
 
-    public void reverseOrder() {
+    @SuppressWarnings("unchecked")
+	public void reverseOrder() {
         ascending = !ascending;
         if(entries != null)
             java.util.Collections.sort(entries, this);
@@ -55,13 +56,15 @@ public class TableSorter implements Comparator {
         this.entries = entries;
     }
     
-    public void setSortColumn(int column) {
+    @SuppressWarnings("unchecked")
+	public void setSortColumn(int column) {
         sortColumn = column;
         if(entries != null)
             java.util.Collections.sort(entries, this);
     }
 
-    public void resort() {
+    @SuppressWarnings("unchecked")
+	public void resort() {
         if(entries != null)
             java.util.Collections.sort(entries, this);
     }

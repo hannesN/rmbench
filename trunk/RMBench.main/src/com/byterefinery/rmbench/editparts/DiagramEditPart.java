@@ -150,7 +150,7 @@ public class DiagramEditPart extends AbstractGraphicalEditPart
         return list;
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("rawtypes")
 	public Object getAdapter(Class adapter) {
         if (adapter == SnapToHelper.class) {
             Boolean val = (Boolean)getViewer().getProperty(SnapToGrid.PROPERTY_GRID_ENABLED);

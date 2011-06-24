@@ -72,7 +72,7 @@ class TreeNode implements IAdaptable, IExportable {
      * create a new node, using the given child elements for node types that 
      * do not have a child API of themselves (e.g., String) 
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("rawtypes")
 	private TreeNode(TreeNode parent, Object element, List childElements) {
         
         this.parent = parent;
@@ -298,7 +298,7 @@ class TreeNode implements IAdaptable, IExportable {
     /**
      * add schema elements represented by this node to the given list
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
 	public void addSchemaElements(List result) {
         if(element == RMBenchMessages.ModelView_TABLES_GROUP) {
             for (Iterator it = children.iterator(); it.hasNext();) {
@@ -333,7 +333,7 @@ class TreeNode implements IAdaptable, IExportable {
         return (Schema)currElement;
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "rawtypes" })
 	public Object getAdapter(Class adapter) {
         if (adapter == IPropertySource.class) {
             if (propertySource == null) {
