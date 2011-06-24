@@ -1,4 +1,0 @@
-#summary demonstration of how to import a database into a model
-= Introduction =
-
-This demo will show how to import an existing database into a RMBench model. We have SQLServer 2008 installed together with the AdventureWorks sample database.
