@@ -174,7 +174,6 @@ public class HTMLModelExporter implements IModelExporter {
      * @param diagramId index of diagram, the name of the file will be diagram_<i>id</i>
      * @param diagram the diagram to export
      */
-    @SuppressWarnings("unchecked")
 	private void createDiagramImage(int diagramId, IDiagram diagram, File targetDirectory) throws Exception {
         IFigure figure = DiagramRenderer.render(diagram);
         
@@ -218,7 +217,7 @@ public class HTMLModelExporter implements IModelExporter {
         //do some magic so we will draw the tables and connections with locations smaller than 0/0
         int minX = 0;
         int minY = 0;
-        for (Iterator it=tableLayer.getChildren().iterator(); it.hasNext();) {
+        for (Iterator<?> it=tableLayer.getChildren().iterator(); it.hasNext();) {
         	bounds=((IFigure) it.next()).getBounds();
         	if (bounds.y<minY)
         		minY=bounds.y;
@@ -358,7 +357,6 @@ public class HTMLModelExporter implements IModelExporter {
      * Creates the file tree and copies the css und js file to the new directory
      * @throws Exception
      */
-    @SuppressWarnings("unchecked")
 	private void createFileTree(File targetDirectory) throws Exception {
            // creating directory
         File tablesDirectory = new File(targetDirectory, "tables");
@@ -375,7 +373,7 @@ public class HTMLModelExporter implements IModelExporter {
 
         // get list of files in the image directory, need to be dynamically for template change
         // reasons
-        Enumeration fileEnumeration = ExportPlugin.getDefault().getBundle().getEntryPaths(
+        Enumeration<?> fileEnumeration = ExportPlugin.getDefault().getBundle().getEntryPaths(
                 templateDirectory+"/images");
         while (fileEnumeration.hasMoreElements()) {
             String fileName = (String) fileEnumeration.nextElement();
