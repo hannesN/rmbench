@@ -269,7 +269,7 @@ public class ModelCompareEditorInput extends CompareEditorInput implements IStor
             return false;
         }
 
-        @SuppressWarnings("unchecked")
+		@SuppressWarnings("rawtypes")
 		public Object getAdapter(Class adapter) {
             return null;
         }

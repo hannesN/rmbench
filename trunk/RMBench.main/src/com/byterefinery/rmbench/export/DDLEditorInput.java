@@ -104,7 +104,7 @@ public class DDLEditorInput implements IStorageEditorInput, IPersistableElement 
         return file != null ? file.getAbsolutePath() : Messages.ExportInput_ToolTip;
     }
 
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Object getAdapter(Class adapter) {
         return null;
     }
@@ -226,7 +226,7 @@ public class DDLEditorInput implements IStorageEditorInput, IPersistableElement 
             return false;
         }
 
-        @SuppressWarnings("unchecked")
+		@SuppressWarnings("rawtypes")
 		public Object getAdapter(Class adapter) {
             return null;
         }
