@@ -3,4 +3,4 @@
 
 This demo will show how to import an existing database into a RMBench model. We have SQLServer 2008 installed together with the AdventureWorks sample database. We start out with a new model, which we create from the project explorer (or any other eclipse view that allows creating new resources) using the "New" wizard:
 
-https://picasaweb.google.com/lh/photo/wrA8gZbVamLFUVqYU3_vtArhc-Aa1ufJh-hR-bYUmrs?feat=directlink
+https://lh3.googleusercontent.com/-ciAnF4z47YU/TgTbXrmwstI/AAAAAAAAABM/GNJ4W6O2f3k/s144/wizard_newmodel.png
