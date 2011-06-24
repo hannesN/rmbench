@@ -132,7 +132,7 @@ public class RMBenchPlugin extends AbstractUIPlugin {
         super.start(context);
         
         ISavedState lastState = 
-            ResourcesPlugin.getWorkspace().addSaveParticipant(this, saveParticipant);
+            ResourcesPlugin.getWorkspace().addSaveParticipant(RMBenchConstants.PLUGIN_ID, saveParticipant);
         
         if (lastState != null) {
             IPath location = lastState.lookup(new Path(RMBenchSaveParticipant.RMBENCHSTATE_XML));

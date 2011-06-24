@@ -779,7 +779,7 @@ public class ModelView extends ViewPart implements ISaveablePart {
         return isDirty();
     }
     
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "rawtypes" })
 	public Object getAdapter(Class adapter) {
         if (adapter == org.eclipse.ui.views.properties.IPropertySheetPage.class) {
             return RMBenchPropertySheetPage.getInstance(); 
