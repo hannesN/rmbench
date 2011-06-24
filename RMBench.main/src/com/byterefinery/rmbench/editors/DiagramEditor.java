@@ -518,7 +518,7 @@ public class DiagramEditor extends EditorPart implements ISelectionListener {
         return false;
     }
     
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("rawtypes")
 	public Object getAdapter(Class adapter) {
         // we need to handle common GEF elements we created
         if (adapter == GraphicalViewer.class || adapter == EditPartViewer.class)
@@ -669,7 +669,7 @@ public class DiagramEditor extends EditorPart implements ISelectionListener {
             return RMBenchMessages.DiagramEditor_tooltip;
         }
 
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings("rawtypes")
 		public Object getAdapter(Class adapter) {
             if(adapter == IPersistableElement.class)
                 return this;
