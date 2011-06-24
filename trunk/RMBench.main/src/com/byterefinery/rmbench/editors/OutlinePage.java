@@ -128,7 +128,7 @@ class OutlinePage extends ContentOutlinePage implements IAdaptable {
         super.dispose();
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("rawtypes")
 	public Object getAdapter(Class type) {
         if (type == ZoomManager.class)
             return editor.getViewer().getProperty(ZoomManager.class.toString());
