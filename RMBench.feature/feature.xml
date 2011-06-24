@@ -35,6 +35,23 @@
       <import plugin="org.eclipse.ui.console"/>
       <import plugin="org.eclipse.compare"/>
       <import plugin="org.eclipse.ui.workbench.texteditor"/>
+      <import plugin="org.eclipse.help"/>
+      <import plugin="org.eclipse.draw2d"/>
+      <import plugin="org.eclipse.jface"/>
+      <import plugin="org.apache.batik.bridge" version="1.6.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.batik.css" version="1.6.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.batik.dom" version="1.6.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.batik.dom.svg" version="1.6.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.batik.ext.awt" version="1.6.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.batik.parser" version="1.6.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.batik.pdf" version="1.6.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.batik.svggen" version="1.6.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.batik.transcoder" version="1.6.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.batik.util" version="1.6.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.batik.util.gui" version="1.6.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.batik.xml" version="1.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.datatools.connectivity"/>
+      <import feature="org.eclipse.gmf" match="greaterOrEqual"/>
    </requires>
 
    <plugin
