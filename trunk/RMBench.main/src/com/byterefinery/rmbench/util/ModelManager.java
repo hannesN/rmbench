@@ -39,6 +39,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IPartService;
+import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.dialogs.SaveAsDialog;
@@ -287,6 +288,17 @@ public class ModelManager {
         }
     }
 
+    /**
+     * @see #doSaveAs(Shell, IProgressMonitor)
+     * @param viewSite used to obtain shell and progressmonitor
+     */
+    public void doSaveAs(IViewSite viewSite) 
+    {
+        IProgressMonitor progressMonitor =
+            viewSite.getActionBars().getStatusLineManager().getProgressMonitor();
+        doSaveAs(viewSite.getShell(), progressMonitor);
+    }
+    
     /**
      * open a save as dialog to save the model to a new persistent store
      * 

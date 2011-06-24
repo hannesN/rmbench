@@ -761,10 +761,7 @@ public class ModelView extends ViewPart implements ISaveablePart {
     }
 
     public void doSaveAs() {
-        IProgressMonitor progressMonitor =
-            getViewSite().getActionBars().getStatusLineManager().getProgressMonitor();
-        
-        RMBenchPlugin.getModelManager().doSaveAs(getSite().getShell(), progressMonitor);
+        RMBenchPlugin.getModelManager().doSaveAs(getViewSite());
     }
     
     public boolean isDirty() {

@@ -7,11 +7,14 @@ package com.byterefinery.rmbench.views.table;
 
 import java.text.MessageFormat;
 
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.ISaveablePart;
 import org.eclipse.ui.IViewSite;
+import org.eclipse.ui.IWorkbenchPartConstants;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.operations.UndoRedoActionGroup;
 import org.eclipse.ui.part.ViewPart;
@@ -33,7 +36,7 @@ import com.byterefinery.rmbench.util.ModelManager;
  *  
  * @author cse
  */
-public class TableDetailsView extends ViewPart {
+public class TableDetailsView extends ViewPart implements ISaveablePart {
 
     public static final String VIEW_ID = "com.byterefinery.rmbench.tabledetailsview";
     
@@ -89,6 +92,7 @@ public class TableDetailsView extends ViewPart {
 		}
 
 		public void dirtyStateChanged(Model model, boolean isDirty) {
+            firePropertyChange(IWorkbenchPartConstants.PROP_DIRTY);
 		}
     };
     
@@ -160,4 +164,24 @@ public class TableDetailsView extends ViewPart {
             setPartName(getSite().getRegisteredName());
         }
 	}
+
+    public void doSave(IProgressMonitor progressMonitor) {
+        RMBenchPlugin.getModelManager().doSave(getSite().getShell(), progressMonitor);
+    }
+
+    public void doSaveAs() {
+        RMBenchPlugin.getModelManager().doSaveAs(getViewSite());
+    }
+    
+    public boolean isDirty() {
+        return RMBenchPlugin.getModelManager().isDirty();
+    }
+
+    public boolean isSaveAsAllowed() {
+        return true;
+    }
+
+    public boolean isSaveOnCloseNeeded() {
+        return isDirty();
+    }
 }
