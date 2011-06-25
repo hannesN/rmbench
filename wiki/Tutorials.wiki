@@ -7,3 +7,4 @@ This section will provide links to tutorials thaht demonstrate common tasks in R
 
 = Links =
   * [ImportingModelFromSqlServer importing a model from SQLServer 2008]
+  * [StartModelling starting out with modelling in RMBench]
