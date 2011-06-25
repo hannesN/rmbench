@@ -1,4 +1,5 @@
 #summary here we collect tutorials for common tasks
+#labels Featured
 
 = Introduction =
 
