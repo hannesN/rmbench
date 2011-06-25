@@ -2,7 +2,7 @@
 
 = Introduction =
 
-In this tutorial we will demonstrate how to import database metadata from an existing database. We will use SQLServer 2008 and the AdventureWorks sample database.
+In this tutorial we will demonstrate how to import database metadata from an existing database. We will use SQLServer 2008 and the !AdventureWorks sample database.
 
 
 = Details =
@@ -11,6 +11,6 @@ First we need a model that we can import into. As with any resource maintained i
 
 <wiki:video url="http://www.youtube.com/watch?v=-P9a_uY2JaE" width="798" height="568"/>
 
-The next vide shows how we create a connection to the database, and import the database metadata into RMBench. Note that import is always done first into an intermediary "import model", from which furter import into the model proper can proceed. After that, we create a new diagram and pull the contents of one database catalog into the new diagram for graphical display:
+The next video shows how we create a connection to the database, and import the database metadata into RMBench. Note that import is always done first into an intermediary "import model", from which furter import into the model proper can proceed. After that, we create a new diagram and pull the contents of one database catalog into the new diagram for graphical display:
 
 <wiki:video url="http://www.youtube.com/watch?v=W5i9rQt-cd8" width="798" height="568"/>
