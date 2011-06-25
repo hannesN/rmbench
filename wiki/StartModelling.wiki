@@ -1,4 +1,4 @@
-#summary fist modelling steps in RMBench
+#summary demo: fist modelling steps in RMBench
 
 = Introduction =
 
