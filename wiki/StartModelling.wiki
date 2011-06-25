@@ -13,4 +13,4 @@ when we have a large database model, for example one that was loaded from an exi
 
 In the following video, we start out with a big model for which we have created one diagram which shows all tables an relationships. Clearly, it is hard to overlook the whole picture. We therrefore proceed to create a second diagram in which we only show certain details pertaining to the Employee entity. Note how table relationships pointing to entities outside the current diagram are depiected with a little rectangle outside the top corner of a table figure. Note also how the referenced tables are shown when you hover the mouse pointer over the little rectangle:
 
-<wiki:video url="http://www.youtube.com/watch?v=2A9tEs-ZPwQ" with="798" height="568"/>
+<wiki:video url="http://www.youtube.com/watch?v=2A9tEs-ZPwQ" with="425" height="344"/>
