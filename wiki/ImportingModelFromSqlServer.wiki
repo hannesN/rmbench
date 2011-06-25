@@ -1,0 +1,12 @@
+#summary demo: importing database metadata
+
+= Introduction =
+
+In this tutorial we will demonstrate how to import database metadata from an existing database. We will use SQLServer 2008 and the AdventureWorks sample database.
+
+
+= Details =
+
+First we need a model that we can import into. As with any resource maintained in eclipse, we also need a project that the model can be stored into. If you dont already have one, you can create the project the usual eclipse way. It does not matter what kind of project this is. Then you can create a new model using the "New" wizard, as shown in the following video
+
+<wiki:video url="http://www.youtube.com/watch?v=3LkNlTNHZzE"/>
