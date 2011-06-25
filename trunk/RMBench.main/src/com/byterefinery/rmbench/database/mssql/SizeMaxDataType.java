@@ -55,6 +55,14 @@ public class SizeMaxDataType extends SizeDataType
 	}
 
 	@Override
+	public void setSize(long size) {
+		if(size == MAX_VARSIZE)
+			setMax(true);
+		else
+			super.setSize(size);
+	}
+
+	@Override
 	public boolean acceptsSize() {
 		return !isMax;
 	}
