@@ -1,4 +1,5 @@
 #summary this page describes the installation steps
+#labels Featured
 
 = Installing RMBench =
 
