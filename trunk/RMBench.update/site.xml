@@ -6,6 +6,9 @@
    <feature url="features/com.byterefinery.rmbench_1.0.6.jar" id="com.byterefinery.rmbench.feature" version="1.0.6">
       <category name="RMBench"/>
    </feature>
+   <feature url="features/com.byterefinery.rmbench.feature_1.0.7.201106261548.jar" id="com.byterefinery.rmbench.feature" version="1.0.7.201106261548">
+      <category name="RMBench"/>
+   </feature>
    <category-def name="RMBench" label="RMBench">
       <description>
          RMBench Relational Modeller Plugin
