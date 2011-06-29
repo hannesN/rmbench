@@ -321,4 +321,26 @@ public class Table {
         }
         return false;
     }
+
+    /**
+     * check if all columns named in the parameter are available in this table
+     * @param columnNames
+     * @return the name of the first missing column, or null if all available
+     */
+	public String checkColumns(String[] columnNames) {
+		
+		for (String colName : columnNames) {
+			boolean found = false;
+			for (Column column : columns) {
+				if(column.getName().equalsIgnoreCase(colName)) {
+					found = true;
+					continue;
+				}
+			}
+			if(!found) {
+				return colName;
+			}
+		}
+		return null;
+	}
 }
