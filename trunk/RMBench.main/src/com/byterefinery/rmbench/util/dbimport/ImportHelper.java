@@ -14,8 +14,6 @@ package com.byterefinery.rmbench.util.dbimport;
 
 import java.io.IOException;
 import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.ui.console.MessageConsoleStream;
@@ -27,7 +25,6 @@ import com.byterefinery.rmbench.model.Model;
 import com.byterefinery.rmbench.model.dbimport.DBColumn;
 import com.byterefinery.rmbench.model.dbimport.DBForeignKey;
 import com.byterefinery.rmbench.model.dbimport.DBIndex;
-import com.byterefinery.rmbench.model.dbimport.DBSchema;
 import com.byterefinery.rmbench.model.dbimport.DBTable;
 import com.byterefinery.rmbench.model.schema.Column;
 import com.byterefinery.rmbench.model.schema.ForeignKey;
@@ -46,31 +43,6 @@ public class ImportHelper {
 
     private MessageConsoleStream errorStream, infoStream;
     
-    /**
-     * @deprecated
-     * import schema metadata into a given model, creating the appropriate model representations
-     * 
-     * @param dbschema the schema metadata
-     * @param model the target model
-     * @return the new model schema object that corresponds to this object
-     */
-    public Schema importSchema(DBSchema dbschema, Model model) {
-        Schema newSchema = 
-            new Schema(dbschema.getCatalogName(), dbschema.getName(), model.getDatabaseInfo());
-        
-        model.addSchema(newSchema);
-        List<DBForeignKey> foreignKeys = new ArrayList<DBForeignKey>();
-        for (DBTable table : dbschema.getTables()) {
-            foreignKeys.addAll(table.getForeignKeys());
-            importTable(table, newSchema);
-        }
-        for (DBForeignKey fk : foreignKeys) {
-            importForeignKey(fk, model);
-        }
-        
-        return newSchema;
-    }
-
     /**
      * import table metadata into a given schema, creating the appropriate model representations
      * 

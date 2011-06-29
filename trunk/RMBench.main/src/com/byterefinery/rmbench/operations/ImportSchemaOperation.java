@@ -130,7 +130,7 @@ public class ImportSchemaOperation extends ModelMultiOperation {
                         ImportMessages.importTable_errorParentSchema,
                         new Object[]{table.getName(), table.getSchemaName()}
                         );
-                RMBenchPlugin.logError(message);
+                importHelper.getErrorStream().println(message);
             }
         }
     }
@@ -145,7 +145,7 @@ public class ImportSchemaOperation extends ModelMultiOperation {
                         ImportMessages.importForeignKey_errorTargetSchema,
                         new Object[]{fkey.name, fkey.targetSchema}
                         );
-                RMBenchPlugin. logError(msg);
+                importHelper.getErrorStream().println(msg);
                 continue;
             }
             // check target table
@@ -154,13 +154,24 @@ public class ImportSchemaOperation extends ModelMultiOperation {
                         ImportMessages.importForeignKey_errorTargetTable,
                         new Object[]{fkey.name, fkey.targetTable}
                         );
-                RMBenchPlugin.logError(msg);
+                importHelper.getErrorStream().println(msg);
+                continue;
+            }
+            // Since this method has to be called AFTER processTables(), modelTable must exist.
+            Table modelTable = model.getSchema(fkey.table.getSchemaName()).getTable(fkey.table.getName());
+            
+            // check table columns
+            String colName = modelTable.checkColumns(fkey.getColumns());
+            if(colName != null){
+                String msg = MessageFormat.format(
+                        ImportMessages.importForeignKey_errorTargetTableColumns,
+                        new Object[]{fkey.name, colName, fkey.table.getName()}
+                        );
+                importHelper.getErrorStream().println(msg);
                 continue;
             }
 
             //target schema and table are ok --> check for duplicate entry in model
-            Table modelTable = model.getSchema(fkey.table.getSchemaName()).getTable(fkey.table.getName());
-            // Since this method has to be called AFTER processTables(), modelTable must exist.
             boolean doImport = true;
             for(ForeignKey fk : modelTable.getForeignKeys())
                 if(fk.getName().equals(fkey.name)){

@@ -20,6 +20,7 @@ import org.eclipse.osgi.util.NLS;
 public class ImportMessages {
 
     public static String importForeignKey_errorTargetTable;
+    public static String importForeignKey_errorTargetTableColumns;
     public static String importForeignKey_errorTargetSchema;
     public static String importColumn_errorConvertType;
     public static String importTable_errorParentSchema;
