@@ -2,7 +2,7 @@
 <feature
       id="com.byterefinery.rmbench.feature"
       label="%featureName"
-      version="1.0.7.qualifier"
+      version="1.0.8.qualifier"
       provider-name="ByteRefinery">
 
    <description url="http://www.rmbench.com">
