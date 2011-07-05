@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Native Database info</title>
+<style type="text/css">@import url("file:/C:/Users/cse/work/eclipse-run/eclipse-rcp-helios-SR2/configuration/org.eclipse.osgi/bundles/204/1/.cp/book.css");</style>
+<style type="text/css">@import url("file:/C:/Users/cse/work/eclipse-run/eclipse-rcp-helios-SR2/configuration/org.eclipse.osgi/bundles/216/1/.cp/schema.css");</style>
+</HEAD>
+<BODY>
+<H1 style="text-align:center">Native Database info</H1>
+<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>com.byterefinery.rmbench.databaseInfo<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Since: </h6>1.0
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Description: </h6>This extension point is used to add support for specific database products<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Configuration Markup:</h6>
+<p></p>
+<p class="code SchemaDtd">&lt;!ELEMENT <a name="e.extension">extension</a> (<a href="#e.database">database</a>+)&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST extension</p>
+<p class="code SchemaDtdAttlist">point&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">name&nbsp;&nbsp;CDATA #IMPLIED</p>&gt;</p>
+<p></p>
+<ul class="ConfigMarkupAttlistDesc">
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.database">database</a> (<a href="#e.extraTypeEditor">extraTypeEditor</a>*)&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST database</p>
+<p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">className&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">messageProvider&nbsp;CDATA "com.byterefinery.rmbench.external.database.DBMessageProvider"</p>&gt;</p>
+<p></p>
+<p class="ConfigMarkupElementDesc">
+description of a native database</p>
+<br>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>id</b> - a unique identifier for this element</li>
+<li><b>name</b> - the displayable and translatable name for this element</li>
+<li><b>className</b> - the name of a class that implements <em class="Code">com.byterefinery.rmbench.extension.IDatabaseInfo</em> interface</li>
+<li><b>messageProvider</b> - name of a class that implements the <em class="code">com.byterefinery.rmbench.external.IMessageProvider</em> interface. By default, this will be set to <em class="code">com.byterefinery.rmbench.external.database.DBMessageProvider</em></li>
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.extraTypeEditor">extraTypeEditor</a> EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST extraTypeEditor</p>
+<p class="code SchemaDtdAttlist">type&nbsp;&nbsp;&nbsp;&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">factory&nbsp;CDATA #REQUIRED</p>&gt;</p>
+<p></p>
+<p class="ConfigMarkupElementDesc">
+an association between a data type identifier and a custom type editor which is used to configure the type in a database-specific manner</p>
+<br>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>type</b> - the identifier of a data type registered with this database</li>
+<li><b>factory</b> - name of a class that implements the <em>com.byterefinery.rmbench.external.IDataTypeEditorFactory</em> interface. Only one instance of this class will be created. It is responsible for creating editors as required</li>
+</ul>
+<br><h6 class="CaptionFigColumn SchemaHeader">Examples: </h6><pre class="Example"><span class="code SchemaTag">
+&lt;extension point=</span><span class="code SchemaCstring">&quot;com.byterefinery.rmbench.databaseInfo&quot;</span><span class="code SchemaTag">&gt;
+ &lt;database className=</span><span class="code SchemaCstring">&quot;com.mycorp.rmbench.SuperDatabase&quot;</span><span class="code SchemaTag"> name=</span><span class="code SchemaCstring">&quot;SuperDB&quot;</span><span class="code SchemaTag">/&gt;
+&lt;/extension&gt;
+</span></pre>
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">API Information: </h6>The class named in the className attribute must implement the <em class="Code">com.byterefinery.rmbench.external.IDatabaseInfo</em> interface.<p>
+The class named in the optional messageProvider attribute must implement the <em class="code">com.byterefinery.rmbench.external.IMessageProvider</em> interface.
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Supplied Implementation: </h6>The RMBench base product comes with implementations for a number of common database products, such as Oracle and PostgreSQL. There is also a generic implementation that mirrors the SQL:99 standard.
+<p></p>
+
+<br>
+<p class="note SchemaCopyright">
+&copy; 2009, ByteRefinery
+
+</p>
+</BODY>
+</HTML>
