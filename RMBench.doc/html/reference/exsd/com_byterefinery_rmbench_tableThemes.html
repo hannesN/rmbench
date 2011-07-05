@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Table Themes</title>
+<style type="text/css">@import url("file:/C:/Users/cse/work/eclipse-run/eclipse-rcp-helios-SR2/configuration/org.eclipse.osgi/bundles/204/1/.cp/book.css");</style>
+<style type="text/css">@import url("file:/C:/Users/cse/work/eclipse-run/eclipse-rcp-helios-SR2/configuration/org.eclipse.osgi/bundles/216/1/.cp/schema.css");</style>
+</HEAD>
+<BODY>
+<H1 style="text-align:center">Table Themes</H1>
+<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>com.byterefinery.rmbench.tableThemes<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Since: </h6>1.0
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Description: </h6>This extension point allows the definition of table color schemes (aka themes). A theme can redefine the background and foreground colors for the title and the body area of a table figure. It can then be associated with a table type to cause the thus typed tables to be shown with the given color scheme.<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Configuration Markup:</h6>
+<p></p>
+<p class="code SchemaDtd">&lt;!ELEMENT <a name="e.extension">extension</a> (<a href="#e.theme">theme</a>+)&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST extension</p>
+<p class="code SchemaDtdAttlist">point&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">name&nbsp;&nbsp;CDATA #IMPLIED</p>&gt;</p>
+<p></p>
+<ul class="ConfigMarkupAttlistDesc">
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.theme">theme</a> EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST theme</p>
+<p class="code SchemaDtdAttlist">titleBackground&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">titleForeground&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">bodyBackground&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">bodyForeground&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">label&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p>&gt;</p>
+<p></p>
+<p class="ConfigMarkupElementDesc">
+a theme represents a group of color definitions that can be associated with a table type and thus be applied to a table</p>
+<br>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>titleBackground</b> - the title background color as a comma-separated RGB value</li>
+<li><b>titleForeground</b> - the title foreground color as a comma-separated RGB value</li>
+<li><b>bodyBackground</b> - the table body background color as a comma-separated RGB value</li>
+<li><b>bodyForeground</b> - the table body foreground color as a comma-separated RGB value</li>
+<li><b>id</b> - a unique ID for this element</li>
+<li><b>label</b> - a displayable, translatable label. If absent, the ID will be used for presentation purposes</li>
+</ul>
+<br><h6 class="CaptionFigColumn SchemaHeader">Examples: </h6><pre class="Example"><span class="code SchemaTag">
+   &lt;extension
+         point=</span><span class="code SchemaCstring">&quot;com.byterefinery.rmbench.tableThemes&quot;</span><span class="code SchemaTag">&gt;
+      &lt;theme
+            bodyBackground=</span><span class="code SchemaCstring">&quot;229,229,229&quot;</span><span class="code SchemaTag">
+            id=</span><span class="code SchemaCstring">&quot;theme1&quot;</span><span class="code SchemaTag">
+            label=</span><span class="code SchemaCstring">&quot;Theme 1&quot;</span><span class="code SchemaTag">
+            titleBackground=</span><span class="code SchemaCstring">&quot;50,195,50&quot;</span><span class="code SchemaTag">/&gt;
+      &lt;theme
+            bodyBackground=</span><span class="code SchemaCstring">&quot;255,255,0&quot;</span><span class="code SchemaTag">
+            id=</span><span class="code SchemaCstring">&quot;theme2&quot;</span><span class="code SchemaTag">
+            label=</span><span class="code SchemaCstring">&quot;Theme 2&quot;</span><span class="code SchemaTag">
+            titleBackground=</span><span class="code SchemaCstring">&quot;255,165,0&quot;</span><span class="code SchemaTag">/&gt;
+   &lt;/extension&gt;
+</span></pre>
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Supplied Implementation: </h6>RMBench comes with a set of table themes and table types which can be used to distinguish tables in a model
+<p></p>
+
+<br>
+<p class="note SchemaCopyright">
+&copy; 2009, ByteRefinery
+
+</p>
+</BODY>
+</HTML>

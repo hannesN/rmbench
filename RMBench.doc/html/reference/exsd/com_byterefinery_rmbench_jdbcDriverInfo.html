@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Jdbc Driver Info</title>
+<style type="text/css">@import url("file:/C:/Users/cse/work/eclipse-run/eclipse-rcp-helios-SR2/configuration/org.eclipse.osgi/bundles/204/1/.cp/book.css");</style>
+<style type="text/css">@import url("file:/C:/Users/cse/work/eclipse-run/eclipse-rcp-helios-SR2/configuration/org.eclipse.osgi/bundles/216/1/.cp/schema.css");</style>
+</HEAD>
+<BODY>
+<H1 style="text-align:center">Jdbc Driver Info</H1>
+<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>com.byterefinery.rmbench.jdbcDriverInfo<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Since: </h6>1.0
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Description: </h6>this extension point allows the integration of JDBC drivers for use during the reverse and forward engineering processes. A JDBC driver is associated with a database product and must provide data about its required configuration<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Configuration Markup:</h6>
+<p></p>
+<p class="code SchemaDtd">&lt;!ELEMENT <a name="e.extension">extension</a> (<a href="#e.driver">driver</a>+)&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST extension</p>
+<p class="code SchemaDtdAttlist">point&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">name&nbsp;&nbsp;CDATA #IMPLIED</p>&gt;</p>
+<p></p>
+<ul class="ConfigMarkupAttlistDesc">
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.driver">driver</a> ((<a href="#e.setupWidget">setupWidget</a> | <a href="#e.genericURL">genericURL</a> | <a href="#e.jdbcURL">jdbcURL</a>) , <a href="#e.databaseMetaData">databaseMetaData</a>? , <a href="#e.connectAdapter">connectAdapter</a>?)&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST driver</p>
+<p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">className&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">database&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">queryUserId&nbsp;&nbsp;&nbsp;(true | false) "true"</p><p class="code SchemaDtdAttlist">queryPassword&nbsp;(true | false) "true"</p>&gt;</p>
+<p></p>
+<p class="ConfigMarkupElementDesc">
+description of a JDBC driver for a specific database product</p>
+<br>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>id</b> - a unique ID for this element</li>
+<li><b>name</b> - the user-visible name of this driver</li>
+<li><b>className</b> - the name of the class that implements the JDBC driver</li>
+<li><b>database</b> - the ID of a database extension which describes the native database this driver connects to. The name must resolve to a <em class="Code">com.byterefinery.rmbench.databaseInfo</em> extension declared elsewhere</li>
+<li><b>queryUserId</b> - a flag whether a login id is needed for the connection or not</li>
+<li><b>queryPassword</b> - a flag whether a password is needed for the connection or not</li>
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.setupWidget">setupWidget</a> EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST setupWidget</p>
+<p class="code SchemaDtdAttlist">factory&nbsp;CDATA #REQUIRED</p>&gt;</p>
+<p></p>
+<p class="ConfigMarkupElementDesc">
+this element allows full control over the creation of widgets used in the wizard dialog during the setup of a database connection. Either this element or a <em class="Code">xxxURL</em> element must be present</p>
+<br>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>factory</b> - class name of a factory class that is used to create the setup control. Must extend the <em class="Code">com.byterefinery.rmbench.extension.URLSetupGroup.Factory</em> class</li>
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.genericURL">genericURL</a> (<a href="#e.variable">variable</a>*)&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST genericURL</p>
+<p class="code SchemaDtdAttlist">pattern&nbsp;CDATA #IMPLIED</p>&gt;</p>
+<p></p>
+<p class="ConfigMarkupElementDesc">
+this element allows to describe the connection URL with all variables expected by the driver. Appropriate widgets will be created dynamically at runtime to configure the database connection</p>
+<br>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>pattern</b> - a pattern describing the URL. The pattern can contain variable references designated by the ${name} syntax. Each variable that appears in the URL pattern must be further described in a <em class="Code">variable</em> subelement.</li>
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.variable">variable</a> EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST variable</p>
+<p class="code SchemaDtdAttlist">name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">resourceName&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(int|java-name|string|boolean) </p><p class="code SchemaDtdAttlist">use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(optional|required) </p><p class="code SchemaDtdAttlist">default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p>&gt;</p>
+<p></p>
+<p class="ConfigMarkupElementDesc">
+Description of a variable that appears in the URL pattern</p>
+<br>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>name</b> - the name of the variable - exactly as it appears between the ${} delimiters in the pattern</li>
+<li><b>resourceName</b> - the name under which the field label is looked up from the resource. If this attribute is used, the name given should correspond to an entry in the resource bundle of the declaring plugin. The value resulting from the lookup will be used as field label at runtime. If absent, the the variable name will be used as label.</li>
+<li><b>type</b> - the data type of the variable, used for field validation. One of <em class="Code">int, java-name, string or boolean</em></li>
+<li><b>use</b> - determines whether this is an optional or required variable</li>
+<li><b>default</b> - a default value for the variable. Must be compatible with the type</li>
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.databaseMetaData">databaseMetaData</a> EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST databaseMetaData</p>
+<p class="code SchemaDtdAttlist">factory&nbsp;CDATA #IMPLIED</p>&gt;</p>
+<p></p>
+<p class="ConfigMarkupElementDesc">
+allows specifying a database metadata adapter for this driver</p>
+<br>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>factory</b> - name of the factory class for creating the database metadata adapter. It must implement the interface com.byterefinery.rmbench.extension.IMetaDataAccess.Factory</li>
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.jdbcURL">jdbcURL</a> EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST jdbcURL</p>
+<p class="code SchemaDtdAttlist">defaulthost&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">protocol&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">defaultport&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">defaultdb&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p>&gt;</p>
+<p></p>
+<p class="ConfigMarkupElementDesc">
+This element describes a standard jdbc url in the form: jdbc:protocol:[//host[:port]/]database.</p>
+<br>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>defaulthost</b> - The default host used by the jdbc url.</li>
+<li><b>protocol</b> - The protocol used by the url, usually it't the name of the database, e.g. mysql
+its the string between <i>jdbc:</i> and the following <i>:</i>
+This would result in an url like jdbc:mysql: ...</li>
+<li><b>defaultport</b> - The default port used by the jdbc url.</li>
+<li><b>defaultdb</b> - The default database used by the jdbc url.</li>
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.connectAdapter">connectAdapter</a> EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST connectAdapter</p>
+<p class="code SchemaDtdAttlist">factory&nbsp;CDATA #IMPLIED</p>&gt;</p>
+<p></p>
+<p class="ConfigMarkupElementDesc">
+allows specification of a connect adapter</p>
+<br>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>factory</b> - this attribute specifies a factory for connect adapters. It must implement the <code>com.byterefinery.rmbench.external.database.jdbc.IJdbcConnectAdapter.Factory</code> interface. A connect adapter is used to intercept connect and close invocations.</li>
+</ul>
+<br><h6 class="CaptionFigColumn SchemaHeader">Examples: </h6><pre class="Example"><span class="code SchemaTag">&lt;extension point=</span><span class="code SchemaCstring">&quot;com.byterefinery.rmbench.jdbcDriverInfo&quot;</span><span class="code SchemaTag">&gt;
+ &lt;driver className=</span><span class="code SchemaCstring">&quot;org.superdb.Driver&quot;</span><span class="code SchemaTag"> database=</span><span class="code SchemaCstring">&quot;SuperDB&quot;</span><span class="code SchemaTag"> name=</span><span class="code SchemaCstring">&quot;SuperDBJdbc&quot;</span><span class="code SchemaTag">&gt;
+  &lt;setupURL pattern=</span><span class="code SchemaCstring">&quot;jdbc:superdb://${host}:${port}/${database}&quot;</span><span class="code SchemaTag">&gt;
+   &lt;variable name=</span><span class="code SchemaCstring">&quot;host&quot;</span><span class="code SchemaTag"> 
+    default=</span><span class="code SchemaCstring">&quot;localhost&quot;</span><span class="code SchemaTag"> 
+    resourceName=</span><span class="code SchemaCstring">&quot;jdbc_host&quot;</span><span class="code SchemaTag">
+    type=</span><span class="code SchemaCstring">&quot;string&quot;</span><span class="code SchemaTag">
+    use=</span><span class="code SchemaCstring">&quot;required&quot;</span><span class="code SchemaTag">/&gt;
+   &lt;variable
+    name=</span><span class="code SchemaCstring">&quot;port&quot;</span><span class="code SchemaTag">
+    default=</span><span class="code SchemaCstring">&quot;5432&quot;</span><span class="code SchemaTag">
+    resourceName=</span><span class="code SchemaCstring">&quot;jdbc_port&quot;</span><span class="code SchemaTag">
+    type=</span><span class="code SchemaCstring">&quot;int&quot;</span><span class="code SchemaTag">
+    use=</span><span class="code SchemaCstring">&quot;optional&quot;</span><span class="code SchemaTag">/&gt;
+   &lt;variable
+    name=</span><span class="code SchemaCstring">&quot;database&quot;</span><span class="code SchemaTag">
+    resourceName=</span><span class="code SchemaCstring">&quot;jdbc_database&quot;</span><span class="code SchemaTag">
+    type=</span><span class="code SchemaCstring">&quot;string&quot;</span><span class="code SchemaTag">
+    use=</span><span class="code SchemaCstring">&quot;required&quot;</span><span class="code SchemaTag">/&gt;
+  &lt;/setupURL&gt;
+ &lt;/driver&gt;
+&lt;/extension&gt;</span></pre>
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Supplied Implementation: </h6>RMBench comes with driver configurations for different database products, like Oracle and PostgreSQL
+<p></p>
+
+<br>
+<p class="note SchemaCopyright">
+&copy; 2009, ByteRefinery
+
+</p>
+</BODY>
+</HTML>
