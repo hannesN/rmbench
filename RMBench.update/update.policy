@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<update-policy>
-	<url-map pattern="com.byterefinery.rmbench" url="file:/home/cse/work/eclipse/RMBench.update"/>
-</update-policy>
