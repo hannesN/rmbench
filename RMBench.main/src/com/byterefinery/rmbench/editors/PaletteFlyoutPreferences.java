@@ -9,6 +9,7 @@ import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.gef.ui.palette.FlyoutPaletteComposite.FlyoutPreferences;
 
 import com.byterefinery.rmbench.RMBenchPlugin;
+import com.byterefinery.rmbench.preferences.PreferenceHandler;
 
 
 /**
@@ -21,7 +22,7 @@ public class PaletteFlyoutPreferences implements FlyoutPreferences {
 
     protected static final String PALETTE_DOCK_LOCATION = "Dock location";
     protected static final String PALETTE_SIZE = "Palette Size";
-    protected static final String PALETTE_STATE = "Palette state";
+
 
     //@see org.eclipse.gef.ui.palette.FlyoutPaletteComposite.FlyoutPreferences#getDockLocation()
     public int getDockLocation() {
@@ -34,7 +35,7 @@ public class PaletteFlyoutPreferences implements FlyoutPreferences {
 
     //@see org.eclipse.gef.ui.palette.FlyoutPaletteComposite.FlyoutPreferences#getPaletteState()
     public int getPaletteState() {
-        return RMBenchPlugin.getDefault().getPreferenceStore().getInt(PALETTE_STATE);
+        return RMBenchPlugin.getDefault().getPreferenceStore().getInt(PreferenceHandler.PALETTE_STATE);
     }
 
     //@see org.eclipse.gef.ui.palette.FlyoutPaletteComposite.FlyoutPreferences#getPaletteWidth()
@@ -52,7 +53,7 @@ public class PaletteFlyoutPreferences implements FlyoutPreferences {
 
     //@see org.eclipse.gef.ui.palette.FlyoutPaletteComposite.FlyoutPreferences#setPaletteState(int)
     public void setPaletteState(int state) {
-        RMBenchPlugin.getDefault().getPreferenceStore().setValue(PALETTE_STATE, state);
+        RMBenchPlugin.getDefault().getPreferenceStore().setValue(PreferenceHandler.PALETTE_STATE, state);
     }
 
     //@see org.eclipse.gef.ui.palette.FlyoutPaletteComposite.FlyoutPreferences#setPaletteWidth(int)
