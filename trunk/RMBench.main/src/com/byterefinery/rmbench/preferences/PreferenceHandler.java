@@ -6,6 +6,7 @@
 package com.byterefinery.rmbench.preferences;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
+import org.eclipse.gef.ui.palette.FlyoutPaletteComposite;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.FontRegistry;
 import org.eclipse.jface.resource.JFaceResources;
@@ -90,6 +91,8 @@ public class PreferenceHandler extends AbstractPreferenceInitializer {
     public static final Color DEFAULT_DDL_STRINGCOLOR = new Color(null, 0, 255, 0); //green
     public static final Color DEFAULT_DDL_HLCOLOR = new Color(null, 192, 192, 192); //lightGray
     
+    public static final String PALETTE_STATE = "Palette state";
+    
     private static PreferenceHandler instance;
     private boolean initialized;
     
@@ -142,6 +145,9 @@ public class PreferenceHandler extends AbstractPreferenceInitializer {
             //store if dialog is needed
             store.setDefault(PREF_HIDE_PK_DELETION_DIALOG, false);
             store.setDefault(PREF_HIDE_PK_DATATYPE_DIALOG, false);
+            
+            // set default palette state
+            store.setDefault(PALETTE_STATE, FlyoutPaletteComposite.STATE_PINNED_OPEN);
             
             initialized = true;
         }
